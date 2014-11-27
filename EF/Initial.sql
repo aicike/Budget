@@ -35,3 +35,9 @@ SET IDENTITY_INSERT [dbo].[CompanyAccount] ON
 INSERT [dbo].[CompanyAccount] ([ID], [CompanyID], [AccountNumber], [AccountPwd], [Name], [Phone], [Email]) VALUES (1, 1, N'fute', N'm8YlpCH5g1U=', N'福特', N'fute', N'fute')
 INSERT [dbo].[CompanyAccount] ([ID], [CompanyID], [AccountNumber], [AccountPwd], [Name], [Phone], [Email]) VALUES (2, 2, N'xuefulan', N'm8YlpCH5g1U=', N'雪佛兰', N'xuefulan', N'xuefulan')
 SET IDENTITY_INSERT [dbo].[CompanyAccount] OFF
+
+/******----------------------------******/
+SET IDENTITY_INSERT [dbo].[ParticularYear] ON
+INSERT [dbo].[ParticularYear] ([ID], [Year]) VALUES (1, 2015)
+SET IDENTITY_INSERT [dbo].[ParticularYear] OFF
+
