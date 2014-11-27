@@ -153,7 +153,18 @@
         </div>
         <!-- END TOP NAVIGATION BAR -->
     </div>
-    @RenderBody()
+    <div class="page-container">
+        <!-- BEGIN SIDEBAR -->
+        <div class="page-sidebar nav-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            @Html.Partial("Menu")
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE -->
+        @RenderBody()
+        <!-- END PAGE -->
+    </div>
     <div class="footer">
         <div class="footer-inner">
             2013 &copy; Metronic by keenthemes.
