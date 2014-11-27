@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu.cs" />
     <Compile Include="_Cutom_ColumnOption.cs" />
     <Compile Include="CustomTable_Column.cs">
       <SubType>Code</SubType>
