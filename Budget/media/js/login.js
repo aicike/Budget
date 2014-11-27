@@ -70,7 +70,16 @@
             $('.login-form input').keypress(function (e) {
                 if (e.which == 13) {
                     if ($('.login-form').validate().form()) {
-                        window.location.href = "Index";
+                        $.post(loginUrl, { username: $(form.username).val(), password: $(form.password).val(), role: $(form.role).val() }, function (result) {
+                            if (result.hasError) {
+                                $('.alert-error>span').html(result.error);
+                                $('.alert-error', $('.login-form')).show();
+                            } else {
+                                $('.alert-error', $('.login-form')).hide();
+                                $('.alert-error>span').html("请输入账号和密码。");
+                                window.location.href = "Home";
+                            }
+                        });
                     }
                     return false;
                 }
