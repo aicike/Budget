@@ -9,5 +9,6 @@ namespace Entity
     public class SessionLoginUser
     {
         public int ID { get; set; }
+
     }
 }

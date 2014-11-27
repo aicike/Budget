@@ -61,7 +61,7 @@
                         } else {
                             $('.alert-error', $('.login-form')).hide();
                             $('.alert-error>span').html("请输入账号和密码。");
-                            window.location.href = "index.html";
+                            window.location.href = "Home";
                         }
                     });
                 }

@@ -51,6 +51,10 @@
     <Compile Include="Migrations\201411270316386_Update.Designer.cs">
       <DependentUpon>201411270316386_Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411270638087_Update1.cs" />
+    <Compile Include="Migrations\201411270638087_Update1.Designer.cs">
+      <DependentUpon>201411270638087_Update1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,6 +71,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201411270316386_Update.resx">
       <DependentUpon>201411270316386_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270638087_Update1.resx">
+      <DependentUpon>201411270638087_Update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

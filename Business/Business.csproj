@@ -63,10 +63,12 @@
     <Compile Include="Commons\ExpandMethod.cs" />
     <Compile Include="Commons\QrCodes.cs" />
     <Compile Include="Commons\ToolImage.cs" />
+    <Compile Include="CompanyAccountModel.cs" />
     <Compile Include="CustomTable_ColumnModel.cs" />
     <Compile Include="CustomTable_MainModel.cs" />
     <Compile Include="CustomTable_ValuesModel.cs" />
     <Compile Include="EFModel.cs" />
+    <Compile Include="GroupAccountModel.cs" />
     <Compile Include="MenuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlHelper.cs" />

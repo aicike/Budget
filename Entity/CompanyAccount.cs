@@ -26,8 +26,8 @@ namespace Entity
         /// <summary>
         /// 登陆账号
         /// </summary>
-        [Display(Name = "登陆账号")]
-        [Required(ErrorMessage = "请输入登陆账号")]
+        [Display(Name = "登录账号")]
+        [Required(ErrorMessage = "请输入登录账号")]
         [StringLength(50, ErrorMessage = "列名不能超过50字")]
         public string AccountNumber { get; set; }
 
