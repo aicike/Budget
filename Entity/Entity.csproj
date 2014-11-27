@@ -41,7 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BudgetClass.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="CompanyAccount.cs" />
+    <Compile Include="ProfitLoss_Coefficient.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="GroupAccount.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="ParticularYear.cs" />
+    <Compile Include="ProfitLoss_Detailed.cs" />
+    <Compile Include="ProfitLoss_Main.cs" />
     <Compile Include="_Cutom_ColumnOption.cs" />
     <Compile Include="CustomTable_Column.cs">
       <SubType>Code</SubType>
