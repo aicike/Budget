@@ -298,5 +298,164 @@ namespace Entity
         [Display(Name = "主营业务成本_其他")]
         public decimal? ZhuYingChengBen_QiTa { get; set; }
 
+
+        /// <summary>
+        /// 毛利
+        /// </summary>
+        [Display(Name = "毛利")]
+        [Required(ErrorMessage = "请输入毛利")]
+        public decimal MaoLi { get; set; }
+
+        /// <summary>
+        /// 毛利_整车
+        /// </summary>
+        [Display(Name = "毛利_整车")]
+        [Required(ErrorMessage = "请输入毛利_整车")]
+        public decimal MaoLi_ZhengChe { get; set; }
+
+        /// <summary>
+        /// 毛利_维修
+        /// </summary>
+        [Display(Name = "毛利_维修")]
+        [Required(ErrorMessage = "请输入毛利_维修")]
+        public decimal MaoLi_WeiXiu { get; set; }
+
+        /// <summary>
+        /// 毛利_装饰装潢
+        /// </summary>
+        [Display(Name = "毛利_装饰装潢")]
+        [Required(ErrorMessage = "请输入毛利_装饰装潢")]
+        public decimal MaoLi_ZhuangShiZhuangHuang { get; set; }
+
+        /// <summary>
+        /// 毛利_佣金
+        /// </summary>
+        [Display(Name = "毛利_佣金")]
+        [Required(ErrorMessage = "请输入毛利_佣金")]
+        public decimal MaoLi_YongJin { get; set; }
+
+        /// <summary>
+        /// 主营业务税金及附加
+        /// </summary>
+        [Display(Name = "主营业务税金及附加")]
+        [Required(ErrorMessage = "请输入主营业务税金及附加")]
+        public decimal ZhuYingYeWuShueiJinJiFuJia { get; set; }
+
+        /// <summary>
+        /// 主营业务附加税后毛利
+        /// </summary>
+        [Display(Name = "主营业务附加税后毛利")]
+        [Required(ErrorMessage = "请输入主营业务附加税后毛利")]
+        public decimal ZhuYingYeWuFuJiaShuiHouMaoLi { get; set; }
+
+        /// <summary>
+        /// 其他业务收入
+        /// </summary>
+        [Display(Name = "其他业务收入")]
+        public decimal? QiTaYeWuShouRu { get; set; }
+
+        /// <summary>
+        /// 其他业务成本
+        /// </summary>
+        [Display(Name = "其他业务成本")]
+        public decimal? QiTaYeWuChengBen { get; set; }
+
+        /// <summary>
+        /// 其他业务税金及附加
+        /// </summary>
+        [Display(Name = "其他业务税金及附加")]
+        public decimal? QiTaYeWuShuiJinJiFuJia { get; set; }
+
+        /// <summary>
+        /// 其他业务利润
+        /// </summary>
+        [Display(Name = "其他业务利润")]
+        public decimal? QiTaYeWuLiRun { get; set; }
+
+        /// <summary>
+        /// 销售及管理费用
+        /// </summary>
+        [Display(Name = "销售及管理费用")]
+        [Required(ErrorMessage = "请输入销售及管理费用")]
+        public decimal XiaoShouJiGuanLiFeiYong { get; set; }
+
+        /// <summary>
+        /// 息税前利润
+        /// </summary>
+        [Display(Name = "息税前利润")]
+        [Required(ErrorMessage = "请输入息税前利润")]
+        public decimal XiShueiQianLiRun{ get; set; }
+
+        /// <summary>
+        /// 财务费用
+        /// </summary>
+        [Display(Name = "财务费用")]
+        [Required(ErrorMessage = "请输入财务费用")]
+        public decimal CaiWuFeiYong { get; set; }
+
+        /// <summary>
+        /// 营业利润
+        /// </summary>
+        [Display(Name = "营业利润")]
+        [Required(ErrorMessage = "请输入营业利润")]
+        public decimal YingYeLiRun { get; set; }
+
+        /// <summary>
+        /// 资产减值损失
+        /// </summary>
+        [Display(Name = "资产减值损失")]
+        public decimal? ZiChanJianZhiSunShi { get; set; }
+
+        /// <summary>
+        /// 公允价值变动收益
+        /// </summary>
+        [Display(Name = "公允价值变动收益")]
+        public decimal? GongYunJiaZhiBianDongShouYi { get; set; }
+
+        /// <summary>
+        /// 投资收益
+        /// </summary>
+        [Display(Name = "投资收益")]
+        public decimal? TouZiShouYi { get; set; }
+
+        /// <summary>
+        /// 营业外收支净额
+        /// </summary>
+        [Display(Name = "营业外收支净额")]
+        public decimal? YingYeWaiShouZhiJingE { get; set; }
+
+        /// <summary>
+        /// 利润总额
+        /// </summary>
+        [Display(Name = "利润总额")]
+        [Required(ErrorMessage = "请输入利润总额")]
+        public decimal LiRunZongE { get; set; }
+
+        /// <summary>
+        /// 所得税
+        /// </summary>
+        [Display(Name = "所得税")]
+        public decimal? SuoDeShui { get; set; }
+
+        /// <summary>
+        /// 税后利润
+        /// </summary>
+        [Display(Name = "税后利润")]
+        [Required(ErrorMessage = "请输入税后利润")]
+        public decimal ShueiHouLiRun { get; set; }
+
+        /// <summary>
+        /// 少数股东损益
+        /// </summary>
+        [Display(Name = "少数股东损益")]
+        public decimal? ShaoShuGuDongSunYi { get; set; }
+
+        /// <summary>
+        /// 净利润
+        /// </summary>
+        [Display(Name = "净利润")]
+        [Required(ErrorMessage = "请输入净利润")]
+        public decimal JingLiRun { get; set; }
+
     }
 }
