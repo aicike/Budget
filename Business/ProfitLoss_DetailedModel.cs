@@ -96,7 +96,7 @@ namespace Business
                             sum(ShueiHouLiRun) as ShueiHouLiRun,
                             sum(ShaoShuGuDongSunYi) as ShaoShuGuDongSunYi,
                             sum(JingLiRun) as JingLiRun
-                             from dbo.ProfitLoss_Detailed where Profitloss_MainID in (1,2,3) group by CompanyID";
+                             from dbo.ProfitLoss_Detailed where Profitloss_MainID in ("+MainIDs+") group by CompanyID";
 
             var data = SqlHelper.ExecuteDataset(sql);
             return data.Tables[0];

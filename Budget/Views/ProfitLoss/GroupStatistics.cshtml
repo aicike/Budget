@@ -50,7 +50,7 @@ $(function(){ UIGeneral.init(); });
                                     if (i == 1)
                                     {
                                         <td style="font-weight: bold">
-                                            <a href="@Url.Action("CompanyDetail", "ProfitLoss", new { ComPanyID = @Model.Rows[j][0], YearID = ViewBag.YearID })" target="_blank">@Model.Rows[j][i]</a>
+                                            <a class="tooltips" data-placement="top" data-original-title="点击查看明细" href="@Url.Action("CompanyDetail", "ProfitLoss", new { ComPanyID = @Model.Rows[j][0], YearID = ViewBag.YearID })" target="_blank">@Model.Rows[j][i]</a>
                                          </td>
                                     }
                                     else

@@ -1414,7 +1414,7 @@
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Coefficient\Index.cshtml" />
     <Content Include="Views\Coefficient\ProfitLoss_Coefficient.cshtml" />
-    <Content Include="Views\ProfitLoss\GropuIndex.cshtml" />
+    <Content Include="Views\ProfitLoss\GroupIndex.cshtml" />
     <Content Include="Views\ProfitLoss\GroupStatistics.cshtml" />
     <Content Include="Views\ProfitLoss\CompanyDetail.cshtml" />
   </ItemGroup>
