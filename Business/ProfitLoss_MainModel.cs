@@ -36,5 +36,19 @@ namespace Business
             var list = base.List().Where(a => a.ParticularYearID == YearID).ToList();
             return list;
         }
+
+        /// <summary>
+        /// 根据公司ID 年份ID 获取明细主表信息
+        /// </summary>
+        /// <param name="CID"></param>
+        /// <param name="YearID"></param>
+        /// <returns></returns>
+        public ProfitLoss_Main GetMainInfo_ByCid_YID(int CID, int YearID)
+        {
+            var list = base.List().Where(a => a.ParticularYearID == YearID&&a.CompanyID==CID).FirstOrDefault();
+            return list;
+        }
+
+       
     }
 }

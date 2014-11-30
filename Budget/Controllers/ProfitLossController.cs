@@ -328,7 +328,7 @@ namespace Budget.Controllers
             #region 数据汇总
             DataRow RowHZ = dtInfo.NewRow();
             RowHZ["Month"] = "累计";
-            RowHZ["XiaoShouShuLiang"] = list.Sum(a=>a.XiaoShouShuLiang);
+            RowHZ["XiaoShouShuLiang"] = list.Sum(a => a.XiaoShouShuLiang);
             RowHZ["XinCheXiaoShouShuLiang"] = list.Sum(a => a.XinCheXiaoShouShuLiang);
             RowHZ["WeiXiuJinChangTaiCi"] = list.Sum(a => a.WeiXiuJinChangTaiCi);
             RowHZ["FenQiShuLiang"] = list.Sum(a => a.FenQiShuLiang);
@@ -569,18 +569,29 @@ namespace Budget.Controllers
         {
             var list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProfitLoss_Detailed>>(json);
             ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
+            var LSpmain = PMainModel.GetMainInfo_ByCid_YID(LoginAccount.ID, YearID);
             ProfitLoss_Main Pmain = new ProfitLoss_Main();
-            Pmain.CompanyID = LoginAccount.ID;
-            Pmain.IsReport = false;
-            Pmain.ParticularYearID = 1; //需要前台传值
-            PMainModel.Add(Pmain);
             ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
+            if (LSpmain != null)
+            {
+                Pmain = LSpmain;
+                //删除数据
+                PDetailModel.DelInfo_ByMainID(Pmain.ID);
+            }
+            else
+            {
+                Pmain.CompanyID = LoginAccount.ID;
+                Pmain.IsReport = false;
+                Pmain.ParticularYearID = YearID; 
+                PMainModel.Add(Pmain);
+            }
             foreach (var item in list)
             {
                 item.ProfitLoss_MainID = Pmain.ID;
                 item.CompanyID = LoginAccount.ID;
                 PDetailModel.Add(item);
             }
+            
             return RedirectToAction("Detail", "ProfitLoss"); ;
         }
     }

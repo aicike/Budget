@@ -103,6 +103,19 @@ namespace Business
         }
 
 
+        /// <summary>
+        /// 删除明细数据
+        /// </summary>
+        /// <param name="MainID"></param>
+        /// <returns></returns>
+        public Result DelInfo_ByMainID(int MainID)
+        {
+            Result result = new Result();
+            string sql = "delete ProfitLoss_Detailed where ProfitLoss_MainID = "+MainID;
+            base.SqlExecute(sql);
+            return result;
+        }
+
 
     }
 }
