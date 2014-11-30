@@ -62,7 +62,7 @@ namespace Budget.Controllers
         }
 
         //损益预算首页(集团列表)
-        public ActionResult GropuIndex()
+        public ActionResult GroupIndex()
         {
             ParticularYearModel pyearModel = new ParticularYearModel();
             var list = pyearModel.List().OrderByDescending(a => a.ID).ToList();
@@ -92,7 +92,12 @@ namespace Budget.Controllers
             //获取所有明细
             ProfitLoss_DetailedModel pldModel = new ProfitLoss_DetailedModel();
             var strpmids = PLMain.Select(a => a.ID).ToList().ConvertToString(",");
-            var dt = pldModel.GetStatistics_ByMainID(strpmids);
+            DataTable dt = new DataTable();
+            if (strpmids == "")
+            {
+                return View(dt);
+            }
+            dt = pldModel.GetStatistics_ByMainID(strpmids);
             DataTable dtTitle = new DataTable();
             dtTitle.Columns.Add("CompanyID");
             dtTitle.Columns.Add("CompanyName");
@@ -465,6 +470,7 @@ namespace Budget.Controllers
 
             return View(dtInfo);
         }
+
         //初始化 明细表格
         public DataTable SetDt_Detail()
         {
