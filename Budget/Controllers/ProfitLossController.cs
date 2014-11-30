@@ -556,18 +556,32 @@ namespace Budget.Controllers
         }
 
         //预算表
-        public ActionResult Detail()
+        public ActionResult Detail(int YearID)
         {
+            ViewBag.YearID = YearID;
             return View();
         }
 
-        //预算表
+        //保存预算表 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Detail(string json)
+        public ActionResult Detail(string json, int YearID)
         {
-            var it = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProfitLoss_Detailed>>(json);
-            return View();
+            var list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProfitLoss_Detailed>>(json);
+            ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
+            ProfitLoss_Main Pmain = new ProfitLoss_Main();
+            Pmain.CompanyID = LoginAccount.ID;
+            Pmain.IsReport = false;
+            Pmain.ParticularYearID = 1; //需要前台传值
+            PMainModel.Add(Pmain);
+            ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
+            foreach (var item in list)
+            {
+                item.ProfitLoss_MainID = Pmain.ID;
+                item.CompanyID = LoginAccount.ID;
+                PDetailModel.Add(item);
+            }
+            return RedirectToAction("Detail", "ProfitLoss"); ;
         }
     }
 }
