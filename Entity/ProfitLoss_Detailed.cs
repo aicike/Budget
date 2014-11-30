@@ -17,6 +17,14 @@ namespace Entity
         public int ID { get; set; }
 
         /// <summary>
+        /// 公司ID
+        /// </summary>
+        [Display(Name = "公司ID")]
+        public int CompanyID { get; set; }
+        public virtual Company Company { get; set; }
+
+
+        /// <summary>
         /// 损益预算 主表ID
         /// </summary>
         [Display(Name = "损益预算 主表ID")]

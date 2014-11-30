@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = ViewBag.CompanyName + ViewBag.Year + "年损益预算明细";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var DtTitle = ViewBag.DtTitle as System.Data.DataTable;
+}
+@section scripts{
+$(function(){ UIGeneral.init(); });
+}
+@model System.Data.DataTable
+<div class="row-fluid">
+    <div class="span6" style="width: 100%">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cogs"></i>@(ViewBag.CompanyName)@(ViewBag.Year)年损益预算明细
+                </div>
+                <div class="tools">
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-hover">
+                    @for (int i = 0; i < DtTitle.Columns.Count; i++)
+                    {
+                        <tr>
+                            @for (int j = 0; j < DtTitle.Rows.Count; j++)
+                            {
+                                <td style="font-weight: bold">
+                                    @DtTitle.Rows[j][i]
+                                </td>
+                            }
+                            @for (int j = 0; j <Model.Rows.Count; j++)
+                            {
+                               @Model.Rows[j][i]
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

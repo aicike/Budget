@@ -30,9 +30,9 @@ $(function(){ UIGeneral.init(); });
                    @foreach (var item in Model)
                    {
                        <tr>
-                        <td><a>@item.Year 损益预算统计</a></td>
+                        <td><a href="@Url.Action("GroupStatistics", "ProfitLoss", new { YearID = item.ID })">@(item.Year)年损益预算统计</a></td>
                         <td>
-                            <a>查看</a>
+                            <a href="@Url.Action("GroupStatistics", "ProfitLoss", new { YearID = item.ID })">查看</a>
                         </td>
                        </tr>
                    }

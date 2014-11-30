@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "损益预算统计";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var Ncompany = ViewBag.Ncompany as List<Entity.Company>;
+
+    var DtTitle = ViewBag.DtTitle as System.Data.DataTable;
+}
+@section scripts{
+$(function(){ UIGeneral.init(); });
+}
+@model System.Data.DataTable
+<div class="row-fluid">
+    <div class="span6" style="width: 100%">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cogs"></i>@(ViewBag.Year)年损益预算统计列表
+                </div>
+                <div class="tools">
+                </div>
+            </div>
+            <div class="portlet-body">
+                @if (Model.Rows.Count > 0)
+                {
+                    <table class="table table-hover">
+                        <tr>
+                            <td style="font-size: 14px; color: #4d8bf8">
+                                @foreach (var item in Ncompany)
+                                {
+                                    @(item.Name)@:、
+                                }
+                                尚未上报数据
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-hover">
+                        @for (int i = 1; i < DtTitle.Columns.Count; i++)
+                        {
+                            <tr>
+                                @for (int j = 0; j < DtTitle.Rows.Count; j++)
+                                {
+                                    <td style="font-weight: bold">
+                                        @DtTitle.Rows[j][i]
+                                    </td>
+                                }
+                                @for (int j = 0; j < Model.Rows.Count; j++)
+                                {
+                                    
+                                    if (i == 1)
+                                    {
+                                        <td style="font-weight: bold">
+                                            <a href="@Url.Action("CompanyDetail", "ProfitLoss", new { ComPanyID = @Model.Rows[j][0], YearID = ViewBag.YearID })" target="_blank">@Model.Rows[j][i]</a>
+                                         </td>
+                                    }
+                                    else
+                                    { 
+                                        <td style="">
+                                            @Model.Rows[j][i]
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                { 
+                    <table class="table table-hover">
+                        <tr>
+                            <td style="font-size: 16px; color: #4d8bf8">
+                                暂无公司上报数据
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -41,10 +41,17 @@ namespace Entity
         /// 公司系数表
         /// </summary>
         public virtual ICollection<ProfitLoss_Coefficient> ProfitLoss_Coefficient { get; set; }
+
+        #region 损益预算
         /// <summary>
         /// 损益预算主表
         /// </summary>
         public virtual ICollection<ProfitLoss_Main> ProfitLoss_Main { get; set; }
+        /// <summary>
+        /// 损益预算子表
+        /// </summary>
+        public virtual ICollection<ProfitLoss_Detailed> ProfitLoss_Detailed { get; set; }
+        #endregion
 
     }
 }
