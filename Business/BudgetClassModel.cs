@@ -7,9 +7,9 @@ using Entity;
 namespace Business
 {
     /// <summary>
-    /// 损益预算 明细表 MODEL
+    /// 预算分类
     /// </summary>
-    public class ProfitLoss_DetailedModel : BaseModel<ProfitLoss_Detailed>
+    public class BudgetClassModel : BaseModel<BudgetClass>
     {
     }
 }

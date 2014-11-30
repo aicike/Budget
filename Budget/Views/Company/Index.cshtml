@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "公司管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+}
+@model List<Entity.Company>
+<div class="row-fluid">
+    <div class="span6" style="width: 100%">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cogs"></i>公司列表
+                </div>
+                <div class="tools">
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-hover">
+                    <tr>
+                        <th>
+                            公司ID
+                        </th>
+                        <th>
+                            公司名称
+                        </th>
+                        <th>
+                            用户管理
+                        </th>
+                        <th style="width: 20%">
+                            操作
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.ID
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Index", "CompanyAccount", new { CID=item.ID})"> 管理用户</a>
+                            </td>
+                            <td>
+                                <a>修改</a> <a>删除</a> 
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

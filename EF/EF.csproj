@@ -47,10 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="Migrations\201411270653314_Update2.cs" />
-    <Compile Include="Migrations\201411270653314_Update2.Designer.cs">
-      <DependentUpon>201411270653314_Update2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,9 +61,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201411270653314_Update2.resx">
-      <DependentUpon>201411270653314_Update2.cs</DependentUpon>
-    </EmbeddedResource>
     <Content Include="Initial.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

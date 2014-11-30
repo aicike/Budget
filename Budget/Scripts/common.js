@@ -28,3 +28,6 @@ function AppDelete(msg, url, fun) {
     });
     return false;
 }
+
+
+    

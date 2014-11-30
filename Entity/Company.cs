@@ -40,7 +40,7 @@ namespace Entity
         /// <summary>
         /// 公司系数表
         /// </summary>
-        public virtual ICollection<ProfitLoss_Coefficient> CompanyCoefficient { get; set; }
+        public virtual ICollection<ProfitLoss_Coefficient> ProfitLoss_Coefficient { get; set; }
         /// <summary>
         /// 损益预算主表
         /// </summary>

@@ -7,9 +7,10 @@ using Entity;
 namespace Business
 {
     /// <summary>
-    /// 损益预算 明细表 MODEL
+    /// 公司Model
     /// </summary>
-    public class ProfitLoss_DetailedModel : BaseModel<ProfitLoss_Detailed>
+    public class CompanyModel : BaseModel<Company>
     {
+       
     }
 }

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "损益预算";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+$(function(){ UIGeneral.init(); });
+}
+@model List<Entity.ParticularYear>
+<div class="row-fluid">
+    <div class="span6" style="width: 100%">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cogs"></i>损益预算年份列表
+                </div>
+                <div class="tools">
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-hover">
+                    <tr>
+                        <th>
+                            预算年份
+                        </th>
+                        <th style="width: 20%">
+                            操作
+                        </th>
+                    </tr>
+                   @foreach (var item in Model)
+                   {
+                       <tr>
+                        <td><a>@item.Year 损益预算统计</a></td>
+                        <td>
+                            <a>查看</a>
+                        </td>
+                       </tr>
+                   }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

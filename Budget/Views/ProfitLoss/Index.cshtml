@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section scripts{
+$(function(){ UIGeneral.init(); });
 }
 @model System.Data.DataTable
 <div class="row-fluid">
@@ -38,8 +39,7 @@
                                 }
                                 else if (Model.Rows[i]["Type"].ToString() == "1")
                                 {
-                                    <a style="color: #4d8bf8; cursor: pointer" data-placement="right" data-original-title="Tooltip in right">
-                                        上报</a> 
+                                    @Ajax.ActionLink("上报", "ReportProfitLoss", "ProfitLoss", new { PMID = Model.Rows[i]["PMID"] }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要删除吗')) {return true }" }, new { @class="tooltips",style="color: #4d8bf8; cursor: pointer",data_placement="top",data_original_title="注意：上报后不可更改。"})
                                 }
                                 else
                                 {

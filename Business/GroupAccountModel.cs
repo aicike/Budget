@@ -8,6 +8,12 @@ namespace Business
 {
     public class GroupAccountModel : BaseModel<GroupAccount>
     {
+        /// <summary>
+        /// 集团登陆
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public Result Login(string userName, string password)
         {
             string pwd = DESEncrypt.Encrypt(password);
@@ -23,5 +29,6 @@ namespace Business
             }
             return result;
         }
+
     }
 }

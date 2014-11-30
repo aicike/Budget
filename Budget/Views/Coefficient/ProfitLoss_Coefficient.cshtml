@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "损益预算系数管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+ <style>
+    .page-content
+    {
+        min-width:1330px;    
+    }
+    .portlet-body th
+    {
+        width: 85px;
+    }
+ </style>
+}
+@model List<Entity.Company>
+<div class="row-fluid" >
+    <div class="span12" style=" min-width: 1280px; ">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cogs"></i>损益预算系数
+                </div>
+                <div class="tools">
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-hover">
+                    <tr>
+                        <th style="width: 100px">
+                            公司名称
+                        </th>
+                        <th>
+                            分期数量
+                        </th>
+                        <th>
+                            新保数量
+                        </th>
+                        <th>
+                            续保数量
+                        </th>
+                        <th>
+                            挂牌数量
+                        </th>
+                        <th>
+                            二手车销售数量
+                        </th>
+                        <th>
+                            主营收入<br />整车
+                        </th>
+                        <th>
+                            主营收入<br />装饰装潢
+                        </th>
+                        <th>
+                            主营收入<br />分期
+                        </th>
+                        <th>
+                            主营收入<br />新保
+                        </th>
+                        <th>
+                            主营收入<br />续保
+                        </th>
+                        <th>
+                            主营收入<br />挂牌
+                        </th>
+                        <th>
+                            主营收入<br />二手车
+                        </th>
+                        <th>
+                            主营成本<br />整车
+                        </th>
+                        <th>
+                            主营成本<br />维修配件
+                        </th>
+                        <th>
+                            主营成本<br />装饰装潢
+                        </th>
+                        <th style="width: 100px">
+                            管理
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style=" font-weight:bold">
+                                @item.Name
+                            </td>
+                            <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault()!=null?item.ProfitLoss_Coefficient.FirstOrDefault().FenQiShuLiang.ToString():"")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().XinBaoShuLiang.ToString() : "")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().XuBaoShuLiang.ToString() : "")
+                            </td>
+                            <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().GuaPaiShuLiang.ToString() : "")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ErShouCheXiaoShouShuLiang.ToString() : "")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingShouRu_ZhengChe.ToString() : "")
+                            </td>
+                            <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingShouRu_ZhuangShiZhuangHuang.ToString() : "")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingShouRu_FenQi.ToString() : "")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingShouRu_XinBao.ToString() : "")
+                            </td>
+                            <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingShouRu_XuBao.ToString() : "")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingShouRu_GuaPai.ToString() : "")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingShouRu_ErShouChe.ToString() : "")
+                            </td>
+                            <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingChengBen_ZhengChe.ToString() : "")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingChengBen_WeiXiuPeiJian.ToString() : "")
+                            </td>
+                             <td>
+                                @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingChengBen_ZhuangShiZhuangHuang.ToString() : "")
+                            </td>
+                            <td>
+                                <a>编辑</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
