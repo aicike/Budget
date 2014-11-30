@@ -87,45 +87,45 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr id="tr_xiaoshoushuliang">
                             <td>
                                 销售数量
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="1" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="2" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="3" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="4" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="5" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="6" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="7" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="8" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="9" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="10" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="11" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="12" />
                             </td>
                             <td>
                                 <input type="text" class="itext" row="13" />
@@ -176,46 +176,46 @@
                                 <input type="text" class="itext" row="13" />
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="tr_weixiujinchangtaici">
                             <td>
                                 <div class="idiv1">
                                     维修进场台次</div>
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="1" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="2" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="3" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="4" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="5" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="6" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="7" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="8" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="9" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="10" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="11" />
                             </td>
                             <td>
-                                <input type="text" class="itext" />
+                                <input type="text" class="itext" row="12" />
                             </td>
                             <td>
                                 <input type="text" class="itext" row="13" />
@@ -2901,13 +2901,14 @@
                         </tr>
                     </tbody>
                 </table>
+                <button type="button" class="btn blue isubmit">保存</button>
             </div>
         </div>
         <!-- END SAMPLE TABLE PORTLET-->
     </div>
 </div>
 @section scripts{
-    <script>
+    <script type="text/javascript">
         var tr_FenQiShuLiang = 0.16;
         var tr_XinBaoShuLiang = 0.88;
         var tr_xubaoshuliang = 0.3;
@@ -2923,6 +2924,87 @@
         var tr_jian_zhengche = 0.986;
         var tr_jian_weixiupeijian = 0.8;
         var tr_jian_zhuangshizhuanghuang = 0.6;
+        var submitUrl='@Url.Action("Detail", "ProfitLoss")';
+
+        function sunyi() {
+            var it = new Object;
+            it.xiaoshoushuliang = 0; //销售数量
+            it.xinchexiaoshoushuliang = 0; //新车销售数量
+            it.weixiujinchangtaici = 0; //维修进场台次
+            it.fenqishuliang = 0; //分期数量
+            it.xinbaoshuliang =0; //新保数量
+            it.xubaoshuliang = 0; //续保数量
+            it.yanbaoshuliang = 0; //延保数量
+            it.guapaishuliang = 0; //挂牌数量
+            it.ershouchexiaoshoushuliang = 0; //二手车销售数量
+            it.zhuyingyewushouru = 0; //主营业务收入
+            it.zhengche = 0; //整车
+            it.shouhouweixiu = 0; //售后维修
+            it.weixiupeijian = 0; //维修配件
+            it.gongshi = 0; //工时
+            it.zhuangshizhuanghuang = 0; //装饰装潢
+            it.yongjin = 0; //佣金
+            it.fenqi = 0; //分期
+            it.baoxian = 0; //保险
+            it.xinbao = 0; //新保
+            it.xubao = 0; //续保
+            it.yanbao = 0; //延保
+            it.guapai = 0; //挂牌
+            it.ershouche = 0; //二手车
+            it.qita = 0; //其他
+            it.jian_zhuyingyewuchengben = 0; //减：主营业务成本
+            it.jian_zhengche = 0; //整车
+            it.jian_shouhouweixiu = 0; //售后维修
+            it.jian_weixiupeijian = 0; //维修配件
+            it.jian_gongshi = 0; //工时
+            it.jian_zhuangshizhuanghuang = 0; //装饰装潢
+            it.jian_yongjin = 0; //佣金
+            it.jian_fenqi = 0; //分期
+            it.jian_baoxian = 0; //保险
+            it.jian_xinbao = 0; //新保
+            it.jian_xubao = 0; //续保
+            it.jian_yanbao = 0; //延保
+            it.jian_guapai = 0; //挂牌
+            it.jian_ershouche = 0; //二手车
+            it.jian_qita = 0; //其他
+            it.maoli = 0; //毛利
+            it.mao_zhengche = 0; //整车
+            it.mao_shouhouweixiu = 0; //维修
+            it.mao_zhuangshizhuanghuang = 0; //装饰装潢
+            it.mao_yongjin = 0; //佣金
+            it.zhuyingyewushuijinjifujia = 0; //主营业务税金及附加
+            it.zhuyingyewufujiashuihoumaoli = 0; //主营业务附加税后毛利
+            it.qitayewushouru = 0; //其他业务收入
+            it.qitayewuchengben = 0; //其他业务成本
+            it.qitayewushuijinjifujia = 0; //其他业务税金及附加
+            it.qitayewulirun = 0; //其他业务利润
+            it.xiaoshoujiguanlifeiyong = 0; //销售及管理费用
+            it.xishuiqianlirun = 0; //息税前利润
+            it.caiwufeiyong = 0; //财务费用
+            it.yingyelirun = 0; //营业利润
+            it.zichanjianzhisunshi = 0; //资产减值损失
+            it.gongyunjiazhibiandongshouyi = 0; //公允价值变动收益
+            it.touzishouyi = 0; //投资收益
+            it.yingyewaishouzhijinge = 0; //营业外收支净额
+            it.lirunzonge = 0; //利润总额
+            it.suodeshui = 0; //所得税
+            it.shuihoulirun = 0; //税后利润
+            it.shaoshugudongsunyi = 0; //少数股东损益
+            it.jinglirun = 0; //净利润
+            //            it.addSub = function () {
+            //                var sit = new ImageText();
+            //                this.sub.push(sit);
+            //            };
+            //            it.deleteItem = function (index) {
+            //                this.sub.splice(index, 1);
+            //                currentIndex = -1;
+            //                edit(null, currentIndex);
+            //            };
+            //            it.getSub = function (index) {
+            //                return this.sub[index];
+            //            };
+            return it;
+        }
 
         $(function () {
             //只能输入数字和小数点
@@ -3181,9 +3263,84 @@
                 parent_tr.find("td :text[row='13']").val(value);
             });
 
+            //提交
 
-
+            $(".isubmit").click(function () {
+                var sunyi_list = [];
+                $("td :text[row!='13']").each(function (i, n) {
+                    var item = new sunyi();
+                    item.xiaoshoushuliang = getValue(("#tr_xiaoshoushuliang td:text[row='" + i + "']"));
+                    item.xinchexiaoshoushuliang = getValue(("#tr_xinchexiaoshoushuliang td:text[row='" + i + "']"));
+                    item.weixiujinchangtaici = getValue(("#tr_weixiujinchangtaici td:text[row='" + i + "']"));
+                    item.fenqishuliang = getValue(("#tr_fenqishuliang td:text[row='" + i + "']"));
+                    item.xinbaoshuliang = getValue(("#tr_xinbaoshuliang td:text[row='" + i + "']"));
+                    item.xubaoshuliang = getValue(("#tr_xubaoshuliang td:text[row='" + i + "']"));
+                    item.yanbaoshuliang = getValue(("#tr_yanbaoshuliang td:text[row='" + i + "']"));
+                    item.guapaishuliang = getValue(("#tr_guapaishuliang td:text[row='" + i + "']"));
+                    item.ershouchexiaoshoushuliang = getValue(("#tr_ershouchexiaoshoushuliang td:text[row='" + i + "']"));
+                    item.zhuyingyewushouru = getValue(("#tr_zhuyingyewushouru td:text[row='" + i + "']"));
+                    item.zhengche = getValue(("#tr_zhengche td:text[row='" + i + "']"));
+                    item.shouhouweixiu = getValue(("#tr_shouhouweixiu td:text[row='" + i + "']"));
+                    item.weixiupeijian = getValue(("#tr_weixiupeijian td:text[row='" + i + "']"));
+                    item.gongshi = getValue(("#tr_gongshi td:text[row='" + i + "']"));
+                    item.zhuangshizhuanghuang = getValue(("#tr_zhuangshizhuanghuang td:text[row='" + i + "']"));
+                    item.yongjin = getValue(("#tr_yongjin td:text[row='" + i + "']"));
+                    item.fenqi = getValue(("#tr_fenqi td:text[row='" + i + "']"));
+                    item.baoxian = getValue(("#tr_baoxian td:text[row='" + i + "']"));
+                    item.xinbao = getValue(("#tr_xinbao td:text[row='" + i + "']"));
+                    item.xubao = getValue(("#tr_xubao td:text[row='" + i + "']"));
+                    item.yanbao = getValue(("#tr_yanbao td:text[row='" + i + "']"));
+                    item.guapai = getValue(("#tr_guapai td:text[row='" + i + "']"));
+                    item.ershouche = getValue(("#tr_ershouche td:text[row='" + i + "']"));
+                    item.qita = getValue(("#tr_qita td:text[row='" + i + "']"));
+                    item.jian_zhuyingyewuchengben = getValue(("#tr_jian_zhuyingyewuchengben td:text[row='" + i + "']"));
+                    item.jian_zhengche = getValue(("#tr_jian_zhengche td:text[row='" + i + "']"));
+                    item.jian_shouhouweixiu = getValue(("#tr_jian_shouhouweixiu td:text[row='" + i + "']"));
+                    item.jian_weixiupeijian = getValue(("#tr_jian_weixiupeijian td:text[row='" + i + "']"));
+                    item.jian_gongshi = getValue(("#tr_jian_gongshi td:text[row='" + i + "']"));
+                    item.jian_zhuangshizhuanghuang = getValue(("#tr_jian_zhuangshizhuanghuang td:text[row='" + i + "']"));
+                    item.jian_yongjin = getValue(("#tr_jian_yongjin td:text[row='" + i + "']"));
+                    item.jian_fenqi = getValue(("#tr_jian_fenqi td:text[row='" + i + "']"));
+                    item.jian_baoxian = getValue(("#tr_jian_baoxian td:text[row='" + i + "']"));
+                    item.jian_xinbao = getValue(("#tr_jian_xinbao td:text[row='" + i + "']"));
+                    item.jian_xubao = getValue(("#tr_jian_xubao td:text[row='" + i + "']"));
+                    item.jian_yanbao = getValue(("#tr_jian_yanbao td:text[row='" + i + "']"));
+                    item.jian_guapai = getValue(("#tr_jian_guapai td:text[row='" + i + "']"));
+                    item.jian_ershouche = getValue(("#tr_jian_ershouche td:text[row='" + i + "']"));
+                    item.jian_qita = getValue(("#tr_jian_qita td:text[row='" + i + "']"));
+                    item.maoli = getValue(("#tr_maoli td:text[row='" + i + "']"));
+                    item.mao_zhengche = getValue(("#tr_mao_zhengche td:text[row='" + i + "']"));
+                    item.mao_shouhouweixiu = getValue(("#tr_mao_shouhouweixiu td:text[row='" + i + "']"));
+                    item.mao_zhuangshizhuanghuang = getValue(("#tr_mao_zhuangshizhuanghuang td:text[row='" + i + "']"));
+                    item.mao_yongjin = getValue(("#tr_mao_yongjin td:text[row='" + i + "']"));
+                    item.zhuyingyewushuijinjifujia = getValue(("#tr_zhuyingyewushuijinjifujia td:text[row='" + i + "']"));
+                    item.zhuyingyewufujiashuihoumaoli = getValue(("#tr_zhuyingyewufujiashuihoumaoli td:text[row='" + i + "']"));
+                    item.qitayewushouru = getValue(("#tr_qitayewushouru td:text[row='" + i + "']"));
+                    item.qitayewuchengben = getValue(("#tr_qitayewuchengben td:text[row='" + i + "']"));
+                    item.qitayewushuijinjifujia = getValue(("#tr_qitayewushuijinjifujia td:text[row='" + i + "']"));
+                    item.qitayewulirun = getValue(("#tr_qitayewulirun td:text[row='" + i + "']"));
+                    item.xiaoshoujiguanlifeiyong = getValue(("#tr_xiaoshoujiguanlifeiyong td:text[row='" + i + "']"));
+                    item.xishuiqianlirun = getValue(("#tr_xishuiqianlirun td:text[row='" + i + "']"));
+                    item.caiwufeiyong = getValue(("#tr_caiwufeiyong td:text[row='" + i + "']"));
+                    item.yingyelirun = getValue(("#tr_yingyelirun td:text[row='" + i + "']"));
+                    item.zichanjianzhisunshi = getValue(("#tr_zichanjianzhisunshi td:text[row='" + i + "']"));
+                    item.gongyunjiazhibiandongshouyi = getValue(("#tr_gongyunjiazhibiandongshouyi td:text[row='" + i + "']"));
+                    item.touzishouyi = getValue(("#tr_touzishouyi td:text[row='" + i + "']"));
+                    item.yingyewaishouzhijinge = getValue(("#tr_yingyewaishouzhijinge td:text[row='" + i + "']"));
+                    item.lirunzonge = getValue(("#tr_lirunzonge td:text[row='" + i + "']"));
+                    item.suodeshui = getValue(("#tr_suodeshui td:text[row='" + i + "']"));
+                    item.shuihoulirun = getValue(("#tr_shuihoulirun td:text[row='" + i + "']"));
+                    item.shaoshugudongsunyi = getValue(("#tr_shaoshugudongsunyi td:text[row='" + i + "']"));
+                    item.jinglirun = getValue(("#tr_jinglirun td:text[row='" + i + "']"));
+                    sunyi_list.push(item);
+                });
+                var value = JSON.stringify(sunyi_list);
+                $.post(submitUrl, { json: value }, function (result) {
+                    
+                });
+            });
         });
 
+        
     </script>
 }

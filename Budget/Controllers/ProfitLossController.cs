@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Business;
 using System.Data;
+using Entity;
 
 namespace Budget.Controllers
 {
@@ -551,6 +552,15 @@ namespace Budget.Controllers
         //预算表
         public ActionResult Detail()
         {
+            return View();
+        }
+
+        //预算表
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Detail(string json)
+        {
+            var it = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProfitLoss_Detailed>>(json);
             return View();
         }
     }
