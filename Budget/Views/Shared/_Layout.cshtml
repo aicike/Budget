@@ -44,7 +44,7 @@
                 <!-- BEGIN TOP NAVIGATION MENU -->
                 <ul class="nav pull-right">
                     <!-- BEGIN NOTIFICATION DROPDOWN -->
-                    <li class="dropdown" id="header_notification_bar"><a href="#" class="dropdown-toggle"
+                    <li class="dropdown" id="header_notification_bar" style=" display:none"><a href="#" class="dropdown-toggle"
                         data-toggle="dropdown"><i class="icon-warning-sign"></i><span class="badge">6</span>
                     </a>
                         <ul class="dropdown-menu extended notification">
@@ -70,7 +70,7 @@
                     </li>
                     <!-- END NOTIFICATION DROPDOWN -->
                     <!-- BEGIN INBOX DROPDOWN -->
-                    <li class="dropdown" id="header_inbox_bar"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <li class="dropdown" id="header_inbox_bar" style=" display:none"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="icon-envelope"></i><span class="badge">5</span> </a>
                         <ul class="dropdown-menu extended inbox">
                             <li>
@@ -98,7 +98,7 @@
                     </li>
                     <!-- END INBOX DROPDOWN -->
                     <!-- BEGIN TODO DROPDOWN -->
-                    <li class="dropdown" id="header_task_bar"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <li class="dropdown" id="header_task_bar" style=" display:none"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="icon-tasks"></i><span class="badge">5</span> </a>
                         <ul class="dropdown-menu extended tasks">
                             <li>
@@ -131,15 +131,17 @@
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown user"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img alt="" src="@Url.Content("/media/image/avatar1_small.jpg")" />
-                        <span class="username">Bob Nilson</span> <i class="icon-angle-down"></i></a>
+                        <span class="username">您好 </span> <i class="icon-angle-down"></i></a>
                         <ul class="dropdown-menu">
+                            <div style=" display:none">
                             <li><a href="extra_profile.html"><i class="icon-user"></i>My Profile</a></li>
                             <li><a href="page_calendar.html"><i class="icon-calendar"></i>My Calendar</a></li>
                             <li><a href="inbox.html"><i class="icon-envelope"></i>My Inbox(3)</a></li>
                             <li><a href="#"><i class="icon-tasks"></i>My Tasks</a></li>
                             <li class="divider"></li>
                             <li><a href="extra_lock.html"><i class="icon-lock"></i>Lock Screen</a></li>
-                            <li><a href="login.html"><i class="icon-key"></i>Log Out</a></li>
+                            </div>
+                            <li><a href="@Url.Action("Index","Login")"><i class="icon-key"></i>注销/退出登录</a></li>
                         </ul>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
@@ -227,10 +229,10 @@
                         <!-- END BEGIN STYLE CUSTOMIZER -->
                         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
                         <h3 class="page-title">
-                            Horzontal & Sidebar Menu <small>horizontal & sidebar menu layout</small>
+                           @ViewBag.Title
                         </h3>
                         <ul class="breadcrumb">
-                            <li><i class="icon-home"></i><a href="index.html">Home</a> <i class="icon-angle-right">
+                            <li><i class="icon-home"></i><a href="@Url.Action("index","Home")">首页</a> <i class="icon-angle-right">
                             </i></li>
                             <li><a href="#">Layouts</a> <i class="icon-angle-right"></i></li>
                             <li><a href="#">Horzontal & Sidebar Menu</a></li>
