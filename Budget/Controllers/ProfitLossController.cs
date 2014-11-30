@@ -566,7 +566,7 @@ namespace Budget.Controllers
         [ValidateInput(false)]
         public ActionResult Detail(string json)
         {
-            var it = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProfitLoss_Detailed>>(json);
+            var list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProfitLoss_Detailed>>(json);
             return View();
         }
     }
