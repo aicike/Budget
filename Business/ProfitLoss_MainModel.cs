@@ -25,5 +25,16 @@ namespace Business
             base.SqlExecute(sql);
             return result;
         }
+
+        /// <summary>
+        /// 根据年份ID 获取明细主表数据
+        /// </summary>
+        /// <param name="YearID"></param>
+        /// <returns></returns>
+        public List<ProfitLoss_Main> GetMainInfo_ByYearID(int YearID)
+        {
+            var list = base.List().Where(a => a.ParticularYearID == YearID).ToList();
+            return list;
+        }
     }
 }
