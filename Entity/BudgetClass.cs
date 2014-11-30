@@ -20,6 +20,11 @@ namespace Entity
         /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// 管理系数RUL地址
+        /// </summary>
+        public string CoefficientURL { get; set; }
+
     
     }
 }
