@@ -2924,73 +2924,74 @@
         var tr_jian_zhengche = 0.986;
         var tr_jian_weixiupeijian = 0.8;
         var tr_jian_zhuangshizhuanghuang = 0.6;
-        var submitUrl='@Url.Action("Detail", "ProfitLoss")';
+        var submitUrl = '@Url.Action("Detail", "ProfitLoss")';
+        var year = '@ViewBag.YearID';
 
         function sunyi() {
             var it = new Object;
-            it.xiaoshoushuliang = 0; //销售数量
+            it.XiaoShouShuLiang = 0; //销售数量
             it.xinchexiaoshoushuliang = 0; //新车销售数量
-            it.weixiujinchangtaici = 0; //维修进场台次
-            it.fenqishuliang = 0; //分期数量
-            it.xinbaoshuliang =0; //新保数量
-            it.xubaoshuliang = 0; //续保数量
-            it.yanbaoshuliang = 0; //延保数量
-            it.guapaishuliang = 0; //挂牌数量
-            it.ershouchexiaoshoushuliang = 0; //二手车销售数量
-            it.zhuyingyewushouru = 0; //主营业务收入
-            it.zhengche = 0; //整车
-            it.shouhouweixiu = 0; //售后维修
-            it.weixiupeijian = 0; //维修配件
-            it.gongshi = 0; //工时
-            it.zhuangshizhuanghuang = 0; //装饰装潢
-            it.yongjin = 0; //佣金
-            it.fenqi = 0; //分期
-            it.baoxian = 0; //保险
-            it.xinbao = 0; //新保
-            it.xubao = 0; //续保
-            it.yanbao = 0; //延保
-            it.guapai = 0; //挂牌
-            it.ershouche = 0; //二手车
-            it.qita = 0; //其他
-            it.jian_zhuyingyewuchengben = 0; //减：主营业务成本
-            it.jian_zhengche = 0; //整车
-            it.jian_shouhouweixiu = 0; //售后维修
-            it.jian_weixiupeijian = 0; //维修配件
-            it.jian_gongshi = 0; //工时
-            it.jian_zhuangshizhuanghuang = 0; //装饰装潢
-            it.jian_yongjin = 0; //佣金
-            it.jian_fenqi = 0; //分期
-            it.jian_baoxian = 0; //保险
-            it.jian_xinbao = 0; //新保
-            it.jian_xubao = 0; //续保
-            it.jian_yanbao = 0; //延保
-            it.jian_guapai = 0; //挂牌
-            it.jian_ershouche = 0; //二手车
-            it.jian_qita = 0; //其他
-            it.maoli = 0; //毛利
-            it.mao_zhengche = 0; //整车
-            it.mao_shouhouweixiu = 0; //维修
-            it.mao_zhuangshizhuanghuang = 0; //装饰装潢
-            it.mao_yongjin = 0; //佣金
-            it.zhuyingyewushuijinjifujia = 0; //主营业务税金及附加
-            it.zhuyingyewufujiashuihoumaoli = 0; //主营业务附加税后毛利
-            it.qitayewushouru = 0; //其他业务收入
-            it.qitayewuchengben = 0; //其他业务成本
-            it.qitayewushuijinjifujia = 0; //其他业务税金及附加
-            it.qitayewulirun = 0; //其他业务利润
-            it.xiaoshoujiguanlifeiyong = 0; //销售及管理费用
-            it.xishuiqianlirun = 0; //息税前利润
-            it.caiwufeiyong = 0; //财务费用
-            it.yingyelirun = 0; //营业利润
-            it.zichanjianzhisunshi = 0; //资产减值损失
-            it.gongyunjiazhibiandongshouyi = 0; //公允价值变动收益
-            it.touzishouyi = 0; //投资收益
-            it.yingyewaishouzhijinge = 0; //营业外收支净额
-            it.lirunzonge = 0; //利润总额
-            it.suodeshui = 0; //所得税
-            it.shuihoulirun = 0; //税后利润
-            it.shaoshugudongsunyi = 0; //少数股东损益
-            it.jinglirun = 0; //净利润
+            it.WeiXiuJinChangTaiCi = 0; //维修进场台次
+            it.FenQiShuLiang = 0; //分期数量
+            it.XinBaoShuLiang =0; //新保数量
+            it.XuBaoShuLiang = 0; //续保数量
+            it.YanBaoShuLiang = 0; //延保数量
+            it.GuaPaiShuLiang = 0; //挂牌数量
+            it.ErShouCheXiaoShouShuLiang = 0; //二手车销售数量
+            it.ZhuYingYeWuShouRu = 0; //主营业务收入
+            it.ZhuYingShouRu_ZhengChe = 0; //整车
+            it.ZhuYingShouRu_ShouHouWeiXiu = 0; //售后维修
+            it.ZhuYingShouRu_WeiXiuPeiJian = 0; //维修配件
+            it.ZhuYingShouRu_GongShi = 0; //工时
+            it.ZhuYingShouRu_ZhuangShiZhuangHuang = 0; //装饰装潢
+            it.ZhuYingShouRu_YongJin = 0; //佣金
+            it.ZhuYingShouRu_FenQi = 0; //分期
+            it.ZhuYingShouRu_BaoXian = 0; //保险
+            it.ZhuYingShouRu_XinBao = 0; //新保
+            it.ZhuYingShouRu_XuBao = 0; //续保
+            it.ZhuYingShouRu_YanBao = 0; //延保
+            it.ZhuYingShouRu_GuaPai = 0; //挂牌
+            it.ZhuYingShouRu_ErShouChe = 0; //二手车
+            it.ZhuYingShouRu_QiTa = 0; //其他
+            it.ZhuYingYeWuChengBen = 0; //减：主营业务成本
+            it.ZhuYingChengBen_ZhengChe = 0; //整车
+            it.ZhuYingChengBen_ShouHouWeiXiu = 0; //售后维修
+            it.ZhuYingChengBen_WeiXiuPeiJian = 0; //维修配件
+            it.ZhuYingChengBen_GongShi = 0; //工时
+            it.ZhuYingChengBen_ZhuangShiZhuangHuang = 0; //装饰装潢
+            it.ZhuYingChengBen_YongJin = 0; //佣金
+            it.ZhuYingChengBen_FenQi = 0; //分期
+            it.ZhuYingChengBen_BaoXian = 0; //保险
+            it.ZhuYingChengBen_XinBao = 0; //新保
+            it.ZhuYingChengBen_XuBao = 0; //续保
+            it.ZhuYingChengBen_YanBao = 0; //延保
+            it.ZhuYingChengBen_GuaPai = 0; //挂牌
+            it.ZhuYingChengBen_ErShouChe = 0; //二手车
+            it.ZhuYingChengBen_QiTa = 0; //其他
+            it.MaoLi = 0; //毛利
+            it.MaoLi_ZhengChe = 0; //整车
+            it.MaoLi_WeiXiu = 0; //维修
+            it.MaoLi_ZhuangShiZhuangHuang = 0; //装饰装潢
+            it.MaoLi_YongJin = 0; //佣金
+            it.ZhuYingYeWuShueiJinJiFuJia = 0; //主营业务税金及附加
+            it.ZhuYingYeWuFuJiaShuiHouMaoLi = 0; //主营业务附加税后毛利
+            it.QiTaYeWuShouRu = 0; //其他业务收入
+            it.QiTaYeWuChengBen = 0; //其他业务成本
+            it.QiTaYeWuShuiJinJiFuJia = 0; //其他业务税金及附加
+            it.QiTaYeWuLiRun = 0; //其他业务利润
+            it.XiaoShouJiGuanLiFeiYong = 0; //销售及管理费用
+            it.XiShueiQianLiRun = 0; //息税前利润
+            it.CaiWuFeiYong = 0; //财务费用
+            it.YingYeLiRun = 0; //营业利润
+            it.ZiChanJianZhiSunShi = 0; //资产减值损失
+            it.GongYunJiaZhiBianDongShouYi = 0; //公允价值变动收益
+            it.TouZiShouYi = 0; //投资收益
+            it.YingYeWaiShouZhiJingE = 0; //营业外收支净额
+            it.LiRunZongE = 0; //利润总额
+            it.SuoDeShui = 0; //所得税
+            it.ShueiHouLiRun = 0; //税后利润
+            it.ShaoShuGuDongSunYi = 0; //少数股东损益
+            it.JingLiRun = 0; //净利润
             //            it.addSub = function () {
             //                var sit = new ImageText();
             //                this.sub.push(sit);
@@ -3269,73 +3270,73 @@
                 var sunyi_list = [];
                 $("td :text[row!='13']").each(function (i, n) {
                     var item = new sunyi();
-                    item.xiaoshoushuliang = getValue(("#tr_xiaoshoushuliang td:text[row='" + i + "']"));
-                    item.xinchexiaoshoushuliang = getValue(("#tr_xinchexiaoshoushuliang td:text[row='" + i + "']"));
-                    item.weixiujinchangtaici = getValue(("#tr_weixiujinchangtaici td:text[row='" + i + "']"));
-                    item.fenqishuliang = getValue(("#tr_fenqishuliang td:text[row='" + i + "']"));
-                    item.xinbaoshuliang = getValue(("#tr_xinbaoshuliang td:text[row='" + i + "']"));
-                    item.xubaoshuliang = getValue(("#tr_xubaoshuliang td:text[row='" + i + "']"));
-                    item.yanbaoshuliang = getValue(("#tr_yanbaoshuliang td:text[row='" + i + "']"));
-                    item.guapaishuliang = getValue(("#tr_guapaishuliang td:text[row='" + i + "']"));
-                    item.ershouchexiaoshoushuliang = getValue(("#tr_ershouchexiaoshoushuliang td:text[row='" + i + "']"));
-                    item.zhuyingyewushouru = getValue(("#tr_zhuyingyewushouru td:text[row='" + i + "']"));
-                    item.zhengche = getValue(("#tr_zhengche td:text[row='" + i + "']"));
-                    item.shouhouweixiu = getValue(("#tr_shouhouweixiu td:text[row='" + i + "']"));
-                    item.weixiupeijian = getValue(("#tr_weixiupeijian td:text[row='" + i + "']"));
-                    item.gongshi = getValue(("#tr_gongshi td:text[row='" + i + "']"));
-                    item.zhuangshizhuanghuang = getValue(("#tr_zhuangshizhuanghuang td:text[row='" + i + "']"));
-                    item.yongjin = getValue(("#tr_yongjin td:text[row='" + i + "']"));
-                    item.fenqi = getValue(("#tr_fenqi td:text[row='" + i + "']"));
-                    item.baoxian = getValue(("#tr_baoxian td:text[row='" + i + "']"));
-                    item.xinbao = getValue(("#tr_xinbao td:text[row='" + i + "']"));
-                    item.xubao = getValue(("#tr_xubao td:text[row='" + i + "']"));
-                    item.yanbao = getValue(("#tr_yanbao td:text[row='" + i + "']"));
-                    item.guapai = getValue(("#tr_guapai td:text[row='" + i + "']"));
-                    item.ershouche = getValue(("#tr_ershouche td:text[row='" + i + "']"));
-                    item.qita = getValue(("#tr_qita td:text[row='" + i + "']"));
-                    item.jian_zhuyingyewuchengben = getValue(("#tr_jian_zhuyingyewuchengben td:text[row='" + i + "']"));
-                    item.jian_zhengche = getValue(("#tr_jian_zhengche td:text[row='" + i + "']"));
-                    item.jian_shouhouweixiu = getValue(("#tr_jian_shouhouweixiu td:text[row='" + i + "']"));
-                    item.jian_weixiupeijian = getValue(("#tr_jian_weixiupeijian td:text[row='" + i + "']"));
-                    item.jian_gongshi = getValue(("#tr_jian_gongshi td:text[row='" + i + "']"));
-                    item.jian_zhuangshizhuanghuang = getValue(("#tr_jian_zhuangshizhuanghuang td:text[row='" + i + "']"));
-                    item.jian_yongjin = getValue(("#tr_jian_yongjin td:text[row='" + i + "']"));
-                    item.jian_fenqi = getValue(("#tr_jian_fenqi td:text[row='" + i + "']"));
-                    item.jian_baoxian = getValue(("#tr_jian_baoxian td:text[row='" + i + "']"));
-                    item.jian_xinbao = getValue(("#tr_jian_xinbao td:text[row='" + i + "']"));
-                    item.jian_xubao = getValue(("#tr_jian_xubao td:text[row='" + i + "']"));
-                    item.jian_yanbao = getValue(("#tr_jian_yanbao td:text[row='" + i + "']"));
-                    item.jian_guapai = getValue(("#tr_jian_guapai td:text[row='" + i + "']"));
-                    item.jian_ershouche = getValue(("#tr_jian_ershouche td:text[row='" + i + "']"));
-                    item.jian_qita = getValue(("#tr_jian_qita td:text[row='" + i + "']"));
-                    item.maoli = getValue(("#tr_maoli td:text[row='" + i + "']"));
-                    item.mao_zhengche = getValue(("#tr_mao_zhengche td:text[row='" + i + "']"));
-                    item.mao_shouhouweixiu = getValue(("#tr_mao_shouhouweixiu td:text[row='" + i + "']"));
-                    item.mao_zhuangshizhuanghuang = getValue(("#tr_mao_zhuangshizhuanghuang td:text[row='" + i + "']"));
-                    item.mao_yongjin = getValue(("#tr_mao_yongjin td:text[row='" + i + "']"));
-                    item.zhuyingyewushuijinjifujia = getValue(("#tr_zhuyingyewushuijinjifujia td:text[row='" + i + "']"));
-                    item.zhuyingyewufujiashuihoumaoli = getValue(("#tr_zhuyingyewufujiashuihoumaoli td:text[row='" + i + "']"));
-                    item.qitayewushouru = getValue(("#tr_qitayewushouru td:text[row='" + i + "']"));
-                    item.qitayewuchengben = getValue(("#tr_qitayewuchengben td:text[row='" + i + "']"));
-                    item.qitayewushuijinjifujia = getValue(("#tr_qitayewushuijinjifujia td:text[row='" + i + "']"));
-                    item.qitayewulirun = getValue(("#tr_qitayewulirun td:text[row='" + i + "']"));
-                    item.xiaoshoujiguanlifeiyong = getValue(("#tr_xiaoshoujiguanlifeiyong td:text[row='" + i + "']"));
-                    item.xishuiqianlirun = getValue(("#tr_xishuiqianlirun td:text[row='" + i + "']"));
-                    item.caiwufeiyong = getValue(("#tr_caiwufeiyong td:text[row='" + i + "']"));
-                    item.yingyelirun = getValue(("#tr_yingyelirun td:text[row='" + i + "']"));
-                    item.zichanjianzhisunshi = getValue(("#tr_zichanjianzhisunshi td:text[row='" + i + "']"));
-                    item.gongyunjiazhibiandongshouyi = getValue(("#tr_gongyunjiazhibiandongshouyi td:text[row='" + i + "']"));
-                    item.touzishouyi = getValue(("#tr_touzishouyi td:text[row='" + i + "']"));
-                    item.yingyewaishouzhijinge = getValue(("#tr_yingyewaishouzhijinge td:text[row='" + i + "']"));
-                    item.lirunzonge = getValue(("#tr_lirunzonge td:text[row='" + i + "']"));
-                    item.suodeshui = getValue(("#tr_suodeshui td:text[row='" + i + "']"));
-                    item.shuihoulirun = getValue(("#tr_shuihoulirun td:text[row='" + i + "']"));
-                    item.shaoshugudongsunyi = getValue(("#tr_shaoshugudongsunyi td:text[row='" + i + "']"));
-                    item.jinglirun = getValue(("#tr_jinglirun td:text[row='" + i + "']"));
+                    item.XiaoShouShuLiang = getValue(("#tr_xiaoshoushuliang td:text[row='" + i + "']"));
+                    item.XinCheXiaoShouShuLiang = getValue(("#tr_xinchexiaoshoushuliang td:text[row='" + i + "']"));
+                    item.WeiXiuJinChangTaiCi = getValue(("#tr_weixiujinchangtaici td:text[row='" + i + "']"));
+                    item.FenQiShuLiang = getValue(("#tr_fenqishuliang td:text[row='" + i + "']"));
+                    item.XinBaoShuLiang = getValue(("#tr_xinbaoshuliang td:text[row='" + i + "']"));
+                    item.XuBaoShuLiang = getValue(("#tr_xubaoshuliang td:text[row='" + i + "']"));
+                    item.YanBaoShuLiang = getValue(("#tr_yanbaoshuliang td:text[row='" + i + "']"));
+                    item.GuaPaiShuLiang = getValue(("#tr_guapaishuliang td:text[row='" + i + "']"));
+                    item.ErShouCheXiaoShouShuLiang = getValue(("#tr_ershouchexiaoshoushuliang td:text[row='" + i + "']"));
+                    item.ZhuYingYeWuShouRu = getValue(("#tr_zhuyingyewushouru td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_ZhengChe = getValue(("#tr_zhengche td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_ShouHouWeiXiu = getValue(("#tr_shouhouweixiu td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_WeiXiuPeiJian = getValue(("#tr_weixiupeijian td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_GongShi = getValue(("#tr_gongshi td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_ZhuangShiZhuangHuang = getValue(("#tr_zhuangshizhuanghuang td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_YongJin = getValue(("#tr_yongjin td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_FenQi = getValue(("#tr_fenqi td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_BaoXian = getValue(("#tr_baoxian td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_XinBao = getValue(("#tr_xinbao td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_XuBao = getValue(("#tr_xubao td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_YanBao = getValue(("#tr_yanbao td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_GuaPai = getValue(("#tr_guapai td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_ErShouChe = getValue(("#tr_ershouche td:text[row='" + i + "']"));
+                    item.ZhuYingShouRu_QiTa = getValue(("#tr_qita td:text[row='" + i + "']"));
+                    item.ZhuYingYeWuChengBen = getValue(("#tr_jian_zhuyingyewuchengben td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_ZhengChe = getValue(("#tr_jian_zhengche td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_ShouHouWeiXiu = getValue(("#tr_jian_shouhouweixiu td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_WeiXiuPeiJian = getValue(("#tr_jian_weixiupeijian td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_GongShi = getValue(("#tr_jian_gongshi td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_ZhuangShiZhuangHuang = getValue(("#tr_jian_zhuangshizhuanghuang td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_YongJin = getValue(("#tr_jian_yongjin td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_FenQi = getValue(("#tr_jian_fenqi td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_BaoXian = getValue(("#tr_jian_baoxian td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_XinBao = getValue(("#tr_jian_xinbao td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_XuBao = getValue(("#tr_jian_xubao td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_YanBao = getValue(("#tr_jian_yanbao td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_GuaPai = getValue(("#tr_jian_guapai td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_ErShouChe = getValue(("#tr_jian_ershouche td:text[row='" + i + "']"));
+                    item.ZhuYingChengBen_QiTa = getValue(("#tr_jian_qita td:text[row='" + i + "']"));
+                    item.MaoLi = getValue(("#tr_maoli td:text[row='" + i + "']"));
+                    item.MaoLi_ZhengChe = getValue(("#tr_mao_zhengche td:text[row='" + i + "']"));
+                    item.MaoLi_WeiXiu = getValue(("#tr_mao_shouhouweixiu td:text[row='" + i + "']"));
+                    item.MaoLi_ZhuangShiZhuangHuang = getValue(("#tr_mao_zhuangshizhuanghuang td:text[row='" + i + "']"));
+                    item.MaoLi_YongJin = getValue(("#tr_mao_yongjin td:text[row='" + i + "']"));
+                    item.ZhuYingYeWuShueiJinJiFuJia = getValue(("#tr_zhuyingyewushuijinjifujia td:text[row='" + i + "']"));
+                    item.ZhuYingYeWuFuJiaShuiHouMaoLi = getValue(("#tr_zhuyingyewufujiashuihoumaoli td:text[row='" + i + "']"));
+                    item.QiTaYeWuShouRu = getValue(("#tr_qitayewushouru td:text[row='" + i + "']"));
+                    item.QiTaYeWuChengBen = getValue(("#tr_qitayewuchengben td:text[row='" + i + "']"));
+                    item.QiTaYeWuShuiJinJiFuJia = getValue(("#tr_qitayewushuijinjifujia td:text[row='" + i + "']"));
+                    item.QiTaYeWuLiRun = getValue(("#tr_qitayewulirun td:text[row='" + i + "']"));
+                    item.XiaoShouJiGuanLiFeiYong = getValue(("#tr_xiaoshoujiguanlifeiyong td:text[row='" + i + "']"));
+                    item.XiShueiQianLiRun = getValue(("#tr_xishuiqianlirun td:text[row='" + i + "']"));
+                    item.CaiWuFeiYong = getValue(("#tr_caiwufeiyong td:text[row='" + i + "']"));
+                    item.YingYeLiRun = getValue(("#tr_yingyelirun td:text[row='" + i + "']"));
+                    item.ZiChanJianZhiSunShi = getValue(("#tr_zichanjianzhisunshi td:text[row='" + i + "']"));
+                    item.GongYunJiaZhiBianDongShouYi = getValue(("#tr_gongyunjiazhibiandongshouyi td:text[row='" + i + "']"));
+                    item.TouZiShouYi = getValue(("#tr_touzishouyi td:text[row='" + i + "']"));
+                    item.YingYeWaiShouZhiJingE = getValue(("#tr_yingyewaishouzhijinge td:text[row='" + i + "']"));
+                    item.LiRunZongE = getValue(("#tr_lirunzonge td:text[row='" + i + "']"));
+                    item.SuoDeShui = getValue(("#tr_suodeshui td:text[row='" + i + "']"));
+                    item.ShueiHouLiRun = getValue(("#tr_shuihoulirun td:text[row='" + i + "']"));
+                    item.ShaoShuGuDongSunYi = getValue(("#tr_shaoshugudongsunyi td:text[row='" + i + "']"));
+                    item.JingLiRun = getValue(("#tr_jinglirun td:text[row='" + i + "']"));
                     sunyi_list.push(item);
                 });
                 var value = JSON.stringify(sunyi_list);
-                $.post(submitUrl, { json: value }, function (result) {
+                $.post(submitUrl, { json: value, year: year }, function (result) {
                     
                 });
             });
