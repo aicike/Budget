@@ -234,8 +234,7 @@
                         <ul class="breadcrumb">
                             <li><i class="icon-home"></i><a href="@Url.Action("index","Home")">首页</a> <i class="icon-angle-right">
                             </i></li>
-                            <li><a href="#">Layouts</a> <i class="icon-angle-right"></i></li>
-                            <li><a href="#">Horzontal & Sidebar Menu</a></li>
+                            <li><a href="#">@ViewBag.Title</a></li>
                         </ul>
                         <!-- END PAGE TITLE & BREADCRUMB-->
                     </div>
@@ -251,7 +250,7 @@
     </div>
     <div class="footer">
         <div class="footer-inner">
-            2013 &copy; Metronic by keenthemes.
+            2014 &copy; Imtimely.
         </div>
         <div class="footer-tools">
             <span class="go-top"><i class="icon-angle-up"></i></span>
@@ -304,6 +303,7 @@
 
     </script>
     @RenderSection("scripts", required: false)
+    @Html.RenderJavaScripts();
     <!-- END JAVASCRIPTS -->
 </body>
 </html>

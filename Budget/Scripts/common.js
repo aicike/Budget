@@ -29,5 +29,19 @@ function AppDelete(msg, url, fun) {
     return false;
 }
 
-
-    
+function menuClick(id, url, path) {
+    $.cookie('menuID', id, '{ expires: 7, path:"/"}');
+    alert("b--" + id);
+    window.location.href = url;
+};
+$(function () {
+    var menuID = $.cookie('menuID');
+    alert("e--" + menuID);
+    if (menuID == "") {
+        menuID = 0;
+    } else {
+    }
+    $(".active").removeClass("active");
+    $("a[mid='" + menuID + "']").parents(".myli").addClass("active");
+    $("a[mid='" + menuID + "']").parent().addClass("active");
+});

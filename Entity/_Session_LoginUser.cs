@@ -8,7 +8,15 @@ namespace Entity
     [Serializable]
     public class SessionLoginUser
     {
+        /// <summary>
+        /// 公司ID
+        /// </summary>
         public int ID { get; set; }
+
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public int UserID { get; set; }
 
     }
 }

@@ -32,7 +32,8 @@ namespace Budget.Controllers
                     {
                         sessionLoginUser = new SessionLoginUser();
                         var ca = result.Entity as CompanyAccount;
-                        sessionLoginUser.ID = ca.ID;
+                        sessionLoginUser.ID = ca.CompanyID;
+                        sessionLoginUser.UserID = ca.ID;
                         Session["SessionLoginUser"] = sessionLoginUser;
                     }
                     break;
@@ -43,7 +44,8 @@ namespace Budget.Controllers
                     {
                         sessionLoginUser = new SessionLoginUser();
                         var ga = result.Entity as GroupAccount;
-                        sessionLoginUser.ID = ga.ID;
+                        sessionLoginUser.ID = ga.GroupID;
+                        sessionLoginUser.UserID = ga.ID;
                         Session["SessionLoginUser"] = sessionLoginUser;
                     }
                     break;
