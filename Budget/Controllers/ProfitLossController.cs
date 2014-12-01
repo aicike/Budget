@@ -568,7 +568,7 @@ namespace Budget.Controllers
         //保存预算表 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Detail(string json, int YearID)
+        public string Detail(string json, int YearID)
         {
             var list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProfitLoss_Detailed>>(json);
             ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
@@ -595,7 +595,7 @@ namespace Budget.Controllers
                 PDetailModel.Add(item);
             }
 
-            return RedirectToAction("Detail", "ProfitLoss"); ;
+            return "";
         }
     }
 }

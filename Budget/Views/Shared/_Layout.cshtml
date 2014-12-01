@@ -294,6 +294,7 @@
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="@Url.Content("/media/js/app.js")" type="text/javascript"></script>
     <script src="@Url.Content("/media/js/index.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/Scripts/common.js")" type="text/javascript"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
         jQuery(document).ready(function () {
@@ -303,7 +304,6 @@
 
     </script>
     @RenderSection("scripts", required: false)
-    @Html.RenderJavaScripts();
     <!-- END JAVASCRIPTS -->
 </body>
 </html>
