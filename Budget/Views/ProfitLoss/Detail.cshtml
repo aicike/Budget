@@ -2065,7 +2065,7 @@
                 });
                 var value = JSON.stringify(sunyi_list);
                 $.post(submitUrl, { json: value, YearID: year }, function (result) {
-
+                    window.location.href="@Url.Action("Index","ProfitLoss")";
                 });
             });
         });        

@@ -36,8 +36,8 @@ function menuClick(id, url, path) {
 };
 $(function () {
     var menuID = $.cookie('menuID');
-    if (menuID == "") {
-        menuID = 0;
+    if (menuID==undefined|| menuID == "") {
+        menuID = "0";
     } else {
     }
     $(".active").removeClass("active");
