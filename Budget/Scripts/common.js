@@ -30,13 +30,12 @@ function AppDelete(msg, url, fun) {
 }
 
 function menuClick(id, url, path) {
-    $.cookie('menuID', id, '{ expires: 7, path:"/"}');
-    alert("b--" + id);
+    $.cookie('menuID', '', { expires:-1 });
+    $.cookie('menuID', id, { path: "/" });
     window.location.href = url;
 };
 $(function () {
     var menuID = $.cookie('menuID');
-    alert("e--" + menuID);
     if (menuID == "") {
         menuID = 0;
     } else {
