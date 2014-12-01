@@ -30,7 +30,8 @@ $(function(){ UIGeneral.init(); });
                                 {
                                     @(item.Name)@:、
                                 }
-                                尚未上报数据
+                                尚未上报数据<br />
+                                点击公司名称 可查看月份明细
                             </td>
                         </tr>
                     </table>
@@ -40,7 +41,7 @@ $(function(){ UIGeneral.init(); });
                             <tr>
                                 @for (int j = 0; j < DtTitle.Rows.Count; j++)
                                 {
-                                    <td style="font-weight: bold">
+                                    <td style="">
                                         @DtTitle.Rows[j][i]
                                     </td>
                                 }
