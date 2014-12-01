@@ -45,40 +45,40 @@
                             <th style="width: 136px;">
                                 项目
                             </th>
-                            <th>
+                            <th row="1" class="itr">
                                 1月
                             </th>
-                            <th>
+                            <th row="2" class="itr">
                                 2月
                             </th>
-                            <th>
+                            <th row="3" class="itr">
                                 3月
                             </th>
-                            <th>
+                            <th row="4" class="itr">
                                 4月
                             </th>
-                            <th>
+                            <th row="5" class="itr">
                                 5月
                             </th>
-                            <th>
+                            <th row="6" class="itr">
                                 6月
                             </th>
-                            <th>
+                            <th row="7" class="itr">
                                 7月
                             </th>
-                            <th>
+                            <th row="8" class="itr">
                                 8月
                             </th>
-                            <th>
+                            <th row="9" class="itr">
                                 9月
                             </th>
-                            <th>
+                            <th row="10" class="itr">
                                 10月
                             </th>
-                            <th>
+                            <th row="11" class="itr">
                                 11月
                             </th>
-                            <th>
+                            <th row="12" class="itr">
                                 12月
                             </th>
                             <th>
@@ -3268,75 +3268,76 @@
 
             $(".isubmit").click(function () {
                 var sunyi_list = [];
-                $("td :text[row!='13']").each(function (i, n) {
+                $(".itr").each(function (i, n) {
+                    var m=i+1;
                     var item = new sunyi();
-                    item.XiaoShouShuLiang = getValue(("#tr_xiaoshoushuliang td:text[row='" + i + "']"));
-                    item.XinCheXiaoShouShuLiang = getValue(("#tr_xinchexiaoshoushuliang td:text[row='" + i + "']"));
-                    item.WeiXiuJinChangTaiCi = getValue(("#tr_weixiujinchangtaici td:text[row='" + i + "']"));
-                    item.FenQiShuLiang = getValue(("#tr_fenqishuliang td:text[row='" + i + "']"));
-                    item.XinBaoShuLiang = getValue(("#tr_xinbaoshuliang td:text[row='" + i + "']"));
-                    item.XuBaoShuLiang = getValue(("#tr_xubaoshuliang td:text[row='" + i + "']"));
-                    item.YanBaoShuLiang = getValue(("#tr_yanbaoshuliang td:text[row='" + i + "']"));
-                    item.GuaPaiShuLiang = getValue(("#tr_guapaishuliang td:text[row='" + i + "']"));
-                    item.ErShouCheXiaoShouShuLiang = getValue(("#tr_ershouchexiaoshoushuliang td:text[row='" + i + "']"));
-                    item.ZhuYingYeWuShouRu = getValue(("#tr_zhuyingyewushouru td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_ZhengChe = getValue(("#tr_zhengche td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_ShouHouWeiXiu = getValue(("#tr_shouhouweixiu td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_WeiXiuPeiJian = getValue(("#tr_weixiupeijian td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_GongShi = getValue(("#tr_gongshi td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_ZhuangShiZhuangHuang = getValue(("#tr_zhuangshizhuanghuang td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_YongJin = getValue(("#tr_yongjin td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_FenQi = getValue(("#tr_fenqi td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_BaoXian = getValue(("#tr_baoxian td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_XinBao = getValue(("#tr_xinbao td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_XuBao = getValue(("#tr_xubao td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_YanBao = getValue(("#tr_yanbao td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_GuaPai = getValue(("#tr_guapai td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_ErShouChe = getValue(("#tr_ershouche td:text[row='" + i + "']"));
-                    item.ZhuYingShouRu_QiTa = getValue(("#tr_qita td:text[row='" + i + "']"));
-                    item.ZhuYingYeWuChengBen = getValue(("#tr_jian_zhuyingyewuchengben td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_ZhengChe = getValue(("#tr_jian_zhengche td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_ShouHouWeiXiu = getValue(("#tr_jian_shouhouweixiu td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_WeiXiuPeiJian = getValue(("#tr_jian_weixiupeijian td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_GongShi = getValue(("#tr_jian_gongshi td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_ZhuangShiZhuangHuang = getValue(("#tr_jian_zhuangshizhuanghuang td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_YongJin = getValue(("#tr_jian_yongjin td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_FenQi = getValue(("#tr_jian_fenqi td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_BaoXian = getValue(("#tr_jian_baoxian td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_XinBao = getValue(("#tr_jian_xinbao td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_XuBao = getValue(("#tr_jian_xubao td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_YanBao = getValue(("#tr_jian_yanbao td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_GuaPai = getValue(("#tr_jian_guapai td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_ErShouChe = getValue(("#tr_jian_ershouche td:text[row='" + i + "']"));
-                    item.ZhuYingChengBen_QiTa = getValue(("#tr_jian_qita td:text[row='" + i + "']"));
-                    item.MaoLi = getValue(("#tr_maoli td:text[row='" + i + "']"));
-                    item.MaoLi_ZhengChe = getValue(("#tr_mao_zhengche td:text[row='" + i + "']"));
-                    item.MaoLi_WeiXiu = getValue(("#tr_mao_shouhouweixiu td:text[row='" + i + "']"));
-                    item.MaoLi_ZhuangShiZhuangHuang = getValue(("#tr_mao_zhuangshizhuanghuang td:text[row='" + i + "']"));
-                    item.MaoLi_YongJin = getValue(("#tr_mao_yongjin td:text[row='" + i + "']"));
-                    item.ZhuYingYeWuShueiJinJiFuJia = getValue(("#tr_zhuyingyewushuijinjifujia td:text[row='" + i + "']"));
-                    item.ZhuYingYeWuFuJiaShuiHouMaoLi = getValue(("#tr_zhuyingyewufujiashuihoumaoli td:text[row='" + i + "']"));
-                    item.QiTaYeWuShouRu = getValue(("#tr_qitayewushouru td:text[row='" + i + "']"));
-                    item.QiTaYeWuChengBen = getValue(("#tr_qitayewuchengben td:text[row='" + i + "']"));
-                    item.QiTaYeWuShuiJinJiFuJia = getValue(("#tr_qitayewushuijinjifujia td:text[row='" + i + "']"));
-                    item.QiTaYeWuLiRun = getValue(("#tr_qitayewulirun td:text[row='" + i + "']"));
-                    item.XiaoShouJiGuanLiFeiYong = getValue(("#tr_xiaoshoujiguanlifeiyong td:text[row='" + i + "']"));
-                    item.XiShueiQianLiRun = getValue(("#tr_xishuiqianlirun td:text[row='" + i + "']"));
-                    item.CaiWuFeiYong = getValue(("#tr_caiwufeiyong td:text[row='" + i + "']"));
-                    item.YingYeLiRun = getValue(("#tr_yingyelirun td:text[row='" + i + "']"));
-                    item.ZiChanJianZhiSunShi = getValue(("#tr_zichanjianzhisunshi td:text[row='" + i + "']"));
-                    item.GongYunJiaZhiBianDongShouYi = getValue(("#tr_gongyunjiazhibiandongshouyi td:text[row='" + i + "']"));
-                    item.TouZiShouYi = getValue(("#tr_touzishouyi td:text[row='" + i + "']"));
-                    item.YingYeWaiShouZhiJingE = getValue(("#tr_yingyewaishouzhijinge td:text[row='" + i + "']"));
-                    item.LiRunZongE = getValue(("#tr_lirunzonge td:text[row='" + i + "']"));
-                    item.SuoDeShui = getValue(("#tr_suodeshui td:text[row='" + i + "']"));
-                    item.ShueiHouLiRun = getValue(("#tr_shuihoulirun td:text[row='" + i + "']"));
-                    item.ShaoShuGuDongSunYi = getValue(("#tr_shaoshugudongsunyi td:text[row='" + i + "']"));
-                    item.JingLiRun = getValue(("#tr_jinglirun td:text[row='" + i + "']"));
+                    item.XiaoShouShuLiang = getValue(("#tr_xiaoshoushuliang td :text[row='" + m + "']"));
+                    item.XinCheXiaoShouShuLiang = getValue(("#tr_xinchexiaoshoushuliang td :text[row='" + m + "']"));
+                    item.WeiXiuJinChangTaiCi = getValue(("#tr_weixiujinchangtaici td :text[row='" + m + "']"));
+                    item.FenQiShuLiang = getValue(("#tr_fenqishuliang td :text[row='" + m + "']"));
+                    item.XinBaoShuLiang = getValue(("#tr_xinbaoshuliang td :text[row='" + m + "']"));
+                    item.XuBaoShuLiang = getValue(("#tr_xubaoshuliang td :text[row='" + m + "']"));
+                    item.YanBaoShuLiang = getValue(("#tr_yanbaoshuliang td :text[row='" + m + "']"));
+                    item.GuaPaiShuLiang = getValue(("#tr_guapaishuliang td :text[row='" + m + "']"));
+                    item.ErShouCheXiaoShouShuLiang = getValue(("#tr_ershouchexiaoshoushuliang td :text[row='" + m + "']"));
+                    item.ZhuYingYeWuShouRu = getValue(("#tr_zhuyingyewushouru td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_ZhengChe = getValue(("#tr_zhengche td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_ShouHouWeiXiu = getValue(("#tr_shouhouweixiu td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_WeiXiuPeiJian = getValue(("#tr_weixiupeijian td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_GongShi = getValue(("#tr_gongshi td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_ZhuangShiZhuangHuang = getValue(("#tr_zhuangshizhuanghuang td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_YongJin = getValue(("#tr_yongjin td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_FenQi = getValue(("#tr_fenqi td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_BaoXian = getValue(("#tr_baoxian td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_XinBao = getValue(("#tr_xinbao td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_XuBao = getValue(("#tr_xubao td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_YanBao = getValue(("#tr_yanbao td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_GuaPai = getValue(("#tr_guapai td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_ErShouChe = getValue(("#tr_ershouche td :text[row='" + m + "']"));
+                    item.ZhuYingShouRu_QiTa = getValue(("#tr_qita td :text[row='" + m + "']"));
+                    item.ZhuYingYeWuChengBen = getValue(("#tr_jian_zhuyingyewuchengben td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_ZhengChe = getValue(("#tr_jian_zhengche td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_ShouHouWeiXiu = getValue(("#tr_jian_shouhouweixiu td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_WeiXiuPeiJian = getValue(("#tr_jian_weixiupeijian td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_GongShi = getValue(("#tr_jian_gongshi td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_ZhuangShiZhuangHuang = getValue(("#tr_jian_zhuangshizhuanghuang td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_YongJin = getValue(("#tr_jian_yongjin td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_FenQi = getValue(("#tr_jian_fenqi td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_BaoXian = getValue(("#tr_jian_baoxian td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_XinBao = getValue(("#tr_jian_xinbao td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_XuBao = getValue(("#tr_jian_xubao td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_YanBao = getValue(("#tr_jian_yanbao td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_GuaPai = getValue(("#tr_jian_guapai td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_ErShouChe = getValue(("#tr_jian_ershouche td :text[row='" + m + "']"));
+                    item.ZhuYingChengBen_QiTa = getValue(("#tr_jian_qita td :text[row='" + m + "']"));
+                    item.MaoLi = getValue(("#tr_maoli td :text[row='" + m + "']"));
+                    item.MaoLi_ZhengChe = getValue(("#tr_mao_zhengche td :text[row='" + m + "']"));
+                    item.MaoLi_WeiXiu = getValue(("#tr_mao_shouhouweixiu td :text[row='" + m + "']"));
+                    item.MaoLi_ZhuangShiZhuangHuang = getValue(("#tr_mao_zhuangshizhuanghuang td :text[row='" + m + "']"));
+                    item.MaoLi_YongJin = getValue(("#tr_mao_yongjin td :text[row='" + m + "']"));
+                    item.ZhuYingYeWuShueiJinJiFuJia = getValue(("#tr_zhuyingyewushuijinjifujia td :text[row='" + m + "']"));
+                    item.ZhuYingYeWuFuJiaShuiHouMaoLi = getValue(("#tr_zhuyingyewufujiashuihoumaoli td :text[row='" + m + "']"));
+                    item.QiTaYeWuShouRu = getValue(("#tr_qitayewushouru td :text[row='" + m + "']"));
+                    item.QiTaYeWuChengBen = getValue(("#tr_qitayewuchengben td :text[row='" + m + "']"));
+                    item.QiTaYeWuShuiJinJiFuJia = getValue(("#tr_qitayewushuijinjifujia td :text[row='" + m + "']"));
+                    item.QiTaYeWuLiRun = getValue(("#tr_qitayewulirun td :text[row='" + m + "']"));
+                    item.XiaoShouJiGuanLiFeiYong = getValue(("#tr_xiaoshoujiguanlifeiyong td :text[row='" + m + "']"));
+                    item.XiShueiQianLiRun = getValue(("#tr_xishuiqianlirun td :text[row='" + m + "']"));
+                    item.CaiWuFeiYong = getValue(("#tr_caiwufeiyong td :text[row='" + m + "']"));
+                    item.YingYeLiRun = getValue(("#tr_yingyelirun td :text[row='" + m + "']"));
+                    item.ZiChanJianZhiSunShi = getValue(("#tr_zichanjianzhisunshi td :text[row='" + m + "']"));
+                    item.GongYunJiaZhiBianDongShouYi = getValue(("#tr_gongyunjiazhibiandongshouyi td :text[row='" + m + "']"));
+                    item.TouZiShouYi = getValue(("#tr_touzishouyi td :text[row='" + m + "']"));
+                    item.YingYeWaiShouZhiJingE = getValue(("#tr_yingyewaishouzhijinge td :text[row='" + m + "']"));
+                    item.LiRunZongE = getValue(("#tr_lirunzonge td :text[row='" + m + "']"));
+                    item.SuoDeShui = getValue(("#tr_suodeshui td :text[row='" + m + "']"));
+                    item.ShueiHouLiRun = getValue(("#tr_shuihoulirun td :text[row='" + m + "']"));
+                    item.ShaoShuGuDongSunYi = getValue(("#tr_shaoshugudongsunyi td :text[row='" + m + "']"));
+                    item.JingLiRun = getValue(("#tr_jinglirun td :text[row='" + m + "']"));
                     sunyi_list.push(item);
                 });
                 var value = JSON.stringify(sunyi_list);
-                $.post(submitUrl, { json: value, year: year }, function (result) {
+                $.post(submitUrl, { json: value, YearID: year }, function (result) {
                     
                 });
             });

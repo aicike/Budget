@@ -61,7 +61,7 @@
                         } else {
                             $('.alert-error', $('.login-form')).hide();
                             $('.alert-error>span').html("请输入账号和密码。");
-                            window.location.href = "Home";
+                            window.location.href = "/Home/home";
                         }
                     });
                 }
@@ -77,7 +77,7 @@
                             } else {
                                 $('.alert-error', $('.login-form')).hide();
                                 $('.alert-error>span').html("请输入账号和密码。");
-                                window.location.href = "Home";
+                                window.location.href = "/Home/home";
                             }
                         });
                     }
