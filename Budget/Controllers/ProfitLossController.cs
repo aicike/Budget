@@ -559,6 +559,9 @@ namespace Budget.Controllers
         public ActionResult Detail(int YearID)
         {
             ViewBag.YearID = YearID;
+            ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
+            var list = PDetailModel.GetDetailed_ByCompanyID(LoginAccount.ID, YearID);
+            ViewBag.List = list;
             return View();
         }
 
@@ -582,7 +585,7 @@ namespace Budget.Controllers
             {
                 Pmain.CompanyID = LoginAccount.ID;
                 Pmain.IsReport = false;
-                Pmain.ParticularYearID = YearID; 
+                Pmain.ParticularYearID = YearID;
                 PMainModel.Add(Pmain);
             }
             foreach (var item in list)
@@ -591,7 +594,7 @@ namespace Budget.Controllers
                 item.CompanyID = LoginAccount.ID;
                 PDetailModel.Add(item);
             }
-            
+
             return RedirectToAction("Detail", "ProfitLoss"); ;
         }
     }
