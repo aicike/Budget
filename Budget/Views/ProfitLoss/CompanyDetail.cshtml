@@ -4,7 +4,21 @@
     var DtTitle = ViewBag.DtTitle as System.Data.DataTable;
 }
 @section scripts{
-$(function(){ UIGeneral.init(); });
+    <script>
+        $(function () {
+            $("#Tab_Main").find("tr:eq(0)").find("td").each(function (i, element) {
+                if(i!=0&&i!=(i-1))
+                {
+                var url = "@Url.Action("ActualMonth", "ProfitLoss",new{YearID=ViewBag.YearID,CID=ViewBag.CID})"+"&Month="+i;
+                
+                $(this).html("<a class='tooltips' data-placement='top' data-original-title='点击查看实际信息' href = '"+url+"' style = 'color:#0d638f; font-weight:bold' >"+$(this).text()+"</a>");
+                }
+            });
+
+ 
+
+        });
+    </script>
 }
 @model System.Data.DataTable
 <div class="row-fluid">
@@ -19,28 +33,33 @@ $(function(){ UIGeneral.init(); });
             </div>
             <div class="portlet-body">
                 <table class="table table-hover">
-                        <tr>
-                            <td style="font-size: 14px; color: #e02222">
-                                
-                                点击月份 可查看月份实际情况
-                            </td>
-                        </tr>
-                    </table>
-                <table class="table table-hover">
+                    <tr>
+                        <td style="font-size: 14px; color: #e02222">
+                            <select id="Sel_type">
+                                <option value="0">预算</option>
+                                <option value="1">实际</option>
+                                <option value="2">发生余额</option>
+                            </select>
+                            <br />
+                            点击月份 可查看月份实际明细
+                        </td>
+                    </tr>
+                </table>
+                <table class="table table-hover" id="Tab_Main">
                     @for (int i = 0; i < DtTitle.Columns.Count; i++)
                     {
                         <tr>
                             @for (int j = 0; j < DtTitle.Rows.Count; j++)
                             {
-                                <td style=" width:135px;">
+                                <td style="width: 135px;">
                                     @DtTitle.Rows[j][i]
                                 </td>
                             }
-                            @for (int j = 0; j <Model.Rows.Count; j++)
+                            @for (int j = 0; j < Model.Rows.Count; j++)
                             {
                                 <td>
-                               @Model.Rows[j][i]
-                               </td>
+                                    @Model.Rows[j][i]
+                                </td>
                             }
                         </tr>
                     }
@@ -48,4 +67,5 @@ $(function(){ UIGeneral.init(); });
             </div>
         </div>
     </div>
+
 </div>

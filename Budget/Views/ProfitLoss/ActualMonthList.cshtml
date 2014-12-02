@@ -23,7 +23,7 @@
         }
 }
 @section scripts{
-$(function(){ UIGeneral.init(); });
+
 }
 <div class="row-fluid">
     <div class="span6" style="width: 100%">
@@ -51,7 +51,7 @@ $(function(){ UIGeneral.init(); });
                     {
                         <tr>
                             <td>
-                                <a href="@Url.Action("RealityDetail", "ProfitLoss", new { YearID = ViewBag.YearID, MonthID = i })">@(i)月份实际数据</a>
+                                <a href="@Url.Action("RealityDetail", "ProfitLoss", new { YearID = ViewBag.YearID, Month = i })">@(i)月份实际数据</a>
                             </td>
                             <td>
                                 @GetInfo(i)

@@ -23,6 +23,21 @@ namespace Entity
         public int ProfitLossReality_MainID { get; set; }
         public virtual ProfitLossReality_Main ProfitLossReality_Main { get; set; }
 
+        /// <summary>
+        /// 公司ID
+        /// </summary>
+        [Display(Name = "公司ID")]
+        public int CompanyID { get; set; }
+        public virtual Company Company { get; set; }
+
+
+        /// <summary>
+        /// 年份ID
+        /// </summary>
+        [Display(Name = "年份ID")]
+        public int ParticularYearID { get; set; }
+        public virtual ParticularYear ParticularYear { get; set; }
+
 
         /// <summary>
         /// 周
