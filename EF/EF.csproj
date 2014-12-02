@@ -47,7 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-   
+    <Compile Include="Mapping\ProfitLossReality_MainMap.cs" />
+    <Compile Include="Mapping\ProfitLoss_DetailedMap.cs" />
+    <Compile Include="Migrations\201411300812103_update.cs" />
+    <Compile Include="Migrations\201411300812103_update.Designer.cs">
+      <DependentUpon>201411300812103_update.cs</DependentUpon>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +69,9 @@
     <Content Include="Initial.sql" />
   </ItemGroup>
    
+    <EmbeddedResource Include="Migrations\201411300812103_update.resx">
+      <DependentUpon>201411300812103_update.cs</DependentUpon>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
