@@ -737,6 +737,8 @@ namespace Budget.Controllers
             foreach (var item in list)
             {
                 item.ProfitLossReality_MainID = PRmain.ID;
+                item.CompanyID =LoginAccount.ID;
+                item.ParticularYearID=YearID;
                 PDetailModel.Add(item);
             }
 
