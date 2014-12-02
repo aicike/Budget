@@ -11,7 +11,7 @@ namespace EF.Mapping
     {
         public ProfitLossReality_MainMap()
         {
-            this.HasRequired(a => a.ProfitLoss_Detailed).WithRequiredDependent(a => a.ProfitLossReality_Main);
+            this.HasRequired(a => a.ProfitLoss_Detailed).WithRequiredDependent(a => a.ProfitLossReality_Main).WillCascadeOnDelete(true);
         }
     }
 }

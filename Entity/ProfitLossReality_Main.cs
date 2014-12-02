@@ -12,9 +12,11 @@ namespace Entity
     public class ProfitLossReality_Main : BaseEntity
     {
         /// <summary>
-        /// 自增主键
+        /// 损益预算 子表ID
         /// </summary>
+        [Display(Name = "损益预算 子表ID")]
         public int ID { get; set; }
+        public virtual ProfitLoss_Detailed ProfitLoss_Detailed { get; set; }
 
         /// <summary>
         /// 公司ID
@@ -22,14 +24,6 @@ namespace Entity
         [Display(Name = "公司ID")]
         public int CompanyID { get; set; }
         public virtual Company Company { get; set; }
-
-
-        /// <summary>
-        /// 损益预算 子表ID
-        /// </summary>
-        [Display(Name = "损益预算 子表ID")]
-        public int ProfitLoss_DetailedID { get; set; }
-        public virtual ProfitLoss_Detailed ProfitLoss_Detailed { get; set; }
 
         /// <summary>
         /// 年份ID

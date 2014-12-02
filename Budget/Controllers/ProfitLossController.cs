@@ -601,14 +601,73 @@ namespace Budget.Controllers
         //损益真实数据填写（周）
         public ActionResult RealityDetail(int YearID, int Month)
         {
+            ProfitLoss_Detailed detail = null;
+
+            ProfitLossReality_MainModel profitLossReality_MainModel = new ProfitLossReality_MainModel();
+            var profitLossReality_Main = profitLossReality_MainModel.GetRM_ByYID_Month_CID(YearID, Month, LoginAccount.ID);
+            if (profitLossReality_Main == null)
+            {
+                ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
+                detail = PDetailModel.GetDetailed_ByCompanyID_YearMonth(LoginAccount.ID, YearID, Month);
+                ViewBag.List = null;
+            }
+            else
+            {
+                detail = profitLossReality_Main.ProfitLoss_Detailed;
+                ViewBag.List = profitLossReality_Main.ProfitLossReality_Details.OrderBy(a => a.Week).ToList();
+            }
+            ViewBag.YearID = YearID;
+            ViewBag.ProfitLoss_Detailed = detail;
+            ViewBag.Month = Month;
+            return View();
+        }
+
+
+        //保存损益真实数据填写（周）
+        [HttpPost]
+        [ValidateInput(false)]
+        public string RealityDetail(string json, int YearID, int Month, int pdid)
+        {
+            var list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProfitLossReality_Detail>>(json);
+            ProfitLossReality_MainModel profitLossReality_MainModel = new ProfitLossReality_MainModel();
+            var profitLossReality_Main = profitLossReality_MainModel.GetRM_ByYID_Month_CID(YearID, Month, LoginAccount.ID);
+            ProfitLossReality_Main PRmain = new ProfitLossReality_Main();
+
+            ProfitLossReality_DetailModel PDetailModel = new ProfitLossReality_DetailModel();
+            if (profitLossReality_Main != null)
+            {
+                PRmain = profitLossReality_Main;
+                //删除数据
+                PDetailModel.DelInfo_ByMainID(PRmain.ID);
+            }
+            else
+            {
+                PRmain.ID = pdid;
+                PRmain.CompanyID = LoginAccount.ID;
+                PRmain.IsReport = false;
+                PRmain.ParticularYearID = YearID;
+                PRmain.Month = Month;
+                profitLossReality_MainModel.Add(PRmain);
+            }
+            foreach (var item in list)
+            {
+                item.ProfitLossReality_MainID = PRmain.ID;
+                PDetailModel.Add(item);
+            }
+
+            return "";
+        }
+
+        //损益真实数据详细（周）
+        public ActionResult ActualMonth(int YearID, int Month, int CID)
+        {
             ViewBag.YearID = YearID;
             ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
-            var ProfitLoss_Detailed=  PDetailModel.GetDetailed_ByCompanyID_YearMonth(LoginAccount.ID, YearID, Month);
+            var ProfitLoss_Detailed = PDetailModel.GetDetailed_ByCompanyID_YearMonth(CID, YearID, Month);
             ViewBag.ProfitLoss_Detailed = ProfitLoss_Detailed;
-            //var list = PDetailModel.GetDetailed_ByCompanyID(LoginAccount.ID, YearID);
-            //ViewBag.List = list;
+            ViewBag.Month = Month;
             return View();
-        } 
+        }
 
         //预算实际月份列表
         public ActionResult ActualMonthList(int YearID)

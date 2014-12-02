@@ -28,6 +28,8 @@ namespace EF
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Configurations.Add(new ProfitLossReality_MainMap());
+            modelBuilder.Configurations.Add(new ProfitLossReality_DetailMap());
+            
         }
     }
 }
