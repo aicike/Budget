@@ -19,12 +19,20 @@ $(function(){ UIGeneral.init(); });
             </div>
             <div class="portlet-body">
                 <table class="table table-hover">
+                        <tr>
+                            <td style="font-size: 14px; color: #e02222">
+                                
+                                点击月份 可查看月份实际情况
+                            </td>
+                        </tr>
+                    </table>
+                <table class="table table-hover">
                     @for (int i = 0; i < DtTitle.Columns.Count; i++)
                     {
                         <tr>
                             @for (int j = 0; j < DtTitle.Rows.Count; j++)
                             {
-                                <td style="font-weight: bold; width:135px;">
+                                <td style=" width:135px;">
                                     @DtTitle.Rows[j][i]
                                 </td>
                             }

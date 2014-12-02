@@ -609,5 +609,26 @@ namespace Budget.Controllers
             //ViewBag.List = list;
             return View();
         } 
+
+        //预算实际月份列表
+        public ActionResult ActualMonthList(int YearID)
+        {
+            ParticularYearModel PyearModel = new ParticularYearModel();
+            var pyear = PyearModel.Get(YearID);
+            ViewBag.Year = pyear.Year;
+            ViewBag.YearID = YearID;
+
+            ViewBag.CID = LoginAccount.ID;
+
+            return View();
+        }
+
+        //上报月份预算详细
+        public ActionResult ReportProfitLossActula(int YearID, int Month)
+        {
+            ProfitLossReality_MainModel prmModel = new ProfitLossReality_MainModel();
+            prmModel.SetReport(YearID, Month, LoginAccount.ID, true);
+            return RedirectToAction("ActualMonthList", "ProfitLoss", new { YearID = YearID });
+        }
     }
 }

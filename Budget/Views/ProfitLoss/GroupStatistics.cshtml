@@ -25,12 +25,16 @@ $(function(){ UIGeneral.init(); });
                 {
                     <table class="table table-hover">
                         <tr>
-                            <td style="font-size: 14px; color: #4d8bf8">
+                            <td style="font-size: 14px; color: #e02222">
                                 @foreach (var item in Ncompany)
                                 {
-                                    @(item.Name)@:、
+                                    @(item.Name)@:
+                                                                }
+                                @if(Ncompany.Count>0)
+                                {
+                                    @:尚未上报数据<br />
                                 }
-                                尚未上报数据
+                                点击公司名称 可查看月份明细
                             </td>
                         </tr>
                     </table>
@@ -40,7 +44,7 @@ $(function(){ UIGeneral.init(); });
                             <tr>
                                 @for (int j = 0; j < DtTitle.Rows.Count; j++)
                                 {
-                                    <td style="font-weight: bold">
+                                    <td style="width: 130px">
                                         @DtTitle.Rows[j][i]
                                     </td>
                                 }
@@ -49,15 +53,15 @@ $(function(){ UIGeneral.init(); });
                                     
                                     if (i == 1)
                                     {
-                                        <td style="font-weight: bold">
-                                            <a class="tooltips" data-placement="top" data-original-title="点击查看明细" href="@Url.Action("CompanyDetail", "ProfitLoss", new { ComPanyID = @Model.Rows[j][0], YearID = ViewBag.YearID })" target="_blank">@Model.Rows[j][i]</a>
-                                         </td>
+                                    <td style="font-weight: bold">
+                                        <a class="tooltips" data-placement="top" data-original-title="点击查看明细" href="@Url.Action("CompanyDetail", "ProfitLoss", new { ComPanyID = @Model.Rows[j][0], YearID = ViewBag.YearID })" target="_blank">@Model.Rows[j][i]</a>
+                                    </td>
                                     }
                                     else
                                     { 
-                                        <td style="">
-                                            @Model.Rows[j][i]
-                                        </td>
+                                    <td style="">
+                                        @Model.Rows[j][i]
+                                    </td>
                                     }
                                 }
                             </tr>

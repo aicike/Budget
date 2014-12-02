@@ -73,6 +73,8 @@
     <Compile Include="GroupAccountModel.cs" />
     <Compile Include="MenuModel.cs" />
     <Compile Include="ParticularYearModel.cs" />
+    <Compile Include="ProfitLossReality_DetailModel.cs" />
+    <Compile Include="ProfitLossReality_MainModel.cs" />
     <Compile Include="ProfitLoss_CoefficientModel.cs" />
     <Compile Include="ProfitLoss_DetailedModel.cs" />
     <Compile Include="ProfitLoss_MainModel.cs" />
