@@ -48,12 +48,10 @@
 <div class="row-fluid">
     <div class="span12">
         <!-- BEGIN SAMPLE TABLE PORTLET-->
-        <button type="button" class="btn blue isubmit">
-            保存</button>
         <div class="portlet box blue" style="margin-top: 10px;">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cogs"></i>损益预算</div>
+                    <i class="icon-cogs"></i>损益实际</div>
             </div>
             <div class="portlet-body">
                 <table class="table table-hover itable">
@@ -77,7 +75,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr id="tr_xiaoshoushuliang">
+                        <tr class="jstr" id="tr_xiaoshoushuliang">
                             <td>
                                 销售数量
                             </td>
@@ -86,11 +84,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zslabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XiaoShouShuLiang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].XiaoShouShuLiang</label>
                                     }
                                 </td>
                             }
@@ -102,7 +100,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.XiaoShouShuLiang</label>
                             </td>
                         </tr>
-                        <tr id="tr_xinchexiaoshoushuliang">
+                        <tr class="jstr" id="tr_xinchexiaoshoushuliang">
                             <td>
                                 <div class="idiv1">
                                     新车销售数量</div>
@@ -112,11 +110,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XinCheXiaoShouShuLiang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].XinCheXiaoShouShuLiang</label>
                                     }
                                 </td>
                             }
@@ -128,7 +126,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.XinCheXiaoShouShuLiang</label>
                             </td>
                         </tr>
-                        <tr id="tr_weixiujinchangtaici">
+                        <tr class="jstr" id="tr_weixiujinchangtaici">
                             <td>
                                 <div class="idiv1">
                                     维修进场台次</div>
@@ -138,11 +136,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].WeiXiuJinChangTaiCi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].WeiXiuJinChangTaiCi</label>
                                     }
                                 </td>
                             }
@@ -154,7 +152,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.WeiXiuJinChangTaiCi</label>
                             </td>
                         </tr>
-                        <tr id="tr_fenqishuliang" class="readonly">
+                        <tr id="tr_fenqishuliang" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     分期数量</div>
@@ -164,11 +162,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].FenQiShuLiang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].FenQiShuLiang</label>
                                     }
                                 </td>
                             }
@@ -180,7 +178,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.FenQiShuLiang</label>
                             </td>
                         </tr>
-                        <tr id="tr_xinbaoshuliang" class="readonly">
+                        <trid="tr_xinbaoshuliang" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     新保数量</div>
@@ -190,11 +188,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XinBaoShuLiang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].XinBaoShuLiang</label>
                                     }
                                 </td>
                             }
@@ -206,7 +204,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.XinBaoShuLiang</label>
                             </td>
                         </tr>
-                        <tr id="tr_xubaoshuliang" class="readonly">
+                        <tr id="tr_xubaoshuliang" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     续保数量</div>
@@ -216,11 +214,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XuBaoShuLiang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].XuBaoShuLiang</label>
                                     }
                                 </td>
                             }
@@ -232,7 +230,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.XuBaoShuLiang</label>
                             </td>
                         </tr>
-                        <tr id="tr_yanbaoshuliang">
+                        <tr class="jstr" id="tr_yanbaoshuliang">
                             <td>
                                 <div class="idiv1">
                                     延保数量</div>
@@ -242,11 +240,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].YanBaoShuLiang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].YanBaoShuLiang</label>
                                     }
                                 </td>
                             }
@@ -258,7 +256,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.YanBaoShuLiang</label>
                             </td>
                         </tr>
-                        <tr id="tr_guapaishuliang" class="readonly">
+                        <tr id="tr_guapaishuliang" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     挂牌数量</div>
@@ -268,11 +266,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].GuaPaiShuLiang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].GuaPaiShuLiang</label>
                                     }
                                 </td>
                             }
@@ -284,7 +282,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.GuaPaiShuLiang</label>
                             </td>
                         </tr>
-                        <tr id="tr_ershouchexiaoshoushuliang" class="readonly">
+                        <tr id="tr_ershouchexiaoshoushuliang" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     二手车销售数量</div>
@@ -294,11 +292,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ErShouCheXiaoShouShuLiang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ErShouCheXiaoShouShuLiang</label>
                                     }
                                 </td>
                             }
@@ -310,7 +308,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ErShouCheXiaoShouShuLiang</label>
                             </td>
                         </tr>
-                        <tr id="tr_zhuyingyewushouru" class="readonly icolor">
+                        <tr id="tr_zhuyingyewushouru" class="readonly icolor jstr">
                             <td>
                                 主营业务收入
                             </td>
@@ -319,11 +317,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingYeWuShouRu" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingYeWuShouRu</label>
                                     }
                                 </td>
                             }
@@ -335,7 +333,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingYeWuShouRu</label>
                             </td>
                         </tr>
-                        <tr id="tr_zhengche" class="readonly">
+                        <tr id="tr_zhengche" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     整车</div>
@@ -345,11 +343,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_ZhengChe" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_ZhengChe</label>
                                     }
                                 </td>
                             }
@@ -361,7 +359,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_ZhengChe</label>
                             </td>
                         </tr>
-                        <tr id="tr_shouhouweixiu" class="readonly icolor">
+                        <tr id="tr_shouhouweixiu" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     售后维修</div>
@@ -371,11 +369,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_ShouHouWeiXiu" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_ShouHouWeiXiu</label>
                                     }
                                 </td>
                             }
@@ -387,7 +385,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_ShouHouWeiXiu</label>
                             </td>
                         </tr>
-                        <tr id="tr_weixiupeijian">
+                        <tr class="jstr" id="tr_weixiupeijian">
                             <td>
                                 <div class="idiv2">
                                     维修配件</div>
@@ -397,11 +395,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_WeiXiuPeiJian" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_WeiXiuPeiJian</label>
                                     }
                                 </td>
                             }
@@ -413,7 +411,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_WeiXiuPeiJian</label>
                             </td>
                         </tr>
-                        <tr id="tr_gongshi">
+                        <tr class="jstr" id="tr_gongshi">
                             <td>
                                 <div class="idiv2">
                                     工时</div>
@@ -423,11 +421,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_GongShi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_GongShi</label>
                                     }
                                 </td>
                             }
@@ -439,7 +437,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_GongShi</label>
                             </td>
                         </tr>
-                        <tr id="tr_zhuangshizhuanghuang" class="readonly">
+                        <tr id="tr_zhuangshizhuanghuang" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     装饰装潢</div>
@@ -449,11 +447,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_ZhuangShiZhuangHuang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_ZhuangShiZhuangHuang</label>
                                     }
                                 </td>
                             }
@@ -465,7 +463,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_ZhuangShiZhuangHuang</label>
                             </td>
                         </tr>
-                        <tr id="tr_yongjin" class="readonly icolor">
+                        <tr id="tr_yongjin" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     佣金</div>
@@ -475,11 +473,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_YongJin" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_YongJin</label>
                                     }
                                 </td>
                             }
@@ -491,7 +489,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_YongJin</label>
                             </td>
                         </tr>
-                        <tr id="tr_fenqi" class="readonly">
+                        <tr id="tr_fenqi" class="readonly jstr">
                             <td>
                                 <div class="idiv2">
                                     分期</div>
@@ -501,11 +499,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_FenQi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_FenQi</label>
                                     }
                                 </td>
                             }
@@ -517,7 +515,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_FenQi</label>
                             </td>
                         </tr>
-                        <tr id="tr_baoxian" class="readonly icolor">
+                        <tr id="tr_baoxian" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     保险</div>
@@ -527,11 +525,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_BaoXian" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_BaoXian</label>
                                     }
                                 </td>
                             }
@@ -543,7 +541,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_BaoXian</label>
                             </td>
                         </tr>
-                        <tr id="tr_xinbao" class="readonly">
+                        <tr id="tr_xinbao" class="readonly jstr">
                             <td>
                                 <div class="idiv2">
                                     新保</div>
@@ -553,11 +551,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_XinBao" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_XinBao</label>
                                     }
                                 </td>
                             }
@@ -569,7 +567,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_XinBao</label>
                             </td>
                         </tr>
-                        <tr id="tr_xubao" class="readonly">
+                        <tr id="tr_xubao" class="readonly jstr">
                             <td>
                                 <div class="idiv2">
                                     续保</div>
@@ -579,11 +577,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_XuBao" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_XuBao</label>
                                     }
                                 </td>
                             }
@@ -595,7 +593,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_XuBao</label>
                             </td>
                         </tr>
-                        <tr id="tr_yanbao">
+                        <tr class="jstr" id="tr_yanbao">
                             <td>
                                 <div class="idiv1">
                                     延保</div>
@@ -605,11 +603,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_YanBao" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_YanBao</label>
                                     }
                                 </td>
                             }
@@ -621,7 +619,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_YanBao</label>
                             </td>
                         </tr>
-                        <tr id="tr_guapai" class="readonly">
+                        <tr id="tr_guapai" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     挂牌</div>
@@ -631,11 +629,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_GuaPai" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_GuaPai</label>
                                     }
                                 </td>
                             }
@@ -647,7 +645,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_GuaPai</label>
                             </td>
                         </tr>
-                        <tr id="tr_ershouche" class="readonly">
+                        <tr id="tr_ershouche" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     二手车</div>
@@ -657,11 +655,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_ErShouChe" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_ErShouChe</label>
                                     }
                                 </td>
                             }
@@ -673,7 +671,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_ErShouChe</label>
                             </td>
                         </tr>
-                        <tr id="tr_qita">
+                        <tr class="jstr" id="tr_qita">
                             <td>
                                 <div class="idiv1">
                                     其他</div>
@@ -683,11 +681,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_QiTa" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingShouRu_QiTa</label>
                                     }
                                 </td>
                             }
@@ -699,7 +697,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_QiTa</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_zhuyingyewuchengben" class="readonly icolor">
+                        <tr id="tr_jian_zhuyingyewuchengben" class="readonly icolor jstr">
                             <td>
                                 减：主营业务成本
                             </td>
@@ -708,11 +706,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingYeWuChengBen" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingYeWuChengBen</label>
                                     }
                                 </td>
                             }
@@ -724,7 +722,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingYeWuChengBen</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_zhengche" class="readonly">
+                        <tr id="tr_jian_zhengche" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     整车</div>
@@ -734,11 +732,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_ZhengChe" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_ZhengChe</label>
                                     }
                                 </td>
                             }
@@ -750,7 +748,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_ZhengChe</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_shouhouweixiu" class="readonly icolor">
+                        <tr id="tr_jian_shouhouweixiu" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     售后维修</div>
@@ -760,11 +758,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_ShouHouWeiXiu" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_ShouHouWeiXiu</label>
                                     }
                                 </td>
                             }
@@ -776,7 +774,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_ShouHouWeiXiu</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_weixiupeijian" class="readonly">
+                        <tr id="tr_jian_weixiupeijian" class="readonly jstr">
                             <td>
                                 <div class="idiv2">
                                     维修配件</div>
@@ -786,11 +784,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_WeiXiuPeiJian" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_WeiXiuPeiJian</label>
                                     }
                                 </td>
                             }
@@ -802,7 +800,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_WeiXiuPeiJian</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_gongshi">
+                        <tr class="jstr" id="tr_jian_gongshi">
                             <td>
                                 <div class="idiv2">
                                     工时</div>
@@ -812,11 +810,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_GongShi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_GongShi</label>
                                     }
                                 </td>
                             }
@@ -828,7 +826,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_GongShi</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_zhuangshizhuanghuang" class="readonly">
+                        <tr id="tr_jian_zhuangshizhuanghuang" class="readonly jstr">
                             <td>
                                 <div class="idiv1">
                                     装饰装潢</div>
@@ -838,11 +836,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_ZhuangShiZhuangHuang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_ZhuangShiZhuangHuang</label>
                                     }
                                 </td>
                             }
@@ -854,7 +852,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_ZhuangShiZhuangHuang</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_yongjin" class="readonly icolor">
+                        <tr id="tr_jian_yongjin" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     佣金</div>
@@ -864,11 +862,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_YongJin" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_YongJin</label>
                                     }
                                 </td>
                             }
@@ -880,7 +878,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_YongJin</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_fenqi">
+                        <tr class="jstr" id="tr_jian_fenqi">
                             <td>
                                 <div class="idiv2">
                                     分期</div>
@@ -890,11 +888,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_FenQi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_FenQi</label>
                                     }
                                 </td>
                             }
@@ -906,7 +904,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_FenQi</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_baoxian" class="readonly icolor">
+                        <tr id="tr_jian_baoxian" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     保险</div>
@@ -916,11 +914,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_BaoXian" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_BaoXian</label>
                                     }
                                 </td>
                             }
@@ -932,7 +930,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_BaoXian</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_xinbao">
+                        <tr class="jstr" id="tr_jian_xinbao">
                             <td>
                                 <div class="idiv2">
                                     新保</div>
@@ -942,11 +940,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_XinBao" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_XinBao</label>
                                     }
                                 </td>
                             }
@@ -958,7 +956,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_XinBao</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_xubao">
+                        <tr class="jstr" id="tr_jian_xubao">
                             <td>
                                 <div class="idiv2">
                                     续保</div>
@@ -968,11 +966,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_XuBao" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_XuBao</label>
                                     }
                                 </td>
                             }
@@ -984,7 +982,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_XuBao</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_yanbao">
+                        <tr class="jstr" id="tr_jian_yanbao">
                             <td>
                                 <div class="idiv1">
                                     延保</div>
@@ -994,11 +992,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_YanBao" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_YanBao</label>
                                     }
                                 </td>
                             }
@@ -1010,7 +1008,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_YanBao</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_guapai">
+                        <tr class="jstr" id="tr_jian_guapai">
                             <td>
                                 <div class="idiv1">
                                     挂牌</div>
@@ -1020,11 +1018,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_GuaPai" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_GuaPai</label>
                                     }
                                 </td>
                             }
@@ -1036,7 +1034,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_GuaPai</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_ershouche">
+                        <tr class="jstr" id="tr_jian_ershouche">
                             <td>
                                 <div class="idiv1">
                                     二手车</div>
@@ -1046,11 +1044,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_ErShouChe" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_ErShouChe</label>
                                     }
                                 </td>
                             }
@@ -1062,7 +1060,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_ErShouChe</label>
                             </td>
                         </tr>
-                        <tr id="tr_jian_qita">
+                        <tr class="jstr" id="tr_jian_qita">
                             <td>
                                 <div class="idiv1">
                                     其他</div>
@@ -1072,11 +1070,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_QiTa" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingChengBen_QiTa</label>
                                     }
                                 </td>
                             }
@@ -1088,7 +1086,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_QiTa</label>
                             </td>
                         </tr>
-                        <tr id="tr_maoli" class="readonly icolor">
+                        <tr id="tr_maoli" class="readonly icolor jstr">
                             <td>
                                 毛利
                             </td>
@@ -1097,11 +1095,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].MaoLi</label>
                                     }
                                 </td>
                             }
@@ -1113,7 +1111,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.MaoLi</label>
                             </td>
                         </tr>
-                        <tr id="tr_mao_zhengche" class="readonly icolor">
+                        <tr id="tr_mao_zhengche" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     整车</div>
@@ -1123,11 +1121,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi_ZhengChe" />
+                                        <label class="zslabel" row="@i">@list[i - 1].MaoLi_ZhengChe</label>
                                     }
                                 </td>
                             }
@@ -1139,7 +1137,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.MaoLi_ZhengChe</label>
                             </td>
                         </tr>
-                        <tr id="tr_mao_shouhouweixiu" class="readonly icolor">
+                        <tr id="tr_mao_shouhouweixiu" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     维修</div>
@@ -1149,11 +1147,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi_WeiXiu" />
+                                        <label class="zslabel" row="@i">@list[i - 1].MaoLi_WeiXiu</label>
                                     }
                                 </td>
                             }
@@ -1165,7 +1163,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.MaoLi_WeiXiu</label>
                             </td>
                         </tr>
-                        <tr id="tr_mao_zhuangshizhuanghuang" class="readonly icolor">
+                        <tr id="tr_mao_zhuangshizhuanghuang" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     装饰装潢</div>
@@ -1175,11 +1173,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi_ZhuangShiZhuangHuang" />
+                                        <label class="zslabel" row="@i">@list[i - 1].MaoLi_ZhuangShiZhuangHuang</label>
                                     }
                                 </td>
                             }
@@ -1191,7 +1189,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.MaoLi_ZhuangShiZhuangHuang</label>
                             </td>
                         </tr>
-                        <tr id="tr_mao_yongjin" class="readonly icolor">
+                        <tr id="tr_mao_yongjin" class="readonly icolor jstr">
                             <td>
                                 <div class="idiv1">
                                     佣金</div>
@@ -1201,11 +1199,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi_YongJin" />
+                                        <label class="zslabel" row="@i">@list[i - 1].MaoLi_YongJin</label>
                                     }
                                 </td>
                             }
@@ -1217,7 +1215,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.MaoLi_YongJin</label>
                             </td>
                         </tr>
-                        <tr id="tr_zhuyingyewushuijinjifujia">
+                        <tr class="jstr" id="tr_zhuyingyewushuijinjifujia">
                             <td>
                                 主营业务税金及附加
                             </td>
@@ -1226,11 +1224,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingYeWuShueiJinJiFuJia" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingYeWuShueiJinJiFuJia</label>
                                     }
                                 </td>
                             }
@@ -1242,7 +1240,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingYeWuShueiJinJiFuJia</label>
                             </td>
                         </tr>
-                        <tr id="tr_zhuyingyewufujiashuihoumaoli" class="readonly icolor">
+                        <tr id="tr_zhuyingyewufujiashuihoumaoli" class="readonly icolor jstr">
                             <td>
                                 主营业务附加税后毛利
                             </td>
@@ -1251,11 +1249,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingYeWuFuJiaShuiHouMaoLi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZhuYingYeWuFuJiaShuiHouMaoLi</label>
                                     }
                                 </td>
                             }
@@ -1267,7 +1265,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZhuYingYeWuFuJiaShuiHouMaoLi</label>
                             </td>
                         </tr>
-                        <tr id="tr_qitayewushouru">
+                        <tr class="jstr" id="tr_qitayewushouru">
                             <td>
                                 其他业务收入
                             </td>
@@ -1276,11 +1274,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTaYeWuShouRu" />
+                                        <label class="zslabel" row="@i">@list[i - 1].QiTaYeWuShouRu</label>
                                     }
                                 </td>
                             }
@@ -1292,7 +1290,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.QiTaYeWuShouRu</label>
                             </td>
                         </tr>
-                        <tr id="tr_qitayewuchengben">
+                        <tr class="jstr" id="tr_qitayewuchengben">
                             <td>
                                 其他业务成本
                             </td>
@@ -1301,11 +1299,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTaYeWuChengBen" />
+                                        <label class="zslabel" row="@i">@list[i - 1].QiTaYeWuChengBen</label>
                                     }
                                 </td>
                             }
@@ -1317,7 +1315,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.QiTaYeWuChengBen</label>
                             </td>
                         </tr>
-                        <tr id="tr_qitayewushuijinjifujia">
+                        <tr class="jstr" id="tr_qitayewushuijinjifujia">
                             <td>
                                 其他业务税金及附加
                             </td>
@@ -1326,11 +1324,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTaYeWuShuiJinJiFuJia" />
+                                        <label class="zslabel" row="@i">@list[i - 1].QiTaYeWuShuiJinJiFuJia</label>
                                     }
                                 </td>
                             }
@@ -1342,7 +1340,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.QiTaYeWuShuiJinJiFuJia</label>
                             </td>
                         </tr>
-                        <tr id="tr_qitayewulirun" class="readonly icolor">
+                        <tr id="tr_qitayewulirun" class="readonly icolor jstr">
                             <td>
                                 其他业务利润
                             </td>
@@ -1351,11 +1349,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTaYeWuLiRun" />
+                                        <label class="zslabel" row="@i">@list[i - 1].QiTaYeWuLiRun</label>
                                     }
                                 </td>
                             }
@@ -1367,7 +1365,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.QiTaYeWuLiRun</label>
                             </td>
                         </tr>
-                        <tr id="tr_xiaoshoujiguanlifeiyong">
+                        <tr class="jstr" id="tr_xiaoshoujiguanlifeiyong">
                             <td>
                                 销售及管理费用
                             </td>
@@ -1376,11 +1374,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XiaoShouJiGuanLiFeiYong" />
+                                        <label class="zslabel" row="@i">@list[i - 1].XiaoShouJiGuanLiFeiYong</label>
                                     }
                                 </td>
                             }
@@ -1392,7 +1390,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.XiaoShouJiGuanLiFeiYong</label>
                             </td>
                         </tr>
-                        <tr id="tr_xishuiqianlirun" class="readonly icolor">
+                        <tr id="tr_xishuiqianlirun" class="readonly icolor jstr">
                             <td>
                                 息税前利润
                             </td>
@@ -1401,11 +1399,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XiShueiQianLiRun" />
+                                        <label class="zslabel" row="@i">@list[i - 1].XiShueiQianLiRun</label>
                                     }
                                 </td>
                             }
@@ -1417,7 +1415,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.XiShueiQianLiRun</label>
                             </td>
                         </tr>
-                        <tr id="tr_caiwufeiyong">
+                        <tr class="jstr" id="tr_caiwufeiyong">
                             <td>
                                 财务费用
                             </td>
@@ -1426,11 +1424,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].CaiWuFeiYong" />
+                                        <label class="zslabel" row="@i">@list[i - 1].CaiWuFeiYong</label>
                                     }
                                 </td>
                             }
@@ -1442,7 +1440,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.CaiWuFeiYong</label>
                             </td>
                         </tr>
-                        <tr id="tr_yingyelirun" class="readonly icolor">
+                        <tr id="tr_yingyelirun" class="readonly icolor jstr">
                             <td>
                                 营业利润
                             </td>
@@ -1451,11 +1449,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].YingYeLiRun" />
+                                        <label class="zslabel" row="@i">@list[i - 1].YingYeLiRun</label>
                                     }
                                 </td>
                             }
@@ -1467,7 +1465,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.YingYeLiRun</label>
                             </td>
                         </tr>
-                        <tr id="tr_zichanjianzhisunshi">
+                        <tr class="jstr" id="tr_zichanjianzhisunshi">
                             <td>
                                 资产减值损失
                             </td>
@@ -1476,11 +1474,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZiChanJianZhiSunShi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ZiChanJianZhiSunShi</label>
                                     }
                                 </td>
                             }
@@ -1492,7 +1490,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ZiChanJianZhiSunShi</label>
                             </td>
                         </tr>
-                        <tr id="tr_gongyunjiazhibiandongshouyi">
+                        <tr class="jstr" id="tr_gongyunjiazhibiandongshouyi">
                             <td>
                                 公允价值变动收益
                             </td>
@@ -1501,11 +1499,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].GongYunJiaZhiBianDongShouYi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].GongYunJiaZhiBianDongShouYi</label>
                                     }
                                 </td>
                             }
@@ -1517,7 +1515,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.GongYunJiaZhiBianDongShouYi</label>
                             </td>
                         </tr>
-                        <tr id="tr_touzishouyi">
+                        <tr class="jstr" id="tr_touzishouyi">
                             <td>
                                 投资收益
                             </td>
@@ -1526,11 +1524,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].TouZiShouYi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].TouZiShouYi</label>
                                     }
                                 </td>
                             }
@@ -1542,7 +1540,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.TouZiShouYi</label>
                             </td>
                         </tr>
-                        <tr id="tr_yingyewaishouzhijinge">
+                        <tr class="jstr" id="tr_yingyewaishouzhijinge">
                             <td>
                                 营业外收支净额
                             </td>
@@ -1551,11 +1549,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].YingYeWaiShouZhiJingE" />
+                                        <label class="zslabel" row="@i">@list[i - 1].YingYeWaiShouZhiJingE</label>
                                     }
                                 </td>
                             }
@@ -1567,7 +1565,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.YingYeWaiShouZhiJingE</label>
                             </td>
                         </tr>
-                        <tr id="tr_lirunzonge" class="readonly icolor">
+                        <tr id="tr_lirunzonge" class="readonly icolor jstr">
                             <td>
                                 利润总额
                             </td>
@@ -1576,11 +1574,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].LiRunZongE" />
+                                        <label class="zslabel" row="@i">@list[i - 1].LiRunZongE</label>
                                     }
                                 </td>
                             }
@@ -1592,7 +1590,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.LiRunZongE</label>
                             </td>
                         </tr>
-                        <tr id="tr_suodeshui">
+                        <tr class="jstr" id="tr_suodeshui">
                             <td>
                                 所得税
                             </td>
@@ -1601,11 +1599,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].SuoDeShui" />
+                                        <label class="zslabel" row="@i">@list[i - 1].SuoDeShui</label>
                                     }
                                 </td>
                             }
@@ -1617,7 +1615,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.SuoDeShui</label>
                             </td>
                         </tr>
-                        <tr id="tr_shuihoulirun" class="readonly icolor">
+                        <tr id="tr_shuihoulirun" class="readonly icolor jstr">
                             <td>
                                 税后利润
                             </td>
@@ -1626,11 +1624,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ShueiHouLiRun" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ShueiHouLiRun</label>
                                     }
                                 </td>
                             }
@@ -1642,7 +1640,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ShueiHouLiRun</label>
                             </td>
                         </tr>
-                        <tr id="tr_shaoshugudongsunyi">
+                        <tr class="jstr" id="tr_shaoshugudongsunyi">
                             <td>
                                 少数股东损益
                             </td>
@@ -1651,11 +1649,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ShaoShuGuDongSunYi" />
+                                        <label class="zslabel" row="@i">@list[i - 1].ShaoShuGuDongSunYi</label>
                                     }
                                 </td>
                             }
@@ -1667,7 +1665,7 @@
                                 <label class="yslabel">@ProfitLoss_Detailed.ShaoShuGuDongSunYi</label>
                             </td>
                         </tr>
-                        <tr id="tr_jinglirun" class="readonly icolor">
+                        <tr id="tr_jinglirun" class="readonly icolor jstr">
                             <td>
                                 净利润
                             </td>
@@ -1676,11 +1674,11 @@
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <label class="zsLabel" row="@i"></label>
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].JingLiRun" />
+                                        <label class="zslabel" row="@i">@list[i - 1].JingLiRun</label>
                                     }
                                 </td>
                             }
@@ -1694,8 +1692,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <button type="button" class="btn blue isubmit">
-                    保存</button>
             </div>
         </div>
         <!-- END SAMPLE TABLE PORTLET-->
@@ -1703,196 +1699,37 @@
 </div>
 @section scripts{
     <script type="text/javascript">
-        function sunyi() {
-            var it = new Object;
-            it.XiaoShouShuLiang = 0; //销售数量
-            it.xinchexiaoshoushuliang = 0; //新车销售数量
-            it.WeiXiuJinChangTaiCi = 0; //维修进场台次
-            it.FenQiShuLiang = 0; //分期数量
-            it.XinBaoShuLiang = 0; //新保数量
-            it.XuBaoShuLiang = 0; //续保数量
-            it.YanBaoShuLiang = 0; //延保数量
-            it.GuaPaiShuLiang = 0; //挂牌数量
-            it.ErShouCheXiaoShouShuLiang = 0; //二手车销售数量
-            it.ZhuYingYeWuShouRu = 0; //主营业务收入
-            it.ZhuYingShouRu_ZhengChe = 0; //整车
-            it.ZhuYingShouRu_ShouHouWeiXiu = 0; //售后维修
-            it.ZhuYingShouRu_WeiXiuPeiJian = 0; //维修配件
-            it.ZhuYingShouRu_GongShi = 0; //工时
-            it.ZhuYingShouRu_ZhuangShiZhuangHuang = 0; //装饰装潢
-            it.ZhuYingShouRu_YongJin = 0; //佣金
-            it.ZhuYingShouRu_FenQi = 0; //分期
-            it.ZhuYingShouRu_BaoXian = 0; //保险
-            it.ZhuYingShouRu_XinBao = 0; //新保
-            it.ZhuYingShouRu_XuBao = 0; //续保
-            it.ZhuYingShouRu_YanBao = 0; //延保
-            it.ZhuYingShouRu_GuaPai = 0; //挂牌
-            it.ZhuYingShouRu_ErShouChe = 0; //二手车
-            it.ZhuYingShouRu_QiTa = 0; //其他
-            it.ZhuYingYeWuChengBen = 0; //减：主营业务成本
-            it.ZhuYingChengBen_ZhengChe = 0; //整车
-            it.ZhuYingChengBen_ShouHouWeiXiu = 0; //售后维修
-            it.ZhuYingChengBen_WeiXiuPeiJian = 0; //维修配件
-            it.ZhuYingChengBen_GongShi = 0; //工时
-            it.ZhuYingChengBen_ZhuangShiZhuangHuang = 0; //装饰装潢
-            it.ZhuYingChengBen_YongJin = 0; //佣金
-            it.ZhuYingChengBen_FenQi = 0; //分期
-            it.ZhuYingChengBen_BaoXian = 0; //保险
-            it.ZhuYingChengBen_XinBao = 0; //新保
-            it.ZhuYingChengBen_XuBao = 0; //续保
-            it.ZhuYingChengBen_YanBao = 0; //延保
-            it.ZhuYingChengBen_GuaPai = 0; //挂牌
-            it.ZhuYingChengBen_ErShouChe = 0; //二手车
-            it.ZhuYingChengBen_QiTa = 0; //其他
-            it.MaoLi = 0; //毛利
-            it.MaoLi_ZhengChe = 0; //整车
-            it.MaoLi_WeiXiu = 0; //维修
-            it.MaoLi_ZhuangShiZhuangHuang = 0; //装饰装潢
-            it.MaoLi_YongJin = 0; //佣金
-            it.ZhuYingYeWuShueiJinJiFuJia = 0; //主营业务税金及附加
-            it.ZhuYingYeWuFuJiaShuiHouMaoLi = 0; //主营业务附加税后毛利
-            it.QiTaYeWuShouRu = 0; //其他业务收入
-            it.QiTaYeWuChengBen = 0; //其他业务成本
-            it.QiTaYeWuShuiJinJiFuJia = 0; //其他业务税金及附加
-            it.QiTaYeWuLiRun = 0; //其他业务利润
-            it.XiaoShouJiGuanLiFeiYong = 0; //销售及管理费用
-            it.XiShueiQianLiRun = 0; //息税前利润
-            it.CaiWuFeiYong = 0; //财务费用
-            it.YingYeLiRun = 0; //营业利润
-            it.ZiChanJianZhiSunShi = 0; //资产减值损失
-            it.GongYunJiaZhiBianDongShouYi = 0; //公允价值变动收益
-            it.TouZiShouYi = 0; //投资收益
-            it.YingYeWaiShouZhiJingE = 0; //营业外收支净额
-            it.LiRunZongE = 0; //利润总额
-            it.SuoDeShui = 0; //所得税
-            it.ShueiHouLiRun = 0; //税后利润
-            it.ShaoShuGuDongSunYi = 0; //少数股东损益
-            it.JingLiRun = 0; //净利润
-            it.Week = 0; //周
-            return it;
-        }
-
-        var submitUrl = '@Url.Action("RealityDetail", "ProfitLoss")';
-        var year = '@ViewBag.YearID';
-        var month = '@ViewBag.Month';
-        var pdid='@ProfitLoss_Detailed.ID';
-
-        $(function () {
-            //只能输入数字和小数点
-            $(":text").keyup(function () {
-                $(this).val($(this).val().replace(/[^\d.]/g, ""));  //清除“数字”和“.”以外的字符
-                $(this).val($(this).val().replace(/^\./g, ""));  //验证第一个字符是数字而不是.
-                $(this).val($(this).val().replace(/\.{2,}/g, ".")); //只保留第一个. 清除多余的.
-                $(this).val($(this).val().replace(".", "$#$").replace(/\./g, "").replace("$#$", "."));
-            });
-        });
+    
         //获取数值
         function getValue(obj) {
             var value = 0;
-            if ($(obj).val().length == 0) {
+            if ($(obj).text().length == 0) {
                 value = 0;
             } else {
                 if (isNaN($(obj).val())) {
-                    $(obj).val("0");
+                    $(obj).text("0");
                 }
-                value = parseFloat($(obj).val());
+                value = parseFloat($(obj).text());
             }
             return value;
         }
-        $(".itable :text").keyup(function () {
-            var week1 = getValue($(this).parents("tr").find(":text[row='1']"));
-            var week2 = getValue($(this).parents("tr").find(":text[row='2']"));
-            var week3 = getValue($(this).parents("tr").find(":text[row='3']"));
-            var week4 = getValue($(this).parents("tr").find(":text[row='4']"));
-            var week = week1 + week2 + week3 + week4;
-            var ysLabel = $(this).parents("tr").find(".yslabel");
-            var yeLabel = $(this).parents("tr").find(".yelabel");
-            var balance = parseFloat((week - ysLabel.text()).toFixed(13));
-            if(balance<0){
-                yeLabel.text(balance).addClass("icolor_red").removeClass("icolor_green");
-            }else{
-                yeLabel.text(balance).addClass("icolor_green").removeClass("icolor_red");
-            }
+        $(function () {
+            $(".itable .jstr").each(function (i, n) {
+                var week1 = getValue($(n).find(".zslabel[row='1']"));
+                var week2 = getValue($(n).find(".zslabel[row='2']"));
+                var week3 = getValue($(n).find(".zslabel[row='3']"));
+                var week4 = getValue($(n).find(".zslabel[row='4']"));
+                var week = week1 + week2 + week3 + week4;
+                var ysLabel = $(n).find(".yslabel");
+                var yeLabel = $(n).find(".yelabel");
+                var balance = parseFloat((week - ysLabel.text()).toFixed(13));
+                if (balance < 0) {
+                    yeLabel.text(balance).addClass("icolor_red").removeClass("icolor_green");
+                } else {
+                    yeLabel.text(balance).addClass("icolor_green").removeClass("icolor_red");
+                }
+            });
         });
 
-        //触发本月发生余额计算
-        $(".itable :text[row='1']").keyup();
-
-        $(".isubmit").click(function () {
-                var sunyi_list = [];
-                $(".itr").each(function (i, n) {
-                    var m = i + 1;
-                    var item = new sunyi();
-                    item.XiaoShouShuLiang = getValue(("#tr_xiaoshoushuliang td :text[row='" + m + "']"));
-                    item.XinCheXiaoShouShuLiang = getValue(("#tr_xinchexiaoshoushuliang td :text[row='" + m + "']"));
-                    item.WeiXiuJinChangTaiCi = getValue(("#tr_weixiujinchangtaici td :text[row='" + m + "']"));
-                    item.FenQiShuLiang = getValue(("#tr_fenqishuliang td :text[row='" + m + "']"));
-                    item.XinBaoShuLiang = getValue(("#tr_xinbaoshuliang td :text[row='" + m + "']"));
-                    item.XuBaoShuLiang = getValue(("#tr_xubaoshuliang td :text[row='" + m + "']"));
-                    item.YanBaoShuLiang = getValue(("#tr_yanbaoshuliang td :text[row='" + m + "']"));
-                    item.GuaPaiShuLiang = getValue(("#tr_guapaishuliang td :text[row='" + m + "']"));
-                    item.ErShouCheXiaoShouShuLiang = getValue(("#tr_ershouchexiaoshoushuliang td :text[row='" + m + "']"));
-                    item.ZhuYingYeWuShouRu = getValue(("#tr_zhuyingyewushouru td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_ZhengChe = getValue(("#tr_zhengche td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_ShouHouWeiXiu = getValue(("#tr_shouhouweixiu td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_WeiXiuPeiJian = getValue(("#tr_weixiupeijian td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_GongShi = getValue(("#tr_gongshi td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_ZhuangShiZhuangHuang = getValue(("#tr_zhuangshizhuanghuang td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_YongJin = getValue(("#tr_yongjin td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_FenQi = getValue(("#tr_fenqi td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_BaoXian = getValue(("#tr_baoxian td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_XinBao = getValue(("#tr_xinbao td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_XuBao = getValue(("#tr_xubao td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_YanBao = getValue(("#tr_yanbao td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_GuaPai = getValue(("#tr_guapai td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_ErShouChe = getValue(("#tr_ershouche td :text[row='" + m + "']"));
-                    item.ZhuYingShouRu_QiTa = getValue(("#tr_qita td :text[row='" + m + "']"));
-                    item.ZhuYingYeWuChengBen = getValue(("#tr_jian_zhuyingyewuchengben td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_ZhengChe = getValue(("#tr_jian_zhengche td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_ShouHouWeiXiu = getValue(("#tr_jian_shouhouweixiu td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_WeiXiuPeiJian = getValue(("#tr_jian_weixiupeijian td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_GongShi = getValue(("#tr_jian_gongshi td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_ZhuangShiZhuangHuang = getValue(("#tr_jian_zhuangshizhuanghuang td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_YongJin = getValue(("#tr_jian_yongjin td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_FenQi = getValue(("#tr_jian_fenqi td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_BaoXian = getValue(("#tr_jian_baoxian td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_XinBao = getValue(("#tr_jian_xinbao td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_XuBao = getValue(("#tr_jian_xubao td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_YanBao = getValue(("#tr_jian_yanbao td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_GuaPai = getValue(("#tr_jian_guapai td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_ErShouChe = getValue(("#tr_jian_ershouche td :text[row='" + m + "']"));
-                    item.ZhuYingChengBen_QiTa = getValue(("#tr_jian_qita td :text[row='" + m + "']"));
-                    item.MaoLi = getValue(("#tr_maoli td :text[row='" + m + "']"));
-                    item.MaoLi_ZhengChe = getValue(("#tr_mao_zhengche td :text[row='" + m + "']"));
-                    item.MaoLi_WeiXiu = getValue(("#tr_mao_shouhouweixiu td :text[row='" + m + "']"));
-                    item.MaoLi_ZhuangShiZhuangHuang = getValue(("#tr_mao_zhuangshizhuanghuang td :text[row='" + m + "']"));
-                    item.MaoLi_YongJin = getValue(("#tr_mao_yongjin td :text[row='" + m + "']"));
-                    item.ZhuYingYeWuShueiJinJiFuJia = getValue(("#tr_zhuyingyewushuijinjifujia td :text[row='" + m + "']"));
-                    item.ZhuYingYeWuFuJiaShuiHouMaoLi = getValue(("#tr_zhuyingyewufujiashuihoumaoli td :text[row='" + m + "']"));
-                    item.QiTaYeWuShouRu = getValue(("#tr_qitayewushouru td :text[row='" + m + "']"));
-                    item.QiTaYeWuChengBen = getValue(("#tr_qitayewuchengben td :text[row='" + m + "']"));
-                    item.QiTaYeWuShuiJinJiFuJia = getValue(("#tr_qitayewushuijinjifujia td :text[row='" + m + "']"));
-                    item.QiTaYeWuLiRun = getValue(("#tr_qitayewulirun td :text[row='" + m + "']"));
-                    item.XiaoShouJiGuanLiFeiYong = getValue(("#tr_xiaoshoujiguanlifeiyong td :text[row='" + m + "']"));
-                    item.XiShueiQianLiRun = getValue(("#tr_xishuiqianlirun td :text[row='" + m + "']"));
-                    item.CaiWuFeiYong = getValue(("#tr_caiwufeiyong td :text[row='" + m + "']"));
-                    item.YingYeLiRun = getValue(("#tr_yingyelirun td :text[row='" + m + "']"));
-                    item.ZiChanJianZhiSunShi = getValue(("#tr_zichanjianzhisunshi td :text[row='" + m + "']"));
-                    item.GongYunJiaZhiBianDongShouYi = getValue(("#tr_gongyunjiazhibiandongshouyi td :text[row='" + m + "']"));
-                    item.TouZiShouYi = getValue(("#tr_touzishouyi td :text[row='" + m + "']"));
-                    item.YingYeWaiShouZhiJingE = getValue(("#tr_yingyewaishouzhijinge td :text[row='" + m + "']"));
-                    item.LiRunZongE = getValue(("#tr_lirunzonge td :text[row='" + m + "']"));
-                    item.SuoDeShui = getValue(("#tr_suodeshui td :text[row='" + m + "']"));
-                    item.ShueiHouLiRun = getValue(("#tr_shuihoulirun td :text[row='" + m + "']"));
-                    item.ShaoShuGuDongSunYi = getValue(("#tr_shaoshugudongsunyi td :text[row='" + m + "']"));
-                    item.JingLiRun = getValue(("#tr_jinglirun td :text[row='" + m + "']"));
-                    item.Week = m;
-                    sunyi_list.push(item);
-                });
-                var value = JSON.stringify(sunyi_list);
-                $.post(submitUrl, { json: value, YearID: year,Month:month ,pdid:pdid}, function (result) {
-                    window.location.href="@Url.Action("Index", "ProfitLoss")";
-                });
-        });
     </script>
 }
