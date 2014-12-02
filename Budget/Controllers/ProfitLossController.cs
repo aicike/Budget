@@ -237,165 +237,250 @@ namespace Budget.Controllers
             return View(dt);
         }
 
-        //损益预算公司预算表明细（集团）
-        public ActionResult CompanyDetail(int ComPanyID, int YearID)
+        //损益预算公司预算表明细（集团） type:0 预算列表 1实际列表 2余额
+        public ActionResult CompanyDetail(int ComPanyID, int YearID, int Type)
         {
             ParticularYearModel PyearModel = new ParticularYearModel();
             var pyear = PyearModel.Get(YearID);
             ViewBag.Year = pyear.Year;
             ViewBag.YearID = YearID;
-
+            ViewBag.CID = ComPanyID;
             CompanyModel CModel = new CompanyModel();
             var company = CModel.Get(ComPanyID);
             ViewBag.CompanyID = ComPanyID;
             ViewBag.CompanyName = company.Name;
-            ProfitLoss_DetailedModel PldModel = new ProfitLoss_DetailedModel();
-            var list = PldModel.GetDetailed_ByCompanyID(ComPanyID, YearID);
+
 
 
             //数据添加到DataTable中
             DataTable dtInfo = SetDt_Detail();
-            foreach (var item in list)
+            if (Type == 0)
             {
-                DataRow infoRow = dtInfo.NewRow();
-                infoRow["Month"] = item.Month + "月份";
-                infoRow["XiaoShouShuLiang"] = item.XiaoShouShuLiang;
-                infoRow["XinCheXiaoShouShuLiang"] = item.XinCheXiaoShouShuLiang;
-                infoRow["WeiXiuJinChangTaiCi"] = item.WeiXiuJinChangTaiCi;
-                infoRow["FenQiShuLiang"] = item.FenQiShuLiang;
-                infoRow["XinBaoShuLiang"] = item.XinBaoShuLiang;
-                infoRow["XuBaoShuLiang"] = item.XuBaoShuLiang;
-                infoRow["YanBaoShuLiang"] = item.YanBaoShuLiang;
-                infoRow["GuaPaiShuLiang"] = item.GuaPaiShuLiang;
-                infoRow["ErShouCheXiaoShouShuLiang"] = item.ErShouCheXiaoShouShuLiang;
-                infoRow["ZhuYingYeWuShouRu"] = item.ZhuYingYeWuShouRu;
-                infoRow["ZhuYingShouRu_ZhengChe"] = item.ZhuYingShouRu_ZhengChe;
-                infoRow["ZhuYingShouRu_ShouHouWeiXiu"] = item.ZhuYingShouRu_ShouHouWeiXiu;
-                infoRow["ZhuYingShouRu_WeiXiuPeiJian"] = item.ZhuYingShouRu_WeiXiuPeiJian;
-                infoRow["ZhuYingShouRu_GongShi"] = item.ZhuYingShouRu_GongShi;
-                infoRow["ZhuYingShouRu_ZhuangShiZhuangHuang"] = item.ZhuYingShouRu_ZhuangShiZhuangHuang;
-                infoRow["ZhuYingShouRu_YongJin"] = item.ZhuYingShouRu_YongJin;
-                infoRow["ZhuYingShouRu_FenQi"] = item.ZhuYingShouRu_FenQi;
-                infoRow["ZhuYingShouRu_BaoXian"] = item.ZhuYingShouRu_BaoXian;
-                infoRow["ZhuYingShouRu_XinBao"] = item.ZhuYingShouRu_XinBao;
-                infoRow["ZhuYingShouRu_XuBao"] = item.ZhuYingShouRu_XuBao;
-                infoRow["ZhuYingShouRu_YanBao"] = item.ZhuYingShouRu_YanBao;
-                infoRow["ZhuYingShouRu_GuaPai"] = item.ZhuYingShouRu_GuaPai;
-                infoRow["ZhuYingShouRu_ErShouChe"] = item.ZhuYingShouRu_ErShouChe;
-                infoRow["ZhuYingShouRu_QiTa"] = item.ZhuYingShouRu_QiTa;
-                infoRow["ZhuYingYeWuChengBen"] = item.ZhuYingYeWuChengBen;
-                infoRow["ZhuYingChengBen_ZhengChe"] = item.ZhuYingChengBen_ZhengChe;
-                infoRow["ZhuYingChengBen_ShouHouWeiXiu"] = item.ZhuYingChengBen_ShouHouWeiXiu;
-                infoRow["ZhuYingChengBen_WeiXiuPeiJian"] = item.ZhuYingChengBen_WeiXiuPeiJian;
-                infoRow["ZhuYingChengBen_GongShi"] = item.ZhuYingChengBen_GongShi;
-                infoRow["ZhuYingChengBen_ZhuangShiZhuangHuang"] = item.ZhuYingChengBen_ZhuangShiZhuangHuang;
-                infoRow["ZhuYingChengBen_YongJin"] = item.ZhuYingChengBen_YongJin;
-                infoRow["ZhuYingChengBen_FenQi"] = item.ZhuYingChengBen_FenQi;
-                infoRow["ZhuYingChengBen_BaoXian"] = item.ZhuYingChengBen_BaoXian;
-                infoRow["ZhuYingChengBen_XinBao"] = item.ZhuYingChengBen_XinBao;
-                infoRow["ZhuYingChengBen_XuBao"] = item.ZhuYingChengBen_XuBao;
-                infoRow["ZhuYingChengBen_YanBao"] = item.ZhuYingChengBen_YanBao;
-                infoRow["ZhuYingChengBen_GuaPai"] = item.ZhuYingChengBen_GuaPai;
-                infoRow["ZhuYingChengBen_ErShouChe"] = item.ZhuYingChengBen_ErShouChe;
-                infoRow["ZhuYingChengBen_QiTa"] = item.ZhuYingChengBen_QiTa;
-                infoRow["MaoLi"] = item.MaoLi;
-                infoRow["MaoLi_ZhengChe"] = item.MaoLi_ZhengChe;
-                infoRow["MaoLi_WeiXiu"] = item.MaoLi_WeiXiu;
-                infoRow["MaoLi_ZhuangShiZhuangHuang"] = item.MaoLi_ZhuangShiZhuangHuang;
-                infoRow["MaoLi_YongJin"] = item.MaoLi_YongJin;
-                infoRow["ZhuYingYeWuShueiJinJiFuJia"] = item.ZhuYingYeWuShueiJinJiFuJia;
-                infoRow["ZhuYingYeWuFuJiaShuiHouMaoLi"] = item.ZhuYingYeWuFuJiaShuiHouMaoLi;
-                infoRow["QiTaYeWuShouRu"] = item.QiTaYeWuShouRu;
-                infoRow["QiTaYeWuChengBen"] = item.QiTaYeWuChengBen;
-                infoRow["QiTaYeWuShuiJinJiFuJia"] = item.QiTaYeWuShuiJinJiFuJia;
-                infoRow["QiTaYeWuLiRun"] = item.QiTaYeWuLiRun;
-                infoRow["XiaoShouJiGuanLiFeiYong"] = item.XiaoShouJiGuanLiFeiYong;
-                infoRow["XiShueiQianLiRun"] = item.XiShueiQianLiRun;
-                infoRow["CaiWuFeiYong"] = item.CaiWuFeiYong;
-                infoRow["YingYeLiRun"] = item.YingYeLiRun;
-                infoRow["ZiChanJianZhiSunShi"] = item.ZiChanJianZhiSunShi;
-                infoRow["GongYunJiaZhiBianDongShouYi"] = item.GongYunJiaZhiBianDongShouYi;
-                infoRow["TouZiShouYi"] = item.TouZiShouYi;
-                infoRow["YingYeWaiShouZhiJingE"] = item.YingYeWaiShouZhiJingE;
-                infoRow["LiRunZongE"] = item.LiRunZongE;
-                infoRow["SuoDeShui"] = item.SuoDeShui;
-                infoRow["ShueiHouLiRun"] = item.ShueiHouLiRun;
-                infoRow["ShaoShuGuDongSunYi"] = item.ShaoShuGuDongSunYi;
-                infoRow["JingLiRun"] = item.JingLiRun;
+                #region 预算列表
+                
+                ProfitLoss_DetailedModel PldModel = new ProfitLoss_DetailedModel();
+                var list = PldModel.GetDetailed_ByCompanyID(ComPanyID, YearID);
+                foreach (var item in list)
+                {
+                    DataRow infoRow = dtInfo.NewRow();
+                    infoRow["Month"] = item.Month + "月份";
+                    infoRow["XiaoShouShuLiang"] = item.XiaoShouShuLiang;
+                    infoRow["XinCheXiaoShouShuLiang"] = item.XinCheXiaoShouShuLiang;
+                    infoRow["WeiXiuJinChangTaiCi"] = item.WeiXiuJinChangTaiCi;
+                    infoRow["FenQiShuLiang"] = item.FenQiShuLiang;
+                    infoRow["XinBaoShuLiang"] = item.XinBaoShuLiang;
+                    infoRow["XuBaoShuLiang"] = item.XuBaoShuLiang;
+                    infoRow["YanBaoShuLiang"] = item.YanBaoShuLiang;
+                    infoRow["GuaPaiShuLiang"] = item.GuaPaiShuLiang;
+                    infoRow["ErShouCheXiaoShouShuLiang"] = item.ErShouCheXiaoShouShuLiang;
+                    infoRow["ZhuYingYeWuShouRu"] = item.ZhuYingYeWuShouRu;
+                    infoRow["ZhuYingShouRu_ZhengChe"] = item.ZhuYingShouRu_ZhengChe;
+                    infoRow["ZhuYingShouRu_ShouHouWeiXiu"] = item.ZhuYingShouRu_ShouHouWeiXiu;
+                    infoRow["ZhuYingShouRu_WeiXiuPeiJian"] = item.ZhuYingShouRu_WeiXiuPeiJian;
+                    infoRow["ZhuYingShouRu_GongShi"] = item.ZhuYingShouRu_GongShi;
+                    infoRow["ZhuYingShouRu_ZhuangShiZhuangHuang"] = item.ZhuYingShouRu_ZhuangShiZhuangHuang;
+                    infoRow["ZhuYingShouRu_YongJin"] = item.ZhuYingShouRu_YongJin;
+                    infoRow["ZhuYingShouRu_FenQi"] = item.ZhuYingShouRu_FenQi;
+                    infoRow["ZhuYingShouRu_BaoXian"] = item.ZhuYingShouRu_BaoXian;
+                    infoRow["ZhuYingShouRu_XinBao"] = item.ZhuYingShouRu_XinBao;
+                    infoRow["ZhuYingShouRu_XuBao"] = item.ZhuYingShouRu_XuBao;
+                    infoRow["ZhuYingShouRu_YanBao"] = item.ZhuYingShouRu_YanBao;
+                    infoRow["ZhuYingShouRu_GuaPai"] = item.ZhuYingShouRu_GuaPai;
+                    infoRow["ZhuYingShouRu_ErShouChe"] = item.ZhuYingShouRu_ErShouChe;
+                    infoRow["ZhuYingShouRu_QiTa"] = item.ZhuYingShouRu_QiTa;
+                    infoRow["ZhuYingYeWuChengBen"] = item.ZhuYingYeWuChengBen;
+                    infoRow["ZhuYingChengBen_ZhengChe"] = item.ZhuYingChengBen_ZhengChe;
+                    infoRow["ZhuYingChengBen_ShouHouWeiXiu"] = item.ZhuYingChengBen_ShouHouWeiXiu;
+                    infoRow["ZhuYingChengBen_WeiXiuPeiJian"] = item.ZhuYingChengBen_WeiXiuPeiJian;
+                    infoRow["ZhuYingChengBen_GongShi"] = item.ZhuYingChengBen_GongShi;
+                    infoRow["ZhuYingChengBen_ZhuangShiZhuangHuang"] = item.ZhuYingChengBen_ZhuangShiZhuangHuang;
+                    infoRow["ZhuYingChengBen_YongJin"] = item.ZhuYingChengBen_YongJin;
+                    infoRow["ZhuYingChengBen_FenQi"] = item.ZhuYingChengBen_FenQi;
+                    infoRow["ZhuYingChengBen_BaoXian"] = item.ZhuYingChengBen_BaoXian;
+                    infoRow["ZhuYingChengBen_XinBao"] = item.ZhuYingChengBen_XinBao;
+                    infoRow["ZhuYingChengBen_XuBao"] = item.ZhuYingChengBen_XuBao;
+                    infoRow["ZhuYingChengBen_YanBao"] = item.ZhuYingChengBen_YanBao;
+                    infoRow["ZhuYingChengBen_GuaPai"] = item.ZhuYingChengBen_GuaPai;
+                    infoRow["ZhuYingChengBen_ErShouChe"] = item.ZhuYingChengBen_ErShouChe;
+                    infoRow["ZhuYingChengBen_QiTa"] = item.ZhuYingChengBen_QiTa;
+                    infoRow["MaoLi"] = item.MaoLi;
+                    infoRow["MaoLi_ZhengChe"] = item.MaoLi_ZhengChe;
+                    infoRow["MaoLi_WeiXiu"] = item.MaoLi_WeiXiu;
+                    infoRow["MaoLi_ZhuangShiZhuangHuang"] = item.MaoLi_ZhuangShiZhuangHuang;
+                    infoRow["MaoLi_YongJin"] = item.MaoLi_YongJin;
+                    infoRow["ZhuYingYeWuShueiJinJiFuJia"] = item.ZhuYingYeWuShueiJinJiFuJia;
+                    infoRow["ZhuYingYeWuFuJiaShuiHouMaoLi"] = item.ZhuYingYeWuFuJiaShuiHouMaoLi;
+                    infoRow["QiTaYeWuShouRu"] = item.QiTaYeWuShouRu;
+                    infoRow["QiTaYeWuChengBen"] = item.QiTaYeWuChengBen;
+                    infoRow["QiTaYeWuShuiJinJiFuJia"] = item.QiTaYeWuShuiJinJiFuJia;
+                    infoRow["QiTaYeWuLiRun"] = item.QiTaYeWuLiRun;
+                    infoRow["XiaoShouJiGuanLiFeiYong"] = item.XiaoShouJiGuanLiFeiYong;
+                    infoRow["XiShueiQianLiRun"] = item.XiShueiQianLiRun;
+                    infoRow["CaiWuFeiYong"] = item.CaiWuFeiYong;
+                    infoRow["YingYeLiRun"] = item.YingYeLiRun;
+                    infoRow["ZiChanJianZhiSunShi"] = item.ZiChanJianZhiSunShi;
+                    infoRow["GongYunJiaZhiBianDongShouYi"] = item.GongYunJiaZhiBianDongShouYi;
+                    infoRow["TouZiShouYi"] = item.TouZiShouYi;
+                    infoRow["YingYeWaiShouZhiJingE"] = item.YingYeWaiShouZhiJingE;
+                    infoRow["LiRunZongE"] = item.LiRunZongE;
+                    infoRow["SuoDeShui"] = item.SuoDeShui;
+                    infoRow["ShueiHouLiRun"] = item.ShueiHouLiRun;
+                    infoRow["ShaoShuGuDongSunYi"] = item.ShaoShuGuDongSunYi;
+                    infoRow["JingLiRun"] = item.JingLiRun;
 
-                dtInfo.Rows.Add(infoRow);
-            };
-            #region 数据汇总
-            DataRow RowHZ = dtInfo.NewRow();
-            RowHZ["Month"] = "累计";
-            RowHZ["XiaoShouShuLiang"] = list.Sum(a => a.XiaoShouShuLiang);
-            RowHZ["XinCheXiaoShouShuLiang"] = list.Sum(a => a.XinCheXiaoShouShuLiang);
-            RowHZ["WeiXiuJinChangTaiCi"] = list.Sum(a => a.WeiXiuJinChangTaiCi);
-            RowHZ["FenQiShuLiang"] = list.Sum(a => a.FenQiShuLiang);
-            RowHZ["XinBaoShuLiang"] = list.Sum(a => a.XinBaoShuLiang);
-            RowHZ["XuBaoShuLiang"] = list.Sum(a => a.XuBaoShuLiang);
-            RowHZ["YanBaoShuLiang"] = list.Sum(a => a.YanBaoShuLiang);
-            RowHZ["GuaPaiShuLiang"] = list.Sum(a => a.GuaPaiShuLiang);
-            RowHZ["ErShouCheXiaoShouShuLiang"] = list.Sum(a => a.ErShouCheXiaoShouShuLiang);
-            RowHZ["ZhuYingYeWuShouRu"] = list.Sum(a => a.ZhuYingYeWuShouRu);
-            RowHZ["ZhuYingShouRu_ZhengChe"] = list.Sum(a => a.ZhuYingShouRu_ZhengChe);
-            RowHZ["ZhuYingShouRu_ShouHouWeiXiu"] = list.Sum(a => a.ZhuYingShouRu_ShouHouWeiXiu);
-            RowHZ["ZhuYingShouRu_WeiXiuPeiJian"] = list.Sum(a => a.ZhuYingShouRu_WeiXiuPeiJian);
-            RowHZ["ZhuYingShouRu_GongShi"] = list.Sum(a => a.ZhuYingShouRu_GongShi);
-            RowHZ["ZhuYingShouRu_ZhuangShiZhuangHuang"] = list.Sum(a => a.ZhuYingShouRu_ZhuangShiZhuangHuang);
-            RowHZ["ZhuYingShouRu_YongJin"] = list.Sum(a => a.ZhuYingShouRu_YongJin);
-            RowHZ["ZhuYingShouRu_FenQi"] = list.Sum(a => a.ZhuYingShouRu_FenQi);
-            RowHZ["ZhuYingShouRu_BaoXian"] = list.Sum(a => a.ZhuYingShouRu_BaoXian);
-            RowHZ["ZhuYingShouRu_XinBao"] = list.Sum(a => a.ZhuYingShouRu_XinBao);
-            RowHZ["ZhuYingShouRu_XuBao"] = list.Sum(a => a.ZhuYingShouRu_XuBao);
-            RowHZ["ZhuYingShouRu_YanBao"] = list.Sum(a => a.ZhuYingShouRu_YanBao);
-            RowHZ["ZhuYingShouRu_GuaPai"] = list.Sum(a => a.ZhuYingShouRu_GuaPai);
-            RowHZ["ZhuYingShouRu_ErShouChe"] = list.Sum(a => a.ZhuYingShouRu_ErShouChe);
-            RowHZ["ZhuYingShouRu_QiTa"] = list.Sum(a => a.ZhuYingShouRu_QiTa);
-            RowHZ["ZhuYingYeWuChengBen"] = list.Sum(a => a.ZhuYingYeWuChengBen);
-            RowHZ["ZhuYingChengBen_ZhengChe"] = list.Sum(a => a.ZhuYingChengBen_ZhengChe);
-            RowHZ["ZhuYingChengBen_ShouHouWeiXiu"] = list.Sum(a => a.ZhuYingChengBen_ShouHouWeiXiu);
-            RowHZ["ZhuYingChengBen_WeiXiuPeiJian"] = list.Sum(a => a.ZhuYingChengBen_WeiXiuPeiJian);
-            RowHZ["ZhuYingChengBen_GongShi"] = list.Sum(a => a.ZhuYingChengBen_GongShi);
-            RowHZ["ZhuYingChengBen_ZhuangShiZhuangHuang"] = list.Sum(a => a.ZhuYingChengBen_ZhuangShiZhuangHuang);
-            RowHZ["ZhuYingChengBen_YongJin"] = list.Sum(a => a.ZhuYingChengBen_YongJin);
-            RowHZ["ZhuYingChengBen_FenQi"] = list.Sum(a => a.ZhuYingChengBen_FenQi);
-            RowHZ["ZhuYingChengBen_BaoXian"] = list.Sum(a => a.ZhuYingChengBen_BaoXian);
-            RowHZ["ZhuYingChengBen_XinBao"] = list.Sum(a => a.ZhuYingChengBen_XinBao);
-            RowHZ["ZhuYingChengBen_XuBao"] = list.Sum(a => a.ZhuYingChengBen_XuBao);
-            RowHZ["ZhuYingChengBen_YanBao"] = list.Sum(a => a.ZhuYingChengBen_YanBao);
-            RowHZ["ZhuYingChengBen_GuaPai"] = list.Sum(a => a.ZhuYingChengBen_GuaPai);
-            RowHZ["ZhuYingChengBen_ErShouChe"] = list.Sum(a => a.ZhuYingChengBen_ErShouChe);
-            RowHZ["ZhuYingChengBen_QiTa"] = list.Sum(a => a.ZhuYingChengBen_QiTa);
-            RowHZ["MaoLi"] = list.Sum(a => a.MaoLi);
-            RowHZ["MaoLi_ZhengChe"] = list.Sum(a => a.MaoLi_ZhengChe);
-            RowHZ["MaoLi_WeiXiu"] = list.Sum(a => a.MaoLi_WeiXiu);
-            RowHZ["MaoLi_ZhuangShiZhuangHuang"] = list.Sum(a => a.MaoLi_ZhuangShiZhuangHuang);
-            RowHZ["MaoLi_YongJin"] = list.Sum(a => a.MaoLi_YongJin);
-            RowHZ["ZhuYingYeWuShueiJinJiFuJia"] = list.Sum(a => a.ZhuYingYeWuShueiJinJiFuJia);
-            RowHZ["ZhuYingYeWuFuJiaShuiHouMaoLi"] = list.Sum(a => a.ZhuYingYeWuFuJiaShuiHouMaoLi);
-            RowHZ["QiTaYeWuShouRu"] = list.Sum(a => a.QiTaYeWuShouRu);
-            RowHZ["QiTaYeWuChengBen"] = list.Sum(a => a.QiTaYeWuChengBen);
-            RowHZ["QiTaYeWuShuiJinJiFuJia"] = list.Sum(a => a.QiTaYeWuShuiJinJiFuJia);
-            RowHZ["QiTaYeWuLiRun"] = list.Sum(a => a.QiTaYeWuLiRun);
-            RowHZ["XiaoShouJiGuanLiFeiYong"] = list.Sum(a => a.XiaoShouJiGuanLiFeiYong);
-            RowHZ["XiShueiQianLiRun"] = list.Sum(a => a.XiShueiQianLiRun);
-            RowHZ["CaiWuFeiYong"] = list.Sum(a => a.CaiWuFeiYong);
-            RowHZ["YingYeLiRun"] = list.Sum(a => a.YingYeLiRun);
-            RowHZ["ZiChanJianZhiSunShi"] = list.Sum(a => a.ZiChanJianZhiSunShi);
-            RowHZ["GongYunJiaZhiBianDongShouYi"] = list.Sum(a => a.GongYunJiaZhiBianDongShouYi);
-            RowHZ["TouZiShouYi"] = list.Sum(a => a.TouZiShouYi);
-            RowHZ["YingYeWaiShouZhiJingE"] = list.Sum(a => a.YingYeWaiShouZhiJingE);
-            RowHZ["LiRunZongE"] = list.Sum(a => a.LiRunZongE);
-            RowHZ["SuoDeShui"] = list.Sum(a => a.SuoDeShui);
-            RowHZ["ShueiHouLiRun"] = list.Sum(a => a.ShueiHouLiRun);
-            RowHZ["ShaoShuGuDongSunYi"] = list.Sum(a => a.ShaoShuGuDongSunYi);
-            RowHZ["JingLiRun"] = list.Sum(a => a.JingLiRun);
+                    dtInfo.Rows.Add(infoRow);
+                };
+                #region 数据汇总
+                DataRow RowHZ = dtInfo.NewRow();
+                RowHZ["Month"] = "累计";
+                RowHZ["XiaoShouShuLiang"] = list.Sum(a => a.XiaoShouShuLiang);
+                RowHZ["XinCheXiaoShouShuLiang"] = list.Sum(a => a.XinCheXiaoShouShuLiang);
+                RowHZ["WeiXiuJinChangTaiCi"] = list.Sum(a => a.WeiXiuJinChangTaiCi);
+                RowHZ["FenQiShuLiang"] = list.Sum(a => a.FenQiShuLiang);
+                RowHZ["XinBaoShuLiang"] = list.Sum(a => a.XinBaoShuLiang);
+                RowHZ["XuBaoShuLiang"] = list.Sum(a => a.XuBaoShuLiang);
+                RowHZ["YanBaoShuLiang"] = list.Sum(a => a.YanBaoShuLiang);
+                RowHZ["GuaPaiShuLiang"] = list.Sum(a => a.GuaPaiShuLiang);
+                RowHZ["ErShouCheXiaoShouShuLiang"] = list.Sum(a => a.ErShouCheXiaoShouShuLiang);
+                RowHZ["ZhuYingYeWuShouRu"] = list.Sum(a => a.ZhuYingYeWuShouRu);
+                RowHZ["ZhuYingShouRu_ZhengChe"] = list.Sum(a => a.ZhuYingShouRu_ZhengChe);
+                RowHZ["ZhuYingShouRu_ShouHouWeiXiu"] = list.Sum(a => a.ZhuYingShouRu_ShouHouWeiXiu);
+                RowHZ["ZhuYingShouRu_WeiXiuPeiJian"] = list.Sum(a => a.ZhuYingShouRu_WeiXiuPeiJian);
+                RowHZ["ZhuYingShouRu_GongShi"] = list.Sum(a => a.ZhuYingShouRu_GongShi);
+                RowHZ["ZhuYingShouRu_ZhuangShiZhuangHuang"] = list.Sum(a => a.ZhuYingShouRu_ZhuangShiZhuangHuang);
+                RowHZ["ZhuYingShouRu_YongJin"] = list.Sum(a => a.ZhuYingShouRu_YongJin);
+                RowHZ["ZhuYingShouRu_FenQi"] = list.Sum(a => a.ZhuYingShouRu_FenQi);
+                RowHZ["ZhuYingShouRu_BaoXian"] = list.Sum(a => a.ZhuYingShouRu_BaoXian);
+                RowHZ["ZhuYingShouRu_XinBao"] = list.Sum(a => a.ZhuYingShouRu_XinBao);
+                RowHZ["ZhuYingShouRu_XuBao"] = list.Sum(a => a.ZhuYingShouRu_XuBao);
+                RowHZ["ZhuYingShouRu_YanBao"] = list.Sum(a => a.ZhuYingShouRu_YanBao);
+                RowHZ["ZhuYingShouRu_GuaPai"] = list.Sum(a => a.ZhuYingShouRu_GuaPai);
+                RowHZ["ZhuYingShouRu_ErShouChe"] = list.Sum(a => a.ZhuYingShouRu_ErShouChe);
+                RowHZ["ZhuYingShouRu_QiTa"] = list.Sum(a => a.ZhuYingShouRu_QiTa);
+                RowHZ["ZhuYingYeWuChengBen"] = list.Sum(a => a.ZhuYingYeWuChengBen);
+                RowHZ["ZhuYingChengBen_ZhengChe"] = list.Sum(a => a.ZhuYingChengBen_ZhengChe);
+                RowHZ["ZhuYingChengBen_ShouHouWeiXiu"] = list.Sum(a => a.ZhuYingChengBen_ShouHouWeiXiu);
+                RowHZ["ZhuYingChengBen_WeiXiuPeiJian"] = list.Sum(a => a.ZhuYingChengBen_WeiXiuPeiJian);
+                RowHZ["ZhuYingChengBen_GongShi"] = list.Sum(a => a.ZhuYingChengBen_GongShi);
+                RowHZ["ZhuYingChengBen_ZhuangShiZhuangHuang"] = list.Sum(a => a.ZhuYingChengBen_ZhuangShiZhuangHuang);
+                RowHZ["ZhuYingChengBen_YongJin"] = list.Sum(a => a.ZhuYingChengBen_YongJin);
+                RowHZ["ZhuYingChengBen_FenQi"] = list.Sum(a => a.ZhuYingChengBen_FenQi);
+                RowHZ["ZhuYingChengBen_BaoXian"] = list.Sum(a => a.ZhuYingChengBen_BaoXian);
+                RowHZ["ZhuYingChengBen_XinBao"] = list.Sum(a => a.ZhuYingChengBen_XinBao);
+                RowHZ["ZhuYingChengBen_XuBao"] = list.Sum(a => a.ZhuYingChengBen_XuBao);
+                RowHZ["ZhuYingChengBen_YanBao"] = list.Sum(a => a.ZhuYingChengBen_YanBao);
+                RowHZ["ZhuYingChengBen_GuaPai"] = list.Sum(a => a.ZhuYingChengBen_GuaPai);
+                RowHZ["ZhuYingChengBen_ErShouChe"] = list.Sum(a => a.ZhuYingChengBen_ErShouChe);
+                RowHZ["ZhuYingChengBen_QiTa"] = list.Sum(a => a.ZhuYingChengBen_QiTa);
+                RowHZ["MaoLi"] = list.Sum(a => a.MaoLi);
+                RowHZ["MaoLi_ZhengChe"] = list.Sum(a => a.MaoLi_ZhengChe);
+                RowHZ["MaoLi_WeiXiu"] = list.Sum(a => a.MaoLi_WeiXiu);
+                RowHZ["MaoLi_ZhuangShiZhuangHuang"] = list.Sum(a => a.MaoLi_ZhuangShiZhuangHuang);
+                RowHZ["MaoLi_YongJin"] = list.Sum(a => a.MaoLi_YongJin);
+                RowHZ["ZhuYingYeWuShueiJinJiFuJia"] = list.Sum(a => a.ZhuYingYeWuShueiJinJiFuJia);
+                RowHZ["ZhuYingYeWuFuJiaShuiHouMaoLi"] = list.Sum(a => a.ZhuYingYeWuFuJiaShuiHouMaoLi);
+                RowHZ["QiTaYeWuShouRu"] = list.Sum(a => a.QiTaYeWuShouRu);
+                RowHZ["QiTaYeWuChengBen"] = list.Sum(a => a.QiTaYeWuChengBen);
+                RowHZ["QiTaYeWuShuiJinJiFuJia"] = list.Sum(a => a.QiTaYeWuShuiJinJiFuJia);
+                RowHZ["QiTaYeWuLiRun"] = list.Sum(a => a.QiTaYeWuLiRun);
+                RowHZ["XiaoShouJiGuanLiFeiYong"] = list.Sum(a => a.XiaoShouJiGuanLiFeiYong);
+                RowHZ["XiShueiQianLiRun"] = list.Sum(a => a.XiShueiQianLiRun);
+                RowHZ["CaiWuFeiYong"] = list.Sum(a => a.CaiWuFeiYong);
+                RowHZ["YingYeLiRun"] = list.Sum(a => a.YingYeLiRun);
+                RowHZ["ZiChanJianZhiSunShi"] = list.Sum(a => a.ZiChanJianZhiSunShi);
+                RowHZ["GongYunJiaZhiBianDongShouYi"] = list.Sum(a => a.GongYunJiaZhiBianDongShouYi);
+                RowHZ["TouZiShouYi"] = list.Sum(a => a.TouZiShouYi);
+                RowHZ["YingYeWaiShouZhiJingE"] = list.Sum(a => a.YingYeWaiShouZhiJingE);
+                RowHZ["LiRunZongE"] = list.Sum(a => a.LiRunZongE);
+                RowHZ["SuoDeShui"] = list.Sum(a => a.SuoDeShui);
+                RowHZ["ShueiHouLiRun"] = list.Sum(a => a.ShueiHouLiRun);
+                RowHZ["ShaoShuGuDongSunYi"] = list.Sum(a => a.ShaoShuGuDongSunYi);
+                RowHZ["JingLiRun"] = list.Sum(a => a.JingLiRun);
 
 
-            dtInfo.Rows.Add(RowHZ);
-            #endregion
+                dtInfo.Rows.Add(RowHZ);
+                #endregion
+                #endregion
+            }
+            else if (Type == 1)
+            {
+                #region 实际数据
+                ProfitLossReality_MainModel olrmModel = new ProfitLossReality_MainModel();
+                var olrList = olrmModel.GetInfo_ByCID_YID(YearID,ComPanyID);
+                foreach (var item in olrList)
+                {
+                    DataRow infoRow = dtInfo.NewRow();
+                    infoRow["Month"] = item.Month + "月份";
+                    infoRow["XiaoShouShuLiang"] = item.ProfitLossReality_Details.Sum(a=>a.XiaoShouShuLiang);
+                    infoRow["XinCheXiaoShouShuLiang"] = item.ProfitLossReality_Details.Sum(a => a.XinCheXiaoShouShuLiang);
+                    infoRow["WeiXiuJinChangTaiCi"] = item.ProfitLossReality_Details.Sum(a => a.WeiXiuJinChangTaiCi);
+                    infoRow["FenQiShuLiang"] = item.ProfitLossReality_Details.Sum(a => a.FenQiShuLiang);
+                    infoRow["XinBaoShuLiang"] = item.ProfitLossReality_Details.Sum(a => a.XinBaoShuLiang);
+                    infoRow["XuBaoShuLiang"] = item.ProfitLossReality_Details.Sum(a => a.XuBaoShuLiang);
+                    infoRow["YanBaoShuLiang"] = item.ProfitLossReality_Details.Sum(a => a.YanBaoShuLiang);
+                    infoRow["GuaPaiShuLiang"] = item.ProfitLossReality_Details.Sum(a => a.GuaPaiShuLiang);
+                    infoRow["ErShouCheXiaoShouShuLiang"] = item.ProfitLossReality_Details.Sum(a => a.ErShouCheXiaoShouShuLiang);
+                    infoRow["ZhuYingYeWuShouRu"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingYeWuShouRu);
+                    infoRow["ZhuYingShouRu_ZhengChe"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_ZhengChe);
+                    infoRow["ZhuYingShouRu_ShouHouWeiXiu"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_ShouHouWeiXiu);
+                    infoRow["ZhuYingShouRu_WeiXiuPeiJian"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_WeiXiuPeiJian);
+                    infoRow["ZhuYingShouRu_GongShi"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_GongShi);
+                    infoRow["ZhuYingShouRu_ZhuangShiZhuangHuang"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_ZhuangShiZhuangHuang);
+                    infoRow["ZhuYingShouRu_YongJin"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_YongJin);
+                    infoRow["ZhuYingShouRu_FenQi"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_FenQi);
+                    infoRow["ZhuYingShouRu_BaoXian"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_BaoXian);
+                    infoRow["ZhuYingShouRu_XinBao"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_XinBao);
+                    infoRow["ZhuYingShouRu_XuBao"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_XuBao);
+                    infoRow["ZhuYingShouRu_YanBao"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_YanBao);
+                    infoRow["ZhuYingShouRu_GuaPai"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_GuaPai);
+                    infoRow["ZhuYingShouRu_ErShouChe"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_ErShouChe);
+                    infoRow["ZhuYingShouRu_QiTa"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingShouRu_QiTa);
+                    infoRow["ZhuYingYeWuChengBen"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingYeWuChengBen);
+                    infoRow["ZhuYingChengBen_ZhengChe"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_ZhengChe);
+                    infoRow["ZhuYingChengBen_ShouHouWeiXiu"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_ShouHouWeiXiu);
+                    infoRow["ZhuYingChengBen_WeiXiuPeiJian"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_WeiXiuPeiJian);
+                    infoRow["ZhuYingChengBen_GongShi"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_GongShi);
+                    infoRow["ZhuYingChengBen_ZhuangShiZhuangHuang"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_ZhuangShiZhuangHuang);
+                    infoRow["ZhuYingChengBen_YongJin"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_YongJin);
+                    infoRow["ZhuYingChengBen_FenQi"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_FenQi);
+                    infoRow["ZhuYingChengBen_BaoXian"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_BaoXian);
+                    infoRow["ZhuYingChengBen_XinBao"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_XinBao);
+                    infoRow["ZhuYingChengBen_XuBao"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_XuBao);
+                    infoRow["ZhuYingChengBen_YanBao"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_YanBao);
+                    infoRow["ZhuYingChengBen_GuaPai"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_GuaPai);
+                    infoRow["ZhuYingChengBen_ErShouChe"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_ErShouChe);
+                    infoRow["ZhuYingChengBen_QiTa"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingChengBen_QiTa);
+                    infoRow["MaoLi"] = item.ProfitLossReality_Details.Sum(a => a.MaoLi);
+                    infoRow["MaoLi_ZhengChe"] = item.ProfitLossReality_Details.Sum(a => a.MaoLi_ZhengChe);
+                    infoRow["MaoLi_WeiXiu"] = item.ProfitLossReality_Details.Sum(a => a.MaoLi_WeiXiu);
+                    infoRow["MaoLi_ZhuangShiZhuangHuang"] = item.ProfitLossReality_Details.Sum(a => a.MaoLi_ZhuangShiZhuangHuang);
+                    infoRow["MaoLi_YongJin"] = item.ProfitLossReality_Details.Sum(a => a.MaoLi_YongJin);
+                    infoRow["ZhuYingYeWuShueiJinJiFuJia"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingYeWuShueiJinJiFuJia);
+                    infoRow["ZhuYingYeWuFuJiaShuiHouMaoLi"] = item.ProfitLossReality_Details.Sum(a => a.ZhuYingYeWuFuJiaShuiHouMaoLi);
+                    infoRow["QiTaYeWuShouRu"] = item.ProfitLossReality_Details.Sum(a => a.QiTaYeWuShouRu);
+                    infoRow["QiTaYeWuChengBen"] = item.ProfitLossReality_Details.Sum(a => a.QiTaYeWuChengBen);
+                    infoRow["QiTaYeWuShuiJinJiFuJia"] = item.ProfitLossReality_Details.Sum(a => a.QiTaYeWuShuiJinJiFuJia);
+                    infoRow["QiTaYeWuLiRun"] = item.ProfitLossReality_Details.Sum(a => a.QiTaYeWuLiRun);
+                    infoRow["XiaoShouJiGuanLiFeiYong"] = item.ProfitLossReality_Details.Sum(a => a.XiaoShouJiGuanLiFeiYong);
+                    infoRow["XiShueiQianLiRun"] = item.ProfitLossReality_Details.Sum(a => a.XiShueiQianLiRun);
+                    infoRow["CaiWuFeiYong"] = item.ProfitLossReality_Details.Sum(a => a.CaiWuFeiYong);
+                    infoRow["YingYeLiRun"] = item.ProfitLossReality_Details.Sum(a => a.YingYeLiRun);
+                    infoRow["ZiChanJianZhiSunShi"] = item.ProfitLossReality_Details.Sum(a => a.ZiChanJianZhiSunShi);
+                    infoRow["GongYunJiaZhiBianDongShouYi"] = item.ProfitLossReality_Details.Sum(a => a.GongYunJiaZhiBianDongShouYi);
+                    infoRow["TouZiShouYi"] = item.ProfitLossReality_Details.Sum(a => a.TouZiShouYi);
+                    infoRow["YingYeWaiShouZhiJingE"] = item.ProfitLossReality_Details.Sum(a => a.YingYeWaiShouZhiJingE);
+                    infoRow["LiRunZongE"] = item.ProfitLossReality_Details.Sum(a => a.LiRunZongE);
+                    infoRow["SuoDeShui"] = item.ProfitLossReality_Details.Sum(a => a.SuoDeShui);
+                    infoRow["ShueiHouLiRun"] = item.ProfitLossReality_Details.Sum(a => a.ShueiHouLiRun);
+                    infoRow["ShaoShuGuDongSunYi"] = item.ProfitLossReality_Details.Sum(a => a.ShaoShuGuDongSunYi);
+                    infoRow["JingLiRun"] = item.ProfitLossReality_Details.Sum(a => a.JingLiRun);
 
+                    dtInfo.Rows.Add(infoRow);
+                };
+                
+
+                #endregion
+            }
             #region 纵向表头
             DataTable dtTitle = SetDt_Detail();
             DataRow row = dtTitle.NewRow();

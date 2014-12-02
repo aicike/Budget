@@ -7,7 +7,7 @@
     var DtTitle = ViewBag.DtTitle as System.Data.DataTable;
 }
 @section scripts{
-$(function(){ UIGeneral.init(); });
+
 }
 @model System.Data.DataTable
 <div class="row-fluid">
@@ -34,7 +34,7 @@ $(function(){ UIGeneral.init(); });
                                 {
                                     @:尚未上报数据<br />
                                 }
-                                点击公司名称 可查看月份明细
+                                点击公司名称可查看月份明细 与 实际数据
                             </td>
                         </tr>
                     </table>

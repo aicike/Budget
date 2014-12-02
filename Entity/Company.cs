@@ -54,9 +54,13 @@ namespace Entity
         public virtual ICollection<ProfitLoss_Detailed> ProfitLoss_Detailed { get; set; }
 
         /// <summary>
-        /// 损益预算真实数据（周）
+        /// 损益预算真实数据主表（周）
         /// </summary>
         public virtual ICollection<ProfitLossReality_Main> ProfitLossReality_Mains { get; set; }
+        /// <summary>
+        /// 损益预算真实数据子表（周）
+        /// </summary>
+        public virtual ICollection<ProfitLossReality_Detail> ProfitLossReality_Details { get; set; }
         #endregion
 
 
