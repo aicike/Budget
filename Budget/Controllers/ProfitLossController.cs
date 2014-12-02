@@ -748,10 +748,22 @@ namespace Budget.Controllers
         //损益真实数据详细（周）
         public ActionResult ActualMonth(int YearID, int Month, int CID)
         {
+            ProfitLoss_Detailed detail = null;
+            ProfitLossReality_MainModel profitLossReality_MainModel = new ProfitLossReality_MainModel();
+            var profitLossReality_Main = profitLossReality_MainModel.GetRM_ByYID_Month_CID(YearID, Month, CID);
+            if (profitLossReality_Main == null)
+            {
+                ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
+                detail = PDetailModel.GetDetailed_ByCompanyID_YearMonth(CID, YearID, Month);
+                ViewBag.List = null;
+            }
+            else
+            {
+                detail = profitLossReality_Main.ProfitLoss_Detailed;
+                ViewBag.List = profitLossReality_Main.ProfitLossReality_Details.OrderBy(a => a.Week).ToList();
+            }
             ViewBag.YearID = YearID;
-            ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
-            var ProfitLoss_Detailed = PDetailModel.GetDetailed_ByCompanyID_YearMonth(CID, YearID, Month);
-            ViewBag.ProfitLoss_Detailed = ProfitLoss_Detailed;
+            ViewBag.ProfitLoss_Detailed = detail;
             ViewBag.Month = Month;
             return View();
         }
