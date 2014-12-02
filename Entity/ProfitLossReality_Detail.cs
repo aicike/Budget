@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations;
 namespace Entity
 {
     /// <summary>
-    /// 损益预算 明细表
+    /// 损益预算真实数据
     /// </summary>
-    public class ProfitLoss_Detailed : BaseEntity
+    public class ProfitLossReality_Detail : BaseEntity
     {
         /// <summary>
         /// 自增主键
@@ -17,25 +17,18 @@ namespace Entity
         public int ID { get; set; }
 
         /// <summary>
-        /// 公司ID
+        /// 损益预算真实 主表ID
         /// </summary>
-        [Display(Name = "公司ID")]
-        public int CompanyID { get; set; }
-        public virtual Company Company { get; set; }
+        [Display(Name = "损益预算真实 子表ID")]
+        public int ProfitLossReality_MainID { get; set; }
+        public virtual ProfitLossReality_Main ProfitLossReality_Main { get; set; }
 
 
         /// <summary>
-        /// 损益预算 主表ID
+        /// 周
         /// </summary>
-        [Display(Name = "损益预算 主表ID")]
-        public int ProfitLoss_MainID { get; set; }
-        public virtual ProfitLoss_Main ProfitLoss_Main { get; set; }
-
-        /// <summary>
-        /// 月份
-        /// </summary>
-        [Display(Name = "月份")]
-        public int Month { get; set; }
+        [Display(Name = "周")]
+        public int Week { get; set; }
 
         /// <summary>
         /// 销售数量
@@ -392,7 +385,7 @@ namespace Entity
         /// </summary>
         [Display(Name = "息税前利润")]
         [Required(ErrorMessage = "请输入息税前利润")]
-        public decimal XiShueiQianLiRun{ get; set; }
+        public decimal XiShueiQianLiRun { get; set; }
 
         /// <summary>
         /// 财务费用
@@ -464,12 +457,5 @@ namespace Entity
         [Display(Name = "净利润")]
         [Required(ErrorMessage = "请输入净利润")]
         public decimal JingLiRun { get; set; }
-
-        /// <summary>
-        /// 损益预算 子表ID
-        /// </summary>
-        [Display(Name = "损益预算 子表ID")]
-        public int? ProfitLossReality_MainID { get; set; }
-        public virtual ProfitLossReality_Main ProfitLossReality_Main { get; set; }
     }
 }

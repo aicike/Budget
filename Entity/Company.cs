@@ -42,6 +42,7 @@ namespace Entity
         /// </summary>
         public virtual ICollection<ProfitLoss_Coefficient> ProfitLoss_Coefficient { get; set; }
 
+
         #region 损益预算
         /// <summary>
         /// 损益预算主表
@@ -51,7 +52,13 @@ namespace Entity
         /// 损益预算子表
         /// </summary>
         public virtual ICollection<ProfitLoss_Detailed> ProfitLoss_Detailed { get; set; }
+
+        /// <summary>
+        /// 损益预算真实数据（周）
+        /// </summary>
+        public virtual ICollection<ProfitLossReality_Main> ProfitLossReality_Mains { get; set; }
         #endregion
+
 
     }
 }

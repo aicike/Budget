@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Entity;
+using EF.Mapping;
 
 namespace EF
 {
@@ -26,6 +27,7 @@ namespace EF
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Configurations.Add(new ProfitLossReality_MainMap());
         }
     }
 }

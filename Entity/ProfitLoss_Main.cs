@@ -41,5 +41,6 @@ namespace Entity
         /// 损益预算 明细表
         /// </summary>
         public virtual ICollection<ProfitLoss_Detailed> ProfitLoss_Detailed { get; set; }
+
     }
 }

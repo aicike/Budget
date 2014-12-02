@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations;
 namespace Entity
 {
     /// <summary>
-    /// 损益预算 明细表
+    /// 损益预算真实数据
     /// </summary>
-    public class ProfitLoss_Detailed : BaseEntity
+    public class ProfitLossReality_Main : BaseEntity
     {
         /// <summary>
         /// 自增主键
@@ -25,11 +25,18 @@ namespace Entity
 
 
         /// <summary>
-        /// 损益预算 主表ID
+        /// 损益预算 子表ID
         /// </summary>
-        [Display(Name = "损益预算 主表ID")]
-        public int ProfitLoss_MainID { get; set; }
-        public virtual ProfitLoss_Main ProfitLoss_Main { get; set; }
+        [Display(Name = "损益预算 子表ID")]
+        public int ProfitLoss_DetailedID { get; set; }
+        public virtual ProfitLoss_Detailed ProfitLoss_Detailed { get; set; }
+
+        /// <summary>
+        /// 年份ID
+        /// </summary>
+        [Display(Name = "年份ID")]
+        public int ParticularYearID { get; set; }
+        public virtual ParticularYear ParticularYear { get; set; }
 
         /// <summary>
         /// 月份
@@ -392,7 +399,7 @@ namespace Entity
         /// </summary>
         [Display(Name = "息税前利润")]
         [Required(ErrorMessage = "请输入息税前利润")]
-        public decimal XiShueiQianLiRun{ get; set; }
+        public decimal XiShueiQianLiRun { get; set; }
 
         /// <summary>
         /// 财务费用
@@ -466,10 +473,8 @@ namespace Entity
         public decimal JingLiRun { get; set; }
 
         /// <summary>
-        /// 损益预算 子表ID
+        /// 损益预算真实数据（周）
         /// </summary>
-        [Display(Name = "损益预算 子表ID")]
-        public int? ProfitLossReality_MainID { get; set; }
-        public virtual ProfitLossReality_Main ProfitLossReality_Main { get; set; }
+        public virtual ICollection<ProfitLossReality_Detail> ProfitLossReality_Details { get; set; }
     }
 }
