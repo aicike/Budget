@@ -9,7 +9,6 @@ namespace Entity
     public class Menu : BaseEntity
     {
         public int ID { get; set; }
-        public int ID2 { get; set; }
 
         [Display(Name = "Area")]
         public string Area { get; set; }
