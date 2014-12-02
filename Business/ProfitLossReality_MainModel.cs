@@ -31,7 +31,7 @@ namespace Business
         public Result SetReport(int YearID, int Month, int CID, bool Report)
         {
             Result result = new Result();
-            string sql = string.Format("update ProfitLossReality_Main set IsReport = [0] where  CompanyID=[1] and ParticularYearID=[2] and Month=[3]",
+            string sql = string.Format("update ProfitLossReality_Main set IsReport = '{0}' where  CompanyID={1} and ParticularYearID={2} and Month={3}",
                         Report, CID, YearID, Month);
             base.SqlExecute(sql);
             return result;
