@@ -597,5 +597,16 @@ namespace Budget.Controllers
 
             return "";
         }
+
+        //预算实际月份列表
+        public ActionResult ActualMonthList(int YearID)
+        {
+            ParticularYearModel PyearModel = new ParticularYearModel();
+            var pyear = PyearModel.Get(YearID);
+            ViewBag.Year = pyear.Year;
+            ViewBag.YearID = YearID;
+
+            return View();
+        }
     }
 }

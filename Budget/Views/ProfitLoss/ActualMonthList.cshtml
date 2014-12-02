@@ -1,17 +1,17 @@
 ﻿@{
-    ViewBag.Title = "损益预算";
+    ViewBag.Title = ViewBag.YearID + "年实际损益月份列表";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section scripts{
 $(function(){ UIGeneral.init(); });
 }
-@model System.Data.DataTable
+
 <div class="row-fluid">
     <div class="span6" style="width: 100%">
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cogs"></i>损益预算年份列表
+                    <i class="icon-cogs"></i>@ViewBag.YearID 年实际损益月份列表
                 </div>
                 <div class="tools">
                 </div>
@@ -20,17 +20,17 @@ $(function(){ UIGeneral.init(); });
                 <table class="table table-hover">
                     <tr>
                         <th>
-                            预算年份
+                            月份
                         </th>
                         <th style="width: 20%">
                             操作
                         </th>
                     </tr>
-                    @for (int i = 0; i < Model.Rows.Count; i++)
+                    @for (int i = 1; i < 13; i++)
                     {
                         <tr>
                             <td>
-                                <a href="@Url.Action("Detail", "ProfitLoss", new { YearID = Model.Rows[i]["Yearid"] })">@Model.Rows[i]["Year"]</a>
+                                <a href="@Url.Action("Detail", "ProfitLoss", new { YearID = Model.Rows[i]["Yearid"],MonthID=i })">@(i)月份实际数据</a>
                             </td>
                             <td>
                                 @if (Model.Rows[i]["Type"].ToString() == "0")
@@ -39,7 +39,7 @@ $(function(){ UIGeneral.init(); });
                                 }
                                 else if (Model.Rows[i]["Type"].ToString() == "1")
                                 {
-                                    @Ajax.ActionLink("上报", "ReportProfitLoss", "ProfitLoss", new { PMID = Model.Rows[i]["PMID"] }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要删除吗')) {return true }" }, new { @class="tooltips",style="color: #4d8bf8; cursor: pointer",data_placement="top",data_original_title="注意：上报后不可更改。"})
+                                    @Ajax.ActionLink("上报", "ReportProfitLoss", "ProfitLoss", new { PMID = Model.Rows[i]["PMID"] }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要删除吗')) {return true }" }, new { @class = "tooltips", style = "color: #4d8bf8; cursor: pointer", data_placement = "top", data_original_title = "注意：上报后不可更改。" })
                                 }
                                 else
                                 {
