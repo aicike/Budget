@@ -1891,7 +1891,7 @@
                 });
                 var value = JSON.stringify(sunyi_list);
                 $.post(submitUrl, { json: value, YearID: year,Month:month ,pdid:pdid}, function (result) {
-                    window.location.href="@Url.Action("Index", "ProfitLoss")";
+                    window.location.href="@Url.Action("ActualMonthList", "ProfitLoss", new { YearID = ViewBag.YearID })";
                 });
         });
     </script>
