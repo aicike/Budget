@@ -6,21 +6,36 @@
 @section scripts{
     <script>
         $(function () {
+            var Tab_Main_td_length = $("#Tab_Main").find("tr:eq(0)").find("td").length;
             $("#Tab_Main").find("tr:eq(0)").find("td").each(function (i, element) {
-                if(i!=0&&i!=(i-1))
+                if(i!=0&&i!=(Tab_Main_td_length-1))
                 {
-                var url = "@Url.Action("ActualMonth", "ProfitLoss",new{YearID=ViewBag.YearID,CID=ViewBag.CID})"+"&Month="+i;
+                var url = "@Url.Action("ActualMonth", "ProfitLoss", new { YearID = ViewBag.YearID, CID = ViewBag.CID })"+"&Month="+i;
                 
                 $(this).html("<a class='tooltips' data-placement='top' data-original-title='点击查看实际信息' href = '"+url+"' style = 'color:#0d638f; font-weight:bold' >"+$(this).text()+"</a>");
                 }
             });
 
- 
+            $("#Sel_type").val(@ViewBag.Type);
 
         });
+
+        function Select()
+        {
+            $("#Type").val($("#Sel_type").val());
+            sub_btn.click();
+        }
     </script>
 }
 @model System.Data.DataTable
+    @using (Html.BeginForm("CompanyDetail", "ProfitLoss", FormMethod.Get, new { enctype = "multipart/form-data" }))
+    { 
+     <input  type="hidden" id="ComPanyID" name="ComPanyID" value="@ViewBag.CID"/>
+     <input  type="hidden" id="YearID" name="YearID"  value="@ViewBag.YearID"/>
+     <input  type="hidden" id="Type" name="Type"/>
+     <button type="submit" id="sub_btn" style=" display:none"></button>
+    }
+ 
 <div class="row-fluid">
     <div class="span6" style="width: 100%">
         <div class="portlet box blue">
@@ -35,10 +50,9 @@
                 <table class="table table-hover">
                     <tr>
                         <td style="font-size: 14px; color: #e02222">
-                            <select id="Sel_type">
+                            <select id="Sel_type" onchange="Select()">
                                 <option value="0">预算</option>
                                 <option value="1">实际</option>
-                                <option value="2">发生余额</option>
                             </select>
                             <br />
                             点击月份 可查看月份实际明细

@@ -38,14 +38,14 @@ namespace Business
         }
 
         /// <summary>
-        /// 根据年份ID 公司ID 获取数据
+        /// 根据年份ID 公司ID 获取上报数据
         /// </summary>
         /// <param name="YearID"></param>
         /// <param name="CID"></param>
         /// <returns></returns>
         public List<ProfitLossReality_Main> GetInfo_ByCID_YID(int YearID, int CID)
         {
-            var list = List().Where(a => a.ParticularYearID == YearID && a.CompanyID == CID).OrderBy(a=>a.Month).ToList();
+            var list = List().Where(a => a.ParticularYearID == YearID && a.CompanyID == CID && a.IsReport==true).OrderBy(a=>a.Month).ToList();
             return list;
         }
     }
