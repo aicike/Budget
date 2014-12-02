@@ -597,5 +597,17 @@ namespace Budget.Controllers
 
             return "";
         }
+
+        //损益真实数据填写（周）
+        public ActionResult RealityDetail(int YearID, int Month)
+        {
+            ViewBag.YearID = YearID;
+            ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
+            var ProfitLoss_Detailed=  PDetailModel.GetDetailed_ByCompanyID_YearMonth(LoginAccount.ID, YearID, Month);
+            ViewBag.ProfitLoss_Detailed = ProfitLoss_Detailed;
+            //var list = PDetailModel.GetDetailed_ByCompanyID(LoginAccount.ID, YearID);
+            //ViewBag.List = list;
+            return View();
+        } 
     }
 }

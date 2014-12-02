@@ -1,0 +1,1718 @@
+﻿@{
+    ViewBag.Title = "损益实际数据";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var list = ViewBag.List as List<Entity.ProfitLossReality_Detail>;
+    bool hasData = (list == null || list.Count == 0) ? false : true;
+    var ProfitLoss_Detailed = ViewBag.ProfitLoss_Detailed as Entity.ProfitLoss_Detailed;
+}
+<style>
+    .itext
+    {
+        width: 80px;
+        margin: 0px !important;
+        height: 10px !important;
+    }
+    .itable td
+    {
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+    }
+    .idiv1
+    {
+        margin-left: 26px !important;
+        padding: 0px !important;
+    }
+    .idiv2
+    {
+        margin-left: 52px !important;
+        padding: 0px !important;
+    }
+    .icolor, .icolor:hover > td, .icolor:hover > th, .icolor td:hover
+    {
+        background-color: #FFFFCC !important;
+    }
+</style>
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN SAMPLE TABLE PORTLET-->
+        <button type="button" class="btn blue isubmit">
+            保存</button>
+        <div class="portlet box blue" style="margin-top: 10px;">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cogs"></i>损益预算</div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-hover itable">
+                    <thead>
+                        <tr>
+                            <th style="width: 136px;">
+                                项目
+                            </th>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <th row="@i" class="itr">
+                                    第@(i)周
+                                </th>
+                            }
+                            <th style="width: 250px;">
+                                本月发生余额
+                            </th>
+                            <th style="width: 250px;">
+                                2015年预算
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="tr_xiaoshoushuliang">
+                            <td>
+                                销售数量
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XiaoShouShuLiang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.XiaoShouShuLiang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_xinchexiaoshoushuliang">
+                            <td>
+                                <div class="idiv1">
+                                    新车销售数量</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XinCheXiaoShouShuLiang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.XinCheXiaoShouShuLiang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_weixiujinchangtaici">
+                            <td>
+                                <div class="idiv1">
+                                    维修进场台次</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].WeiXiuJinChangTaiCi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.WeiXiuJinChangTaiCi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_fenqishuliang" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    分期数量</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].FenQiShuLiang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.FenQiShuLiang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_xinbaoshuliang" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    新保数量</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XinBaoShuLiang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.XinBaoShuLiang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_xubaoshuliang" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    续保数量</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XuBaoShuLiang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.XuBaoShuLiang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_yanbaoshuliang">
+                            <td>
+                                <div class="idiv1">
+                                    延保数量</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].YanBaoShuLiang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.YanBaoShuLiang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_guapaishuliang" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    挂牌数量</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].GuaPaiShuLiang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.GuaPaiShuLiang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_ershouchexiaoshoushuliang" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    二手车销售数量</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ErShouCheXiaoShouShuLiang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ErShouCheXiaoShouShuLiang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_zhuyingyewushouru" class="readonly icolor">
+                            <td>
+                                主营业务收入
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingYeWuShouRu" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingYeWuShouRu</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_zhengche" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    整车</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_ZhengChe" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_ZhengChe</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_shouhouweixiu" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    售后维修</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_ShouHouWeiXiu" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_ShouHouWeiXiu</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_weixiupeijian">
+                            <td>
+                                <div class="idiv2">
+                                    维修配件</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_WeiXiuPeiJian" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_WeiXiuPeiJian</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_gongshi">
+                            <td>
+                                <div class="idiv2">
+                                    工时</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_GongShi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_GongShi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_zhuangshizhuanghuang" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    装饰装潢</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_ZhuangShiZhuangHuang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_ZhuangShiZhuangHuang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_yongjin" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    佣金</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_YongJin" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_YongJin</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_fenqi" class="readonly">
+                            <td>
+                                <div class="idiv2">
+                                    分期</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_FenQi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_FenQi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_baoxian" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    保险</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_BaoXian" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_BaoXian</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_xinbao" class="readonly">
+                            <td>
+                                <div class="idiv2">
+                                    新保</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_XinBao" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_XinBao</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_xubao" class="readonly">
+                            <td>
+                                <div class="idiv2">
+                                    续保</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_XuBao" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_XuBao</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_yanbao">
+                            <td>
+                                <div class="idiv1">
+                                    延保</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_YanBao" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_YanBao</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_guapai" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    挂牌</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_GuaPai" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_GuaPai</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_ershouche" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    二手车</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_ErShouChe" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_ErShouChe</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_qita">
+                            <td>
+                                <div class="idiv1">
+                                    其他</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingShouRu_QiTa" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingShouRu_QiTa</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_zhuyingyewuchengben" class="readonly icolor">
+                            <td>
+                                减：主营业务成本
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingYeWuChengBen" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingYeWuChengBen</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_zhengche" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    整车</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_ZhengChe" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_ZhengChe</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_shouhouweixiu" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    售后维修</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_ShouHouWeiXiu" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_ShouHouWeiXiu</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_weixiupeijian" class="readonly">
+                            <td>
+                                <div class="idiv2">
+                                    维修配件</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_WeiXiuPeiJian" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_WeiXiuPeiJian</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_gongshi">
+                            <td>
+                                <div class="idiv2">
+                                    工时</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_GongShi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_GongShi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_zhuangshizhuanghuang" class="readonly">
+                            <td>
+                                <div class="idiv1">
+                                    装饰装潢</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_ZhuangShiZhuangHuang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_ZhuangShiZhuangHuang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_yongjin" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    佣金</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_YongJin" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_YongJin</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_fenqi">
+                            <td>
+                                <div class="idiv2">
+                                    分期</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_FenQi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_FenQi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_baoxian" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    保险</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_BaoXian" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_BaoXian</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_xinbao">
+                            <td>
+                                <div class="idiv2">
+                                    新保</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_XinBao" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_XinBao</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_xubao">
+                            <td>
+                                <div class="idiv2">
+                                    续保</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_XuBao" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_XuBao</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_yanbao">
+                            <td>
+                                <div class="idiv1">
+                                    延保</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_YanBao" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_YanBao</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_guapai">
+                            <td>
+                                <div class="idiv1">
+                                    挂牌</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_GuaPai" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_GuaPai</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_ershouche">
+                            <td>
+                                <div class="idiv1">
+                                    二手车</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_ErShouChe" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_ErShouChe</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jian_qita">
+                            <td>
+                                <div class="idiv1">
+                                    其他</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingChengBen_QiTa" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingChengBen_QiTa</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_maoli" class="readonly icolor">
+                            <td>
+                                毛利
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.MaoLi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_mao_zhengche" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    整车</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi_ZhengChe" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.MaoLi_ZhengChe</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_mao_shouhouweixiu" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    维修</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi_WeiXiu" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.MaoLi_WeiXiu</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_mao_zhuangshizhuanghuang" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    装饰装潢</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi_ZhuangShiZhuangHuang" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.MaoLi_ZhuangShiZhuangHuang</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_mao_yongjin" class="readonly icolor">
+                            <td>
+                                <div class="idiv1">
+                                    佣金</div>
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].MaoLi_YongJin" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.MaoLi_YongJin</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_zhuyingyewushuijinjifujia">
+                            <td>
+                                主营业务税金及附加
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingYeWuShueiJinJiFuJia" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingYeWuShueiJinJiFuJia</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_zhuyingyewufujiashuihoumaoli" class="readonly icolor">
+                            <td>
+                                主营业务附加税后毛利
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhuYingYeWuFuJiaShuiHouMaoLi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZhuYingYeWuFuJiaShuiHouMaoLi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_qitayewushouru">
+                            <td>
+                                其他业务收入
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTaYeWuShouRu" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.QiTaYeWuShouRu</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_qitayewuchengben">
+                            <td>
+                                其他业务成本
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTaYeWuChengBen" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.QiTaYeWuChengBen</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_qitayewushuijinjifujia">
+                            <td>
+                                其他业务税金及附加
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTaYeWuShuiJinJiFuJia" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.QiTaYeWuShuiJinJiFuJia</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_qitayewulirun" class="readonly icolor">
+                            <td>
+                                其他业务利润
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTaYeWuLiRun" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.QiTaYeWuLiRun</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_xiaoshoujiguanlifeiyong">
+                            <td>
+                                销售及管理费用
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XiaoShouJiGuanLiFeiYong" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.XiaoShouJiGuanLiFeiYong</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_xishuiqianlirun" class="readonly icolor">
+                            <td>
+                                息税前利润
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XiShueiQianLiRun" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.XiShueiQianLiRun</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_caiwufeiyong">
+                            <td>
+                                财务费用
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].CaiWuFeiYong" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.CaiWuFeiYong</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_yingyelirun" class="readonly icolor">
+                            <td>
+                                营业利润
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].YingYeLiRun" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.YingYeLiRun</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_zichanjianzhisunshi">
+                            <td>
+                                资产减值损失
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZiChanJianZhiSunShi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ZiChanJianZhiSunShi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_gongyunjiazhibiandongshouyi">
+                            <td>
+                                公允价值变动收益
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].GongYunJiaZhiBianDongShouYi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.GongYunJiaZhiBianDongShouYi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_touzishouyi">
+                            <td>
+                                投资收益
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].TouZiShouYi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.TouZiShouYi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_yingyewaishouzhijinge">
+                            <td>
+                                营业外收支净额
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].YingYeWaiShouZhiJingE" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.YingYeWaiShouZhiJingE</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_lirunzonge" class="readonly icolor">
+                            <td>
+                                利润总额
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].LiRunZongE" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.LiRunZongE</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_suodeshui">
+                            <td>
+                                所得税
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].SuoDeShui" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.SuoDeShui</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_shuihoulirun" class="readonly icolor">
+                            <td>
+                                税后利润
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ShueiHouLiRun" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ShueiHouLiRun</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_shaoshugudongsunyi">
+                            <td>
+                                少数股东损益
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ShaoShuGuDongSunYi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.ShaoShuGuDongSunYi</label>
+                            </td>
+                        </tr>
+                        <tr id="tr_jinglirun" class="readonly icolor">
+                            <td>
+                                净利润
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].JingLiRun" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                <label class="yelabel">
+                                </label>
+                            </td>
+                            <td>
+                                <label class="yslabel">@ProfitLoss_Detailed.JingLiRun</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn blue isubmit">
+                    保存</button>
+            </div>
+        </div>
+        <!-- END SAMPLE TABLE PORTLET-->
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        //获取数值
+        function getValue(obj) {
+            var value = 0;
+            if ($(obj).val().length == 0) {
+                value = 0;
+            } else {
+                if (isNaN($(obj).val())) {
+                    $(obj).val("0");
+                }
+                value = parseFloat($(obj).val());
+            }
+            return value;
+        }
+        $(".itable :text").keyup(function () {
+            var week1 = getValue($(this).parents("tr").find(":text[row='1']"));
+            var week2 = getValue($(this).parents("tr").find(":text[row='2']"));
+            var week3 = getValue($(this).parents("tr").find(":text[row='3']"));
+            var week4 = getValue($(this).parents("tr").find(":text[row='4']"));
+            var week = week1 + week2 + week3 + week4;
+            var ysLabel = $(this).parents("tr").find(".yslabel");
+            var yeLabel = $(this).parents("tr").find(".yelabel");
+            var balance = week - parseFloat(ysLabel.text());
+            yeLabel.text(balance);
+        });
+    </script>
+}

@@ -26,6 +26,19 @@ namespace Business
         }
 
         /// <summary>
+        /// 根据公司ID 与年份 获取损益预算
+        /// </summary>
+        /// <param name="CID">公司ID</param>
+        /// <param name="YearID">年份ID</param>
+        /// <param name="Month">月份ID</param>
+        /// <returns></returns>
+        public ProfitLoss_Detailed GetDetailed_ByCompanyID_YearMonth(int CID, int YearID,int Month)
+        {
+            var ProfitLoss_Detailed = List().Where(a => a.CompanyID == CID && a.ProfitLoss_Main.ParticularYearID == YearID && a.Month == Month).FirstOrDefault();
+            return ProfitLoss_Detailed;
+        }
+
+        /// <summary>
         /// 根据主表IDS 获取明细汇总数据
         /// </summary>
         /// <param name="MainIDs"></param>
