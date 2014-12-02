@@ -35,11 +35,11 @@ $(function(){ UIGeneral.init(); });
                             <td>
                                 @if (Model.Rows[i]["Type"].ToString() == "0")
                                 { 
-                                    <span style="color: #35aa47">录入实际损益</span>
+                                    <a href="@Url.Action("ActualMonthList", "ProfitLoss", new { YearID = Model.Rows[i]["Yearid"] })" style="color: #35aa47">录入实际损益</a>
                                 }
                                 else if (Model.Rows[i]["Type"].ToString() == "1")
                                 {
-                                    @Ajax.ActionLink("上报", "ReportProfitLoss", "ProfitLoss", new { PMID = Model.Rows[i]["PMID"] }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要删除吗')) {return true }" }, new { @class="tooltips",style="color: #4d8bf8; cursor: pointer",data_placement="top",data_original_title="注意：上报后不可更改。"})
+                                    @Ajax.ActionLink("上报", "ReportProfitLoss", "ProfitLoss", new { PMID = Model.Rows[i]["PMID"] }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要上报吗')) {return true }" }, new { @class="tooltips",style="color: #4d8bf8; cursor: pointer",data_placement="top",data_original_title="注意：上报后不可更改。"})
                                 }
                                 else
                                 {

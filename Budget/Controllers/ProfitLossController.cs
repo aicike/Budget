@@ -606,7 +606,17 @@ namespace Budget.Controllers
             ViewBag.Year = pyear.Year;
             ViewBag.YearID = YearID;
 
+            ViewBag.CID = LoginAccount.ID;
+
             return View();
+        }
+
+        //上报月份预算详细
+        public ActionResult ReportProfitLossActula(int YearID, int Month)
+        {
+            ProfitLossReality_MainModel prmModel = new ProfitLossReality_MainModel();
+            prmModel.SetReport(YearID, Month, LoginAccount.ID, true);
+            return RedirectToAction("ActualMonthList", "ProfitLoss", new { YearID = YearID });
         }
     }
 }
