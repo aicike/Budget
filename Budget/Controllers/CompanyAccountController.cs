@@ -94,6 +94,29 @@ namespace Budget.Controllers
             return JavaScript("window.location.href='" + Url.Action("Index", "CompanyAccount", new { CID=cAccount.CompanyID}) + "'");
         }
 
-        
+        /// <summary>
+        /// 修改页面
+        /// </summary>
+        /// <param name="AccountID"></param>
+        /// <returns></returns>
+        public ActionResult Edit(int CID,int AccountID)
+        {
+            //获取公司信息
+            CompanyModel CModel = new CompanyModel();
+            var item = CModel.Get(CID);
+            ViewBag.CName = item.Name;
+            ViewBag.CID = CID;
+            CompanyAccountModel CAModel = new CompanyAccountModel();
+            var Accountitem = CAModel.Get(AccountID);
+            return View(Accountitem);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CompanyAccount cAccount)
+        {
+            CompanyAccountModel CAModel = new CompanyAccountModel();
+            CAModel.Edit(cAccount);
+            return JavaScript("window.location.href='" + Url.Action("Index", "CompanyAccount", new { CID = cAccount.CompanyID }) + "'");
+        }
     }
 }
