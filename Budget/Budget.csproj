@@ -1352,6 +1352,7 @@
     <Content Include="Views\Company\Add.cshtml" />
     <Content Include="Views\Company\Edit.cshtml" />
     <Content Include="Views\CompanyAccount\Add.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

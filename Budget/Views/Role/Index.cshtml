@@ -33,7 +33,8 @@
                                 @item.RoleName
                             </td>
                             <td>
-                                <a>修改</a> <a>删除</a>
+                                @Html.ActionLink("修改", "Edit", "Role", new { id = item.ID }, null, true)
+                                @Ajax.ActionLink("删除", "Delete", "Role", new { id = item.ID }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "return AppDelete('确定删除?删除此项将会删除其关联的所有数据！','" + Url.Action("Delete", "Role", new {  id = item.ID }) + "',null)" }, true)
                             </td>
                         </tr>
                     }

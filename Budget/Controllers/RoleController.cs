@@ -29,11 +29,41 @@ namespace Budget.Controllers
         public ActionResult Add(Role role)
         {
             RoleModel roleModel = new RoleModel();
-            var result= roleModel.Add(role);
+            var result = roleModel.Add(role);
 
             if (result.HasError)
             {
-                return JavaScript("JMessage('"+result.Error+"',true)");
+                return JavaScript("JMessage('" + result.Error + "',true)");
+            }
+            return JavaScript("window.location.href='" + Url.Action("Index", "Role") + "'");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            RoleModel roleModel = new RoleModel();
+            var role = roleModel.Get(id);
+            return View(role);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Role role)
+        {
+            RoleModel roleModel = new RoleModel();
+            var result= roleModel.Edit(role);
+            if (result.HasError)
+            {
+                return JavaScript("JMessage('" + result.Error + "',true)");
+            }
+            return JavaScript("window.location.href='" + Url.Action("Index", "Role") + "'");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            RoleModel roleModel = new RoleModel();
+            var result = roleModel.Delete(id);
+            if (result.HasError)
+            {
+                return JavaScript("JMessage('" + result.Error + "',true)");
             }
             return JavaScript("window.location.href='" + Url.Action("Index", "Role") + "'");
         }

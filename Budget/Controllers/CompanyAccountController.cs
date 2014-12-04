@@ -69,7 +69,7 @@ namespace Budget.Controllers
             //校验
             if (CAModel.GetUnameIsOnly(cAccount.AccountNumber))
             {
-                return JavaScript("Jmessage('登陆账号已存在，请换一个试试！',true)");
+                return JavaScript("JMessage('登陆账号已存在，请换一个试试！',true)");
             }
             Common Com = new Common();
             var pwd = Com.CreateRandom("",6);
@@ -93,5 +93,7 @@ namespace Budget.Controllers
             }
             return JavaScript("window.location.href='" + Url.Action("Index", "CompanyAccount", new { CID=cAccount.CompanyID}) + "'");
         }
+
+        
     }
 }
