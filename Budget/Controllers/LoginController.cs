@@ -34,6 +34,8 @@ namespace Budget.Controllers
                         var ca = result.Entity as CompanyAccount;
                         sessionLoginUser.ID = ca.CompanyID;
                         sessionLoginUser.UserID = ca.ID;
+                        sessionLoginUser.AccountType = 1;
+                        sessionLoginUser.RoleIDs = ca.RoleAccounts.Select(a => a.RoleID).ToList();
                         Session["SessionLoginUser"] = sessionLoginUser;
                     }
                     break;
@@ -46,6 +48,8 @@ namespace Budget.Controllers
                         var ga = result.Entity as GroupAccount;
                         sessionLoginUser.ID = ga.GroupID;
                         sessionLoginUser.UserID = ga.ID;
+                        sessionLoginUser.AccountType = 0;
+                        sessionLoginUser.RoleIDs = ga.RoleAccounts.Select(a => a.RoleID).ToList();
                         Session["SessionLoginUser"] = sessionLoginUser;
                     }
                     break;

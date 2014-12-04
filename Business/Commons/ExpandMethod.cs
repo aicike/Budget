@@ -79,5 +79,23 @@ namespace System
             }
         }
 
+        /// <summary>
+        /// false 发生没有权限异常
+        /// </summary>
+        /// <param name="value"></param>
+        public static void NotAuthorizedPage(this bool value, string message = null)
+        {
+            if (!value)
+            {
+                if (message != null)
+                {
+                    throw new ApplicationException(message);
+                }
+                else
+                {
+                    throw new ApplicationException("无权操作。");
+                }
+            }
+        }
     }
 }

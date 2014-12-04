@@ -135,10 +135,12 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfitLossController.cs" />
     <Compile Include="Controllers\CoefficientController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\HtmlHelperExtensions.cs" />
+    <Compile Include="Models\PermissionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\ueditor\net\Config.cs" />
     <Compile Include="Scripts\ueditor\net\imageUp.ashx.cs">
@@ -1345,6 +1347,7 @@
     <Content Include="Views\ProfitLoss\RealityDetail.cshtml" />
     <Content Include="Views\ProfitLoss\ActualMonthList.cshtml" />
     <Content Include="Views\ProfitLoss\ActualMonth.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

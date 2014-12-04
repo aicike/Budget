@@ -22,7 +22,7 @@ namespace Entity
         [Required(ErrorMessage = "请输入角色名称")]
         [StringLength(50, ErrorMessage = "不能超过50字")]
         public string RoleName { get; set; }
-
+        
         public virtual ICollection<RoleMenu> RoleMenus { get; set; }
 
         public virtual ICollection<RoleOption> RoleOptions { get; set; }

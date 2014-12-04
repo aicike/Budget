@@ -1,16 +1,17 @@
 ﻿@{
-    ViewBag.Title = "公司管理";
+    ViewBag.Title = "角色管理";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section scripts{
 }
-@model List<Entity.Company>
+@model List<Entity.Role>
 <div class="row-fluid">
-    <div class="span6" style="width: 100%">
-        <div class="portlet box blue">
+    <div class="span12">
+        @Html.ActionLink("新增角色", "Add", "Role", null, new { @class = "btn blue" }, true)
+        <div class="portlet box blue" style="margin-top: 10px;">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cogs"></i>公司列表
+                    <i class="icon-cogs"></i>角色列表
                 </div>
                 <div class="tools">
                 </div>
@@ -19,13 +20,7 @@
                 <table class="table table-hover">
                     <tr>
                         <th>
-                            公司ID
-                        </th>
-                        <th>
-                            公司名称
-                        </th>
-                        <th>
-                            用户管理
+                            角色名称
                         </th>
                         <th style="width: 20%">
                             操作
@@ -35,13 +30,7 @@
                     {
                         <tr>
                             <td>
-                                @item.ID
-                            </td>
-                            <td>
-                                @item.Name
-                            </td>
-                            <td>
-                                @Html.ActionLink("管理用户", "Index", "CompanyAccount", null, null, true)
+                                @item.RoleName
                             </td>
                             <td>
                                 <a>修改</a> <a>删除</a>
