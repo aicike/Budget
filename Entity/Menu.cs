@@ -38,5 +38,9 @@ namespace Entity
 
         public virtual ICollection<Menu> Menus { get; set; }
 
+        public virtual ICollection<MenuOption> MenuOptions { get; set; }
+
+        public virtual ICollection<RoleMenu> RoleMenus { get; set; }
+
     }
 }

@@ -44,7 +44,9 @@
     <Compile Include="BudgetClass.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="CompanyAccount.cs" />
-    <Compile Include="EmailInfo.cs" />
+    <Compile Include="MenuOption.cs" />
+    <Compile Include="RoleAccount.cs" />
+    <Compile Include="RoleMenu.cs" />    <Compile Include="EmailInfo.cs" />
     <Compile Include="ProfitLossReality_Detail.cs" />
     <Compile Include="ProfitLoss_Coefficient.cs" />
     <Compile Include="Group.cs" />
@@ -53,6 +55,8 @@
     <Compile Include="ParticularYear.cs" />
     <Compile Include="ProfitLoss_Detailed.cs" />
     <Compile Include="ProfitLoss_Main.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="RoleOption.cs" />
     <Compile Include="_Cutom_ColumnOption.cs" />
     <Compile Include="CustomTable_Column.cs">
       <SubType>Code</SubType>

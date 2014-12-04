@@ -1,7 +1,7 @@
-﻿@{
+﻿@{  
+    var account = Session["SessionLoginUser"] as Entity.SessionLoginUser;
     Business.MenuModel menuModel = new Business.MenuModel();
-    var list = menuModel.GetMenu();
-    
+    var list = menuModel.GetMenuByRoleID(account.RoleIDs);
 }
 <ul class="page-sidebar-menu">
     <li>
@@ -10,13 +10,13 @@
         </div>
         <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
     </li>
-    <li class="start active myli" style="margin-top: 10px"><a onclick="menuClick('0','@Url.Action("Home", "Home")')" mid="0" ><i class="icon-home"></i><span
+    <li class="start active myli" style="margin-top: 10px"><a href="@Url.Action("Home", "Home")" mid="0" ><i class="icon-home"></i><span
         class="title">首页</span> <span class="selected"></span></a></li>
     @foreach (var item in list)
     {
         if (item.Menus == null || item.Menus.Count == 0)
         { 
-        <li class="myli"><a onclick="menuClick('@item.ID','@Url.Action(item.Action, item.Controller)')"  mid="@item.ID" ><i class="icon-home"></i><span class="title">
+        <li class="myli"><a href="@Url.Action(item.Action, item.Controller)"  mid="@item.ID" ><i class="icon-home"></i><span class="title">
             @item.ShowName</span> <span class="selected"></span></a></li>
         }
         else
@@ -26,16 +26,13 @@
             <ul class="sub-menu">
                 @foreach (var subMenu in item.Menus)
                 {
-                    <li><a onclick="menuClick('@subMenu.ID','@Url.Action(subMenu.Action, subMenu.Controller)')" mid="@subMenu.ID">@subMenu.ShowName</a> </li>
+                    <li><a href="@Url.Action(subMenu.Action, subMenu.Controller)" mid="@subMenu.ID">@subMenu.ShowName</a> </li>
                 }
             </ul>
         </li>
         }
     }
 </ul>
-<style>
-    .page-sidebar-menu a
-    {
-        cursor: pointer;
-    }
-</style>
+<script>
+    var _menuID = '@ViewBag.MenuID';
+</script>

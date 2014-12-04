@@ -9,7 +9,12 @@ namespace Entity
     public class SessionLoginUser
     {
         /// <summary>
-        /// 公司ID
+        /// 0：集团    1：公司
+        /// </summary>
+        public int AccountType { get; set; }
+
+        /// <summary>
+        /// 公司ID或集团ID
         /// </summary>
         public int ID { get; set; }
 
@@ -18,5 +23,9 @@ namespace Entity
         /// </summary>
         public int UserID { get; set; }
 
+        /// <summary>
+        /// 角色
+        /// </summary>
+        public List<int> RoleIDs { get; set; }
     }
 }

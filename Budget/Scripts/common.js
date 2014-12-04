@@ -29,18 +29,11 @@ function AppDelete(msg, url, fun) {
     return false;
 }
 
-function menuClick(id, url, path) {
-    $.cookie('menuID', '', { expires:-1 });
-    $.cookie('menuID', id, { path: "/" });
-    window.location.href = url;
-};
 $(function () {
-    var menuID = $.cookie('menuID');
-    if (menuID==undefined|| menuID == "") {
-        menuID = "0";
-    } else {
-    }
     $(".active").removeClass("active");
-    $("a[mid='" + menuID + "']").parents(".myli").addClass("active");
-    $("a[mid='" + menuID + "']").parent().addClass("active");
+    if (_menuID == undefined) {
+        _menuID = 0;
+    }
+    $("a[mid='" + _menuID + "']").parents(".myli").addClass("active");
+    $("a[mid='" + _menuID + "']").parent().addClass("active");
 });

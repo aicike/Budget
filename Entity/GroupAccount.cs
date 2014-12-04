@@ -58,7 +58,7 @@ namespace Entity
         [Display(Name = "邮箱")]
         public string Email { get; set; }
 
-
+        public virtual ICollection<RoleAccount> RoleAccounts { get; set; }
 
     }
 }

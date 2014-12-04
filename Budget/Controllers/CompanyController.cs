@@ -11,7 +11,7 @@ namespace Budget.Controllers
     /// <summary>
     /// 公司控制器
     /// </summary>
-    public class CompanyController : Controller
+    public class CompanyController : BaseController
     {
         //
         // GET: /Company/
