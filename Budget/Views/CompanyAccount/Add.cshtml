@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = ViewBag.CName+"-账号管理-添加账号";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts{
+<style>
+    .table-hover td
+    {
+        padding:8px 8px 0px 8px;
+        vertical-align:baseline;
+        }
+</style>
+}
+@model Entity.CompanyAccount
+<div class="row-fluid">
+    <div class="span6" style="width: 100%">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cogs"></i>@ViewBag.CName -账号管理-添加账号
+                </div>
+                <div class="tools">
+                </div>
+            </div>
+            <div class="portlet-body">
+                @using (Ajax.BeginForm("Add", "CompanyAccount", new AjaxOptions() { UpdateTargetId = "alert" }))
+                {
+                    <button class="btn blue" type="submit" >
+                        添加</button>
+                    <a href="@Url.Action("Index", "CompanyAccount",new { CID=ViewBag.CID})" class="btn blue" style="">返回</a><br />
+                    <br />
+                    <table class="table table-hover" style="  ">
+                        <tr>
+                            <td style="width: 120px">
+                                登陆账号：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.AccountNumber)
+                                <input type="hidden" value="@ViewBag.CID" name="CompanyID" />
+                            </td>
+                            <td><span style="color:Red">@Html.ValidationMessageFor(a => a.AccountNumber)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                姓名：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.Name)
+                            </td>
+                            <td><span style="color:Red">@Html.ValidationMessageFor(a => a.Name)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                邮箱：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.Email)
+                            </td>
+                            <td><span style="color:Red">@Html.ValidationMessageFor(a => a.Email)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                电话：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.Phone)
+                            </td>
+                            <td><span style="color:Red">@Html.ValidationMessageFor(a => a.Phone)</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn blue" type="submit" >
+                        添加</button>
+                    <a href="@Url.Action("Index", "CompanyAccount", new { CID = ViewBag.CID })" class="btn blue" style="">返回</a><br />
+                   
+                }
+            </div>
+        </div>
+    </div>
+</div>

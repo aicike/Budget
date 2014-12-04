@@ -1348,6 +1348,7 @@
     <Content Include="Views\ProfitLoss\ActualMonthList.cshtml" />
     <Content Include="Views\ProfitLoss\ActualMonth.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

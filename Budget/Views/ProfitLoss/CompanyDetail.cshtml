@@ -16,6 +16,13 @@
                 }
             });
 
+            $("#Tab_Main").find("tr").each(function (i, element) {
+                if(i==10||i==12||i==16||i==20||i==22||i==29||i==31||i==35||i==37||i==44||i==45||i==46||i==47||i==48||i==50||i==54||i==55||i==56||i==57||i==58||i==63||i==65||i==67)
+                {
+                    $(this).addClass("icolor");
+                }
+            });
+
             $("#Sel_type").val(@ViewBag.Type);
 
         });
@@ -25,7 +32,20 @@
             $("#Type").val($("#Sel_type").val());
             sub_btn.click();
         }
+
     </script>
+    <style>
+        .icolor, .icolor:hover > td, .icolor:hover > th, .icolor td:hover
+    {
+        background-color: #FFFFCC !important;
+    }
+    
+    .page-content
+    {
+        min-width:1330px;    
+    }
+   
+    </style>
 }
 @model System.Data.DataTable
     @using (Html.BeginForm("CompanyDetail", "ProfitLoss", FormMethod.Get, new { enctype = "multipart/form-data" }))
@@ -37,7 +57,7 @@
     }
  
 <div class="row-fluid">
-    <div class="span6" style="width: 100%">
+    <div class="span12" style="width: 100%">
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">

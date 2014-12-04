@@ -46,7 +46,7 @@
     <Compile Include="CompanyAccount.cs" />
     <Compile Include="MenuOption.cs" />
     <Compile Include="RoleAccount.cs" />
-    <Compile Include="RoleMenu.cs" />
+    <Compile Include="RoleMenu.cs" />    <Compile Include="EmailInfo.cs" />
     <Compile Include="ProfitLossReality_Detail.cs" />
     <Compile Include="ProfitLoss_Coefficient.cs" />
     <Compile Include="Group.cs" />

@@ -63,6 +63,7 @@
     <Compile Include="Commons\DESEncrypt.cs" />
     <Compile Include="Commons\ExpandMethod.cs" />
     <Compile Include="Commons\QrCodes.cs" />
+    <Compile Include="Commons\SendEmail.cs" />
     <Compile Include="Commons\ToolImage.cs" />
     <Compile Include="CompanyAccountModel.cs" />
     <Compile Include="CompanyModel.cs" />

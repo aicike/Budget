@@ -1,12 +1,14 @@
 ﻿@{
-    ViewBag.Title = "公司账号";
+    ViewBag.Title = @ViewBag.CName + "-公司账号" ;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section scripts{
 }
 @model List<Entity.CompanyAccount>
 <div class="row-fluid">
-    <div class="span6" style="width: 100%">
+     
+    <div class="span12" style="width: 100%">
+        <a href="@Url.Action("Add", "CompanyAccount", new {CID = ViewBag.CID })" class="btn blue" style=" width:100px">添加账号</a><br /><br />
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
@@ -38,7 +40,7 @@
                                 @item.Name
                             </td>
                             <td>
-                                <a>删除</a> <a>修改</a> <a>重置密码</a>
+                                <a>修改</a> <a>删除</a>  
                             </td>
                         </tr>
                     }
