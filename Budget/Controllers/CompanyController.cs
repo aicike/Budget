@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Business;
+using Entity;
 
 namespace Budget.Controllers
 {
@@ -26,5 +27,52 @@ namespace Budget.Controllers
             return View(list);
         }
 
+
+        /// <summary>
+        /// 添加页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Add()
+        {
+
+            return View();
+        }
+        /// <summary>
+        /// 添加公司
+        /// </summary>
+        /// <param name="company"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Add(Company company)
+        {
+            CompanyModel cModel = new CompanyModel();
+            company.GroupID = 1;
+            cModel.Add(company);
+            return JavaScript("window.location.href='" + Url.Action("Index", "Company") + "'");
+        }
+
+        /// <summary>
+        /// 修改公司页面
+        /// </summary>
+        /// <param name="CID"></param>
+        /// <returns></returns>
+        public ActionResult Edit(int CID)
+        {
+            CompanyModel cModel = new CompanyModel();
+            var item = cModel.Get(CID);
+            return View(item);
+        }
+        /// <summary>
+        /// 修改公司
+        /// </summary>
+        /// <param name="company"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Edit(Company company)
+        {
+            CompanyModel cModel = new CompanyModel();
+            cModel.Edit(company);
+            return JavaScript("window.location.href='" + Url.Action("Index", "Company") + "'");
+        }
     }
 }

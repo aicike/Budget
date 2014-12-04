@@ -1334,7 +1334,9 @@
     <Content Include="Scripts\ueditor\ueditor.parse.js" />
     <Content Include="Scripts\ueditor\ueditor.parse.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1345,6 +1347,9 @@
     <Content Include="Views\ProfitLoss\RealityDetail.cshtml" />
     <Content Include="Views\ProfitLoss\ActualMonthList.cshtml" />
     <Content Include="Views\ProfitLoss\ActualMonth.cshtml" />
+    <Content Include="Views\Company\Add.cshtml" />
+    <Content Include="Views\Company\Edit.cshtml" />
+    <Content Include="Views\CompanyAccount\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

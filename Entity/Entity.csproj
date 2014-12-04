@@ -44,6 +44,7 @@
     <Compile Include="BudgetClass.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="CompanyAccount.cs" />
+    <Compile Include="EmailInfo.cs" />
     <Compile Include="ProfitLossReality_Detail.cs" />
     <Compile Include="ProfitLoss_Coefficient.cs" />
     <Compile Include="Group.cs" />

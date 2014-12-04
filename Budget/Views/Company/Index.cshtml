@@ -2,21 +2,22 @@
     ViewBag.Title = "公司管理";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section scripts{
 }
 @model List<Entity.Company>
 <div class="row-fluid">
-    <div class="span6" style="width: 100%">
+    <div class="span12" style="width: 100%">
+      <a href="@Url.Action("Add","Company")" class="btn blue" style=" width:100px">创建公司</a><br /><br />
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cogs"></i>公司列表
+                    <i class="icon-cogs"></i>公司管理
                 </div>
                 <div class="tools">
                 </div>
             </div>
             <div class="portlet-body">
+              
                 <table class="table table-hover">
                     <tr>
                         <th>
@@ -42,10 +43,10 @@
                                 @item.Name
                             </td>
                             <td>
-                                <a href="@Url.Action("Index", "CompanyAccount", new { CID=item.ID})"> 管理用户</a>
+                                <a href="@Url.Action("Index", "CompanyAccount", new { CID = item.ID })">管理用户</a>
                             </td>
                             <td>
-                                <a>修改</a> <a>删除</a> 
+                                <a href="@Url.Action("Edit", "Company", new { CID=item.ID})">修改</a>
                             </td>
                         </tr>
                     }
