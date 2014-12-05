@@ -52,7 +52,7 @@
                             <td>
                                 <a href="@Url.Action("Edit", "CompanyAccount", new { CID = ViewBag.CID, AccountID = item.ID })">
                                     修改</a>
-                                @Ajax.ActionLink("删除", "Delete", "CompanyAccount", new { CID = ViewBag.CID, CAID = item.ID }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要删除吗')) { return false}" })
+                                @Ajax.ActionLink("删除", "Delete", "CompanyAccount", new { CID = ViewBag.CID, CAID = item.ID }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "return AppDelete('你确定要删除吗?','" + Url.Action("Delete", "CompanyAccount", new { CID = ViewBag.CID, CAID = item.ID }) + "',null)" })
                             </td>
                         </tr>
                     }
