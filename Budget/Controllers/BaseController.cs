@@ -60,7 +60,7 @@ namespace Budget.Controllers
             }
             else
             {
-                var menu = menuModel.GetMenuByControllerAction(controller, action);
+                var menu = menuModel.GetMenuByControllerAction(controller, "index");
                 if (menu == null)
                 {
                     menu = menuModel.GetMenuByController(controller);
