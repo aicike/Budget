@@ -125,5 +125,15 @@ namespace Budget.Controllers
             }
             return JavaScript("window.location.href='" + Url.Action("Index", "GroupAccount") + "'");
         }
+
+        public ActionResult Delete(int GAID)
+        {
+            RoleAccountModel raMoldel = new RoleAccountModel();
+            raMoldel.Del_ByGAID(GAID);
+            GroupAccountModel gaModel = new GroupAccountModel();
+            gaModel.Delete(GAID);
+            return JavaScript("window.location.href='" + Url.Action("Index", "GroupAccount") + "'");
+        }
+
     }
 }
