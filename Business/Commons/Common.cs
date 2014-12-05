@@ -21,6 +21,13 @@ namespace Business.Commons
         {
             return Context.Database.SqlQuery<T>(sql, parameters).AsQueryable();
         }
+
+        public int SqlExecute(string sql, params object[] parameters)
+        {
+            return Context.Database.ExecuteSqlCommand(sql, parameters);
+        }
+
+
         #region------创建随机字符窜（不唯一）------------
 
         /// <summary>

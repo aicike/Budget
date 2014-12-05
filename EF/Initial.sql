@@ -1,15 +1,47 @@
 ﻿/****** Object:  Table [dbo].[Menu]    Script Date: 11/27/2014 11:31:19 ******/
 SET IDENTITY_INSERT [dbo].[Menu] ON
-INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID]) VALUES (1, NULL, 'Home', 'Index', N'预算管理', N'预算管理（公司）', 1, NULL)
-INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID]) VALUES (2, NULL, 'Home', 'Index', N'账号管理', N'账号管理', 2, NULL)
-INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID]) VALUES (3, NULL, 'Company', 'Index', N'公司管理', N'公司管理', 3, NULL)
-INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID]) VALUES (4, NULL, 'Home', 'Index', N'预算管理', N'预算管理（集团）', 4, NULL)
-INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID]) VALUES (5, NULL, 'ProfitLoss', 'Index', N'损益预算', N'损益预算 公司入口', 1, 1)
-INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID]) VALUES (6, NULL, 'GroupAccount', 'Index', N'集团账号管理', N'集团账号管理', 1, 2)
-INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID]) VALUES (7, NULL, 'ProfitLoss', 'GroupIndex', N'损益预算', N'损益预算 集团入口', 1, 4)
-INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID]) VALUES (8, NULL, 'Coefficient', 'Index', N'系数管理', N'系数管理（集团）', 9, Null)
-INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID]) VALUES (9, NULL, 'Role', 'Index', N'角色管理', N'角色管理', 2, Null)
+
+--集团
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (1, NULL, 'Company', 'Index', N'公司管理', N'公司管理', 1, NULL,0)
+
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (11, NULL, 'Home', 'Index', N'预算管理', N'预算管理', 2, NULL,0)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (12, NULL, 'ProfitLoss', 'GroupIndex', N'损益预算', N'损益预算', 1, 11,0)
+
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (21, NULL, 'Home', 'Index', N'账号管理', N'账号管理', 3, NULL,0)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (22, NULL, 'Home', 'Index', N'个人信息', N'个人信息', 1, 21,0)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (23, NULL, 'Home', 'Index', N'修改密码', N'修改密码', 2, 21,0)
+
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (31, NULL, 'Home', 'Index', N'系统配置', N'系统配置', 4, NULL,0)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (32, NULL, 'Role', 'Index', N'角色管理', N'角色管理', 1, 31,0)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (33, NULL, 'GroupAccount', 'Index', N'集团人员管理', N'集团人员管理', 2, 31,0)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (34, NULL, 'Coefficient', 'Index', N'预算系数管理', N'预算系数管理', 3, 31,0)
+
+--公司
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (101, NULL, 'Home', 'Index', N'预算管理', N'预算管理', 1, NULL,1)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (102, NULL, 'ProfitLoss', 'Index', N'损益预算', N'损益预算', 1, 101,1)
+
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (111, NULL, 'Home', 'Index', N'账号管理', N'账号管理', 2, NULL,1)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (112, NULL, 'Home', 'Index', N'个人信息', N'个人信息', 1, 111,1)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (113, NULL, 'Home', 'Index', N'修改密码', N'修改密码', 2, 111,1)
+
 SET IDENTITY_INSERT [dbo].[Menu] OFF
+
+/****** Object:  Table [dbo].[MenuOption]    Script Date: 12/05/2014 12:46:05 ******/
+SET IDENTITY_INSERT [dbo].[MenuOption] ON
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'公司列表', N'Index', 1)
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'创建公司', N'Add', 2)
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'修改公司', N'Edit', 3)
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'管理用户', N'CompanyAccount', 4)
+
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'1', N'1', 1)
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'1', N'1', 1)
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'1', N'1', 1)
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'1', N'1', 1)
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'1', N'1', 1)
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'1', N'1', 1)
+INSERT [dbo].[MenuOption] ([MenuID], [Name], [Action], [Order]) VALUES (1, N'1', N'1', 1)
+SET IDENTITY_INSERT [dbo].[MenuOption] OFF
+
 
 
 /****** Object:  Table [dbo].[Group]    Script Date: 11/27/2014 14:40:46 ******/

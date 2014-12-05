@@ -95,5 +95,36 @@ namespace Budget.Controllers
 
             return View(menus);
         }
+
+
+        [HttpPost]
+        public ActionResult RoleMenu()
+        {
+            var roleID = Convert.ToInt32(Request["hidRoleID"]);
+            var checkboxMenu = Request["checkboxMenu"];
+            var checkboxOption = Request["checkboxOption"];
+
+            int[] menuIDArray = null;
+            if (!string.IsNullOrEmpty(checkboxMenu))
+            {
+                menuIDArray = checkboxMenu.Split(',').ConvertToIntArray();
+            }
+
+            int[] optionIDArray = null;
+            if (!string.IsNullOrEmpty(checkboxOption))
+            {
+                optionIDArray = checkboxOption.Split(',').ConvertToIntArray();
+            }
+            try
+            {
+                RoleMenuModel roleMenuModel = new RoleMenuModel();
+                roleMenuModel.BindPermission( roleID, menuIDArray, optionIDArray);
+            }
+            catch (Exception ex)
+            {
+                return JavaScript("JMessage('" + ex.Message + "',true)");
+            }
+            return JavaScript("window.location.href='" + Url.Action("Index", "Role") + "'");
+        }
     }
 }
