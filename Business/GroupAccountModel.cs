@@ -30,5 +30,22 @@ namespace Business
             return result;
         }
 
+        /// <summary>
+        /// 查询登陆账号是否已存在
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns>True:存在；false 不存在</returns>
+        public bool GetUnameIsOnly(string AccountNumber)
+        {
+            var list = List().Where(a => a.AccountNumber == AccountNumber);
+            if (list.Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -1,14 +1,15 @@
 ﻿@{
-    ViewBag.Title = @ViewBag.CName + "-公司账号" ;
+    ViewBag.Title = @ViewBag.CName + "-公司账号";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section scripts{
 }
 @model List<Entity.CompanyAccount>
 <div class="row-fluid">
-     
     <div class="span12" style="width: 100%">
-        <a href="@Url.Action("Add", "CompanyAccount", new {CID = ViewBag.CID })" class="btn blue" style=" width:100px">添加账号</a><br /><br />
+        <a href="@Url.Action("Add", "CompanyAccount", new { CID = ViewBag.CID })" class="btn blue" style=" width:100px">
+            添加账号</a><br />
+        <br />
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
@@ -26,6 +27,9 @@
                         <th>
                             姓名
                         </th>
+                        <th>
+                            角色
+                        </th>
                         <th style="width: 20%">
                             操作
                         </th>
@@ -40,7 +44,15 @@
                                 @item.Name
                             </td>
                             <td>
-                                <a>修改</a> <a>删除</a>  
+                                @foreach (var Role in item.RoleAccounts.ToList())
+                                {
+                                    @(Role.Role.RoleName)@:、
+                                                                                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "CompanyAccount", new { CID = ViewBag.CID, AccountID = item.ID })">
+                                    修改</a>
+                                @Ajax.ActionLink("删除", "Delete", "CompanyAccount", new { CID = ViewBag.CID, CAID = item.ID }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "return AppDelete('你确定要删除吗?','" + Url.Action("Delete", "CompanyAccount", new { CID = ViewBag.CID, CAID = item.ID }) + "',null)" })
                             </td>
                         </tr>
                     }

@@ -81,6 +81,7 @@
     <Compile Include="ProfitLoss_DetailedModel.cs" />
     <Compile Include="ProfitLoss_MainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleAccountModel.cs" />
     <Compile Include="RoleMenuModel.cs" />
     <Compile Include="RoleModel.cs" />
     <Compile Include="RoleOptionModel.cs" />

@@ -1369,8 +1369,11 @@
     <Content Include="Views\Company\Add.cshtml" />
     <Content Include="Views\Company\Edit.cshtml" />
     <Content Include="Views\CompanyAccount\Add.cshtml" />
+    <Content Include="Views\CompanyAccount\Edit.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\RoleMenu.cshtml" />
+    <Content Include="Views\GroupAccount\Add.cshtml" />
+    <Content Include="Views\GroupAccount\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
