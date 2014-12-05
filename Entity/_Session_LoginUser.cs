@@ -19,9 +19,19 @@ namespace Entity
         public int ID { get; set; }
 
         /// <summary>
+        /// 公司名称
+        /// </summary>
+        public string CompanyName { get; set; }
+
+        /// <summary>
         /// 用户ID
         /// </summary>
         public int UserID { get; set; }
+
+        /// <summary>
+        /// 用户名称
+        /// </summary>
+        public string UserName { get; set; }
 
         /// <summary>
         /// 角色

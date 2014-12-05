@@ -38,6 +38,8 @@ namespace Entity
 
         public int Order { get; set; }
 
+        public bool? IsShow { get; set; }
+
         public int? ParentMenuID { get; set; }
         public virtual Menu ParentMenu { get; set; }
 

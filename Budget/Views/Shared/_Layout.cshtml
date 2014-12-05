@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var account = Session["SessionLoginUser"] as Entity.SessionLoginUser;
+}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -133,7 +135,10 @@
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown user"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img alt="" src="@Url.Content("/media/image/avatar1_small.jpg")" />
-                        <span class="username">您好 </span><i class="icon-angle-down"></i></a>
+                        @if (account != null)
+                        {
+                            <span class="username">@account.CompanyName &nbsp;&nbsp;&nbsp;@account.UserName</span>
+                        }<i class="icon-angle-down"></i></a>
                         <ul class="dropdown-menu">
                             <div style="display: none">
                                 <li><a href="extra_profile.html"><i class="icon-user"></i>My Profile</a></li>
@@ -153,7 +158,7 @@
         </div>
         <!-- END TOP NAVIGATION BAR -->
     </div>
-    <div id="jmessage" style="z-index:9999;display: none; ">
+    <div id="jmessage" style="z-index: 9999; display: none;">
     </div>
     <div class="page-container">
         <!-- BEGIN SIDEBAR -->

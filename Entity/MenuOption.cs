@@ -19,6 +19,12 @@ namespace Entity
         /// </summary>
         public string Name { get; set; }
 
+
+        /// <summary>
+        /// 操作Controller
+        /// </summary>
+        public string Controller { get; set; }
+
         /// <summary>
         /// 操作Action
         /// </summary>

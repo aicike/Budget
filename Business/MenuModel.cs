@@ -17,12 +17,19 @@ namespace Business
             return List().Where(a => a.ParentMenuID.HasValue == false).OrderBy(a => a.Order).ToList();
         }
 
-
+        #region 菜单高亮显示使用
         public Menu GetMenuByControllerAction(string controller, string action)
         {
             return List().Where(a => a.Controller.Equals(controller, StringComparison.CurrentCultureIgnoreCase) &&
                 a.Action.Equals(action, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
         }
+
+        public Menu GetMenuByController(string controller)
+        {
+            return List().Where(a => a.Controller.Equals(controller, StringComparison.CurrentCultureIgnoreCase)).OrderBy(a=>a.ID).FirstOrDefault();
+        }
+        #endregion
+
 
         /// <summary>
         /// 根据角色获取菜单，有层级
@@ -36,6 +43,22 @@ namespace Business
             foreach (var item in list)
             {
                 item.Menus = item.Menus.Where(a => a.RoleMenus.Any(b => roleIDs.Contains(b.RoleID))).OrderBy(a => a.Order).ToList();
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 获取菜单，有层级（集团超级管理员）
+        /// </summary>
+        /// <param name="systemUserRoleID"></param>
+        /// <param name="parentSystemUserMenuID"></param>
+        /// <returns></returns>
+        public List<Menu> GetMenuForAdmin()
+        {
+            var list = List().ToList().Where(a => a.AccountType==0&& a.ParentMenuID.HasValue==false).OrderBy(a => a.Order).ToList();
+            foreach (var item in list)
+            {
+                item.Menus = item.Menus.OrderBy(a => a.Order).ToList();
             }
             return list;
         }

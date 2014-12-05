@@ -52,16 +52,37 @@ namespace Budget.Controllers
             var menuModel = new MenuModel();
             //menuModel.CheckHasPermissions(LoginAccount.RoleIDs, action, controller, area).NotAuthorizedPage();
 
-            //设置当前Controller和Action，用来判断所在菜单是否高亮显示
-            var menu = menuModel.GetMenuByControllerAction(controller, action);
-            if (menu != null)
+            #region 设置当前Controller和Action，用来判断所在菜单是否高亮显示
+
+            if (controller.Equals("Home", StringComparison.CurrentCultureIgnoreCase))
             {
-                ViewBag.MenuID = menu.ID;
+                ViewBag.MenuID = 0;//首页
             }
             else
             {
-                ViewBag.MenuID = 0;
+                var menu = menuModel.GetMenuByControllerAction(controller, action);
+                if (menu == null)
+                {
+                    menu = menuModel.GetMenuByController(controller);
+                }
+                if (menu != null)
+                {
+                    if (menu.IsShow.HasValue && menu.IsShow.Value == false)
+                    {
+                        ViewBag.MenuID = menu.ParentMenuID;//显示父级ID
+                    }
+                    else
+                    {
+                        ViewBag.MenuID = menu.ID;//查到，显示当前ID
+                    }
+                }
+                else
+                {
+                    ViewBag.MenuID = 0;//没有查到，显示首页
+                }
             }
+
+            #endregion
             base.OnActionExecuting(filterContext);
         }
 

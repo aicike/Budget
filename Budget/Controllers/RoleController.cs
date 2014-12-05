@@ -11,7 +11,7 @@ namespace Budget.Controllers
     /// <summary>
     /// 角色管理
     /// </summary>
-    public class RoleController : Controller
+    public class RoleController : BaseController
     {
         public ActionResult Index()
         {

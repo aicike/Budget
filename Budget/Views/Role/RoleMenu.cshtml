@@ -69,6 +69,10 @@
                                 集团菜单</h3>
                             @foreach (var menu in menus_group)
                             {
+                                if (menu.IsShow.HasValue && menu.IsShow.Value == false)
+                                {
+                                    continue;
+                                }
                                 <div id="li1" class="grid">
                                     <span style="font-size: 16px;" class="sp_title">
                                         @if (currentRoleMenuList.Contains(menu.ID))
@@ -97,6 +101,10 @@
                                         }
                                         @foreach (var subMenu in menu.Menus)
                                         {
+                                            if (subMenu.IsShow.HasValue && subMenu.IsShow.Value == false)
+                                            {
+                                                continue;
+                                            }
                                             <li><span style="font-size: 16px;" class="sp_title">
                                                 @if (currentRoleMenuList.Contains(subMenu.ID))
                                                 {
@@ -110,6 +118,10 @@
                                                 <ul>
                                                     @foreach (var menu3 in subMenu.Menus)
                                                     {
+                                                        if (menu3.IsShow.HasValue && menu3.IsShow.Value == false)
+                                                        {
+                                                            continue;
+                                                        }
                                                         <li><span style="font-size: 14px;" class="sp_title">
                                                             @if (currentRoleMenuList.Contains(menu3.ID))
                                                             {
@@ -122,7 +134,11 @@
                                                             <label for="menu_@menu3.ID" style="display: inline">@menu3.Name</label>
                                                             <ul>
                                                                 @foreach (var menu4 in menu3.Menus)
-                                                                { 
+                                                                {
+                                                                    if (menu4.IsShow.HasValue && menu4.IsShow.Value == false)
+                                                                    {
+                                                                        continue;
+                                                                    }
                                                                     <li><span style="font-size: 14px;" class="sp_title">
                                                                         @if (currentRoleMenuList.Contains(menu4.ID))
                                                                         {
@@ -148,6 +164,10 @@
                                 公司菜单</h3>
                             @foreach (var menu in menus_company)
                             {
+                                if (menu.IsShow.HasValue && menu.IsShow.Value == false)
+                                {
+                                    continue;
+                                }
                                 <div id="li1" class="grid">
                                     <span style="font-size: 16px;" class="sp_title">
                                         @if (currentRoleMenuList.Contains(menu.ID))
@@ -176,6 +196,10 @@
                                         }
                                         @foreach (var subMenu in menu.Menus)
                                         {
+                                            if (subMenu.IsShow.HasValue && subMenu.IsShow.Value == false)
+                                            {
+                                                continue;
+                                            }
                                             <li><span style="font-size: 16px;" class="sp_title">
                                                 @if (currentRoleMenuList.Contains(subMenu.ID))
                                                 {
@@ -189,6 +213,10 @@
                                                 <ul>
                                                     @foreach (var menu3 in subMenu.Menus)
                                                     {
+                                                        if (menu3.IsShow.HasValue && menu3.IsShow.Value == false)
+                                                        {
+                                                            continue;
+                                                        }
                                                         <li><span style="font-size: 14px;" class="sp_title">
                                                             @if (currentRoleMenuList.Contains(menu3.ID))
                                                             {
@@ -201,7 +229,11 @@
                                                             <label for="menu_@menu3.ID" style="display: inline">@menu3.Name</label>
                                                             <ul>
                                                                 @foreach (var menu4 in menu3.Menus)
-                                                                { 
+                                                                {
+                                                                    if (menu4.IsShow.HasValue && menu4.IsShow.Value == false)
+                                                                    {
+                                                                        continue;
+                                                                    } 
                                                                     <li><span style="font-size: 14px;" class="sp_title">
                                                                         @if (currentRoleMenuList.Contains(menu4.ID))
                                                                         {
