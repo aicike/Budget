@@ -49,7 +49,7 @@ namespace Budget.Controllers
         public ActionResult Edit(Role role)
         {
             RoleModel roleModel = new RoleModel();
-            var result= roleModel.Edit(role);
+            var result = roleModel.Edit(role);
             if (result.HasError)
             {
                 return JavaScript("JMessage('" + result.Error + "',true)");
@@ -66,6 +66,34 @@ namespace Budget.Controllers
                 return JavaScript("JMessage('" + result.Error + "',true)");
             }
             return JavaScript("window.location.href='" + Url.Action("Index", "Role") + "'");
+        }
+
+        /// <summary>
+        /// 给角色分配操作权限
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult RoleMenu(int id)
+        {
+            //获取当前角色
+            RoleModel roleModel = new RoleModel();
+            var role = roleModel.Get(id);
+            ViewBag.Role = role;
+
+            //获取所有菜单
+            var menuModel = new MenuModel();
+            var menus = menuModel.GetMenu();
+
+
+            //当前角色所操作的菜单
+            var currentRoleMenuList = menuModel.GetAllMenuByRoleID(id).Select(a => a.ID).ToList();
+            ViewBag.CurrentRoleMenuList = currentRoleMenuList;
+
+            //当前角色所操作的功能
+            MenuOptionModel menuOptionModel = new MenuOptionModel();
+            var currentRoleOptionList = menuOptionModel.GetAllOptionByRoleID(id).Select(a => a.ID).ToList();
+            ViewBag.CurrentRoleOptionList = currentRoleOptionList;
+
+            return View(menus);
         }
     }
 }

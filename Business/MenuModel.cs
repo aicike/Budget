@@ -8,10 +8,15 @@ namespace Business
 {
     public class MenuModel : BaseModel<Menu>
     {
+        /// <summary>
+        /// 获取全部菜单
+        /// </summary>
+        /// <returns></returns>
         public List<Menu> GetMenu()
         {
             return List().Where(a => a.ParentMenuID.HasValue == false).OrderBy(a => a.Order).ToList();
         }
+
 
         public Menu GetMenuByControllerAction(string controller, string action)
         {
@@ -55,6 +60,15 @@ namespace Business
                                                          a.MenuOption.MenuID == menu.ID &&
                                                          a.MenuOption.Action.Equals(action, StringComparison.CurrentCultureIgnoreCase));
             return result;
+        }
+
+        /// <summary>
+        /// 根据角色id获取可操作的菜单，无级别限制
+        /// </summary>
+        public List<Menu> GetAllMenuByRoleID(int roleID)
+        {
+            var list = List().ToList().Where(a => a.RoleMenus.Any(b => b.RoleID == roleID)).OrderBy(a => a.Order).ToList();
+            return list;
         }
     }
 }

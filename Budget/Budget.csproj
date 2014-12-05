@@ -1098,6 +1098,23 @@
     <Content Include="Scripts\Timepicker\jquery-ui-timepicker-zh-CN.js" />
     <Content Include="Scripts\Timepicker\jquery.ui.datepicker-zh-CN.js.js" />
     <Content Include="Scripts\topbar\juery.topbar.js" />
+    <Content Include="Scripts\treeview\ajax-loader.gif" />
+    <Content Include="Scripts\treeview\file.gif" />
+    <Content Include="Scripts\treeview\folder-closed.gif" />
+    <Content Include="Scripts\treeview\folder.gif" />
+    <Content Include="Scripts\treeview\jquery.treeview.css" />
+    <Content Include="Scripts\treeview\jquery.treeview.js" />
+    <Content Include="Scripts\treeview\treeview-black-line.gif" />
+    <Content Include="Scripts\treeview\treeview-black.gif" />
+    <Content Include="Scripts\treeview\treeview-default-line.gif" />
+    <Content Include="Scripts\treeview\treeview-default.gif" />
+    <Content Include="Scripts\treeview\treeview-default.png" />
+    <Content Include="Scripts\treeview\treeview-famfamfam-line.gif" />
+    <Content Include="Scripts\treeview\treeview-famfamfam.gif" />
+    <Content Include="Scripts\treeview\treeview-gray-line.gif" />
+    <Content Include="Scripts\treeview\treeview-gray.gif" />
+    <Content Include="Scripts\treeview\treeview-red-line.gif" />
+    <Content Include="Scripts\treeview\treeview-red.gif" />
     <Content Include="Scripts\ueditor\crossdomain.xml" />
     <Content Include="Scripts\ueditor\dialogs\anchor\anchor.html" />
     <Content Include="Scripts\ueditor\dialogs\attachment\attachment.css" />
@@ -1353,6 +1370,7 @@
     <Content Include="Views\Company\Edit.cshtml" />
     <Content Include="Views\CompanyAccount\Add.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\RoleMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
