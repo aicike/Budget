@@ -133,7 +133,8 @@
                                 @(item.ProfitLoss_Coefficient.FirstOrDefault() != null ? item.ProfitLoss_Coefficient.FirstOrDefault().ZhuYingChengBen_ZhuangShiZhuangHuang.ToString() : "")
                             </td>
                             <td>
-                                <a>编辑</a>
+                                <a href="@Url.Action("ProfitLoss_Edit", "Coefficient", new { CID = item.ID })">
+                                    编辑</a>
                             </td>
                         </tr>
                     }

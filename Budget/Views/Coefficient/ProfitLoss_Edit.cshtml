@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = ViewBag.CName +"-损益预算系数管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts{
+<script>
+   
+</script>
+    <style>
+        .table-hover td
+        {
+            padding: 8px 8px 0px 8px;
+            vertical-align: baseline;
+        }
+    </style>
+
+}
+@model Entity.ProfitLoss_Coefficient
+<div class="row-fluid">
+    <div class="span12" style="width: 100%">
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cogs"></i>@ViewBag.CName-损益预算系数管理
+                </div>
+                <div class="tools">
+                </div>
+            </div>
+            <div class="portlet-body">
+                @using (Ajax.BeginForm("ProfitLoss_Edit", "Coefficient", new AjaxOptions() { UpdateTargetId = "alert" }))
+                {
+                    <button class="btn blue"  type="submit">
+                        保存</button>
+                    <a href="@Url.Action("ProfitLoss_Coefficient", "Coefficient")" class="btn blue" style="">
+                        返回</a><br />
+                    <br />
+                   
+                    <table class="table table-hover" style="">
+                        <tr>
+                            <td style="width: 200px">
+                                分期数量系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.FenQiShuLiang)
+                                <input type="hidden" value="@ViewBag.CID" name="CompanyID"/>
+
+                                @Html.HiddenFor(a => a.ID)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.FenQiShuLiang)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                新保数量系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.XinBaoShuLiang)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.XinBaoShuLiang)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                续保数量系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.XuBaoShuLiang)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.XuBaoShuLiang)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                挂牌数量系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.GuaPaiShuLiang)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.GuaPaiShuLiang)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                二手车销售数量系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ErShouCheXiaoShouShuLiang)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ErShouCheXiaoShouShuLiang)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                主营业务收入-整车系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingShouRu_ZhengChe)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingShouRu_ZhengChe)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                主营业务收入-装饰装潢系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingShouRu_ZhuangShiZhuangHuang)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingShouRu_ZhuangShiZhuangHuang)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                主营业务收入-分期系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingShouRu_FenQi)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingShouRu_FenQi)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                主营业务收入-新保系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingShouRu_XinBao)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingShouRu_XinBao)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                 主营业务收入-续保系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingShouRu_XuBao)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingShouRu_XuBao)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                主营业务收入-挂牌系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingShouRu_GuaPai)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingShouRu_GuaPai)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                主营业务收入-二手车系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingShouRu_ErShouChe)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingShouRu_ErShouChe)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                主营业务成本-整车系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingChengBen_ZhengChe)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingChengBen_ZhengChe)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                主营业务成本-维修配件系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingChengBen_WeiXiuPeiJian)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingChengBen_WeiXiuPeiJian)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 120px">
+                                主营业务成本-装饰装潢系数：
+                            </td>
+                            <td>@Html.TextBoxFor(a => a.ZhuYingChengBen_ZhuangShiZhuangHuang)
+                            </td>
+                            <td>@Html.ValidationMessageFor(a => a.ZhuYingChengBen_ZhuangShiZhuangHuang)
+                            </td>
+                        </tr>
+                      
+                    </table>
+                    <button class="btn blue"  type="submit">
+                        保存</button>
+                    <a href="@Url.Action("ProfitLoss_Coefficient", "Coefficient")" class="btn blue" style="">
+                        返回</a><br />
+                   
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -40,16 +40,19 @@
     {
         color: Green;
     }
-    .yelabel,yslabel
+    .yelabel, yslabel
     {
-        margin-bottom:0px !important;
-        }
+        margin-bottom: 0px !important;
+    }
 </style>
 <div class="row-fluid">
     <div class="span12">
         <!-- BEGIN SAMPLE TABLE PORTLET-->
-        <button type="button" class="btn blue isubmit">
-            保存</button>
+        @if (ViewBag.IsReport == 0)
+        {
+            <button type="button" class="btn blue isubmit">
+                保存</button>
+        }
         <div class="portlet box blue" style="margin-top: 10px;">
             <div class="portlet-title">
                 <div class="caption">
@@ -1694,8 +1697,11 @@
                         </tr>
                     </tbody>
                 </table>
-                <button type="button" class="btn blue isubmit">
-                    保存</button>
+                @if (ViewBag.IsReport == 0)
+                {
+                    <button type="button" class="btn blue isubmit">
+                        保存</button>
+                }
             </div>
         </div>
         <!-- END SAMPLE TABLE PORTLET-->
