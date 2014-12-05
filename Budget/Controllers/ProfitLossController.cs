@@ -727,13 +727,13 @@ namespace Budget.Controllers
             //上报后不可编辑
             ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
             var main = PMainModel.GetMainInfo_ByCid_YID(LoginAccount.ID, YearID);
-            if (main.IsReport)
+            ViewBag.IsReport = 0; //未上报
+            if (main != null)
             {
-                ViewBag.IsReport = 1; //已上报
-            }
-            if (main.IsReport)
-            {
-                ViewBag.IsReport = 0; //未上报
+                if (main.IsReport)
+                {
+                    ViewBag.IsReport = 1; //已上报
+                }
             }
             return View();
         }
@@ -795,13 +795,13 @@ namespace Budget.Controllers
             //上报后不可编辑
             ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
             var main = PMainModel.GetMainInfo_ByCid_YID(LoginAccount.ID, YearID);
-            if (main.IsReport)
+            ViewBag.IsReport = 0; //未上报
+            if (main != null)
             {
-                ViewBag.IsReport = 1; //已上报
-            }
-            if (main.IsReport)
-            {
-                ViewBag.IsReport = 0; //未上报
+                if (main.IsReport)
+                {
+                    ViewBag.IsReport = 1; //已上报
+                }
             }
             return View();
         }
