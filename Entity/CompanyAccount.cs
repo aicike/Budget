@@ -56,6 +56,9 @@ namespace Entity
         /// 邮箱
         /// </summary>
         [Display(Name = "邮箱")]
+        [Required(ErrorMessage = "请输入邮箱")]
+        [StringLength(100, ErrorMessage = "邮箱不能超过100字")]
+        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*", ErrorMessage = "请输入有效的邮箱")]
         public string Email { get; set; }
 
         public virtual ICollection<RoleAccount> RoleAccounts { get; set; }

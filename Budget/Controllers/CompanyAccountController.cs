@@ -55,6 +55,8 @@ namespace Budget.Controllers
             var item = CModel.Get(CID);
             ViewBag.CName = item.Name;
             ViewBag.CID = CID;
+            RoleModel rModel = new RoleModel();
+            ViewBag.Role = rModel.List().ToList();
             return View();
         }
         /// <summary>
@@ -63,7 +65,7 @@ namespace Budget.Controllers
         /// <param name="cAccount"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Add(CompanyAccount cAccount)
+        public ActionResult Add(CompanyAccount cAccount, string Roles)
         {
             CompanyAccountModel CAModel = new CompanyAccountModel();
             //校验
@@ -79,8 +81,20 @@ namespace Budget.Controllers
             ViewBag.CName = item.Name;
             //添加
             var result = CAModel.Add(cAccount);
+            
             if (result.HasError == false)
             {
+                //添加角色
+                RoleAccountModel raMoldel = new RoleAccountModel();
+                var strRoles = Roles.TrimEnd(',').Split(',');
+                foreach (string k in strRoles)
+                {
+                    RoleAccount roleAccount = new RoleAccount();
+                    roleAccount.RoleID = int.Parse(k);
+                    roleAccount.CompanyAccountID = cAccount.ID;
+                    raMoldel.Add(roleAccount);
+                }
+
                 EmailInfo emailInfo = new EmailInfo();
                 emailInfo.To = cAccount.Email;
                 emailInfo.Subject = "华夏集团预算系统账号";
@@ -88,7 +102,7 @@ namespace Budget.Controllers
                 emailInfo.UseSSL = false;
 
                 var strUrl =  System.Configuration.ConfigurationManager.AppSettings["URl"];
-                emailInfo.Body = "您好！<br/><br/>您的华夏集团预算系统账号为："+cAccount.AccountNumber+"！<br/><br/>您的密码为：" + pwd + "<br/><br/>请点击<a href='" + strUrl + "'>华夏集团预算系统</a>登陆，尽快更改密码！<br/><br/>----华夏集团预算系统";
+                emailInfo.Body = "您好！<br/><br/>您的华夏集团预算系统账号为："+cAccount.AccountNumber+" <br/><br/>您的密码为：" + pwd + "<br/><br/>请点击<a href='" + strUrl + "'>华夏集团预算系统</a>登陆，尽快更改密码！<br/><br/>----华夏集团预算系统";
                 SendEmail.SendMailAsync(emailInfo);
             }
             return JavaScript("window.location.href='" + Url.Action("Index", "CompanyAccount", new { CID=cAccount.CompanyID}) + "'");
@@ -108,15 +122,49 @@ namespace Budget.Controllers
             ViewBag.CID = CID;
             CompanyAccountModel CAModel = new CompanyAccountModel();
             var Accountitem = CAModel.Get(AccountID);
+            RoleModel rModel = new RoleModel();
+            ViewBag.Role = rModel.List().ToList();
+            //获取角色
+            RoleAccountModel raMoldel = new RoleAccountModel();
+            ViewBag.RoleS = raMoldel.GetInfo_ByCAID(AccountID).Select(a=>a.RoleID).ToList();
             return View(Accountitem);
         }
 
+        /// <summary>
+        /// 修改信息
+        /// </summary>
+        /// <param name="cAccount"></param>
+        /// <param name="Roles"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult Edit(CompanyAccount cAccount)
+        public ActionResult Edit(CompanyAccount cAccount, string Roles)
         {
             CompanyAccountModel CAModel = new CompanyAccountModel();
-            CAModel.Edit(cAccount);
+            var result = CAModel.Edit(cAccount);
+            if (result.HasError == false)
+            {
+                //修改角色
+                RoleAccountModel raMoldel = new RoleAccountModel();
+                raMoldel.Del_ByCAID(cAccount.ID);
+                var strRoles = Roles.TrimEnd(',').Split(',');
+                foreach (string k in strRoles)
+                {
+                    RoleAccount roleAccount = new RoleAccount();
+                    roleAccount.RoleID = int.Parse(k);
+                    roleAccount.CompanyAccountID = cAccount.ID;
+                    raMoldel.Add(roleAccount);
+                }
+            }
             return JavaScript("window.location.href='" + Url.Action("Index", "CompanyAccount", new { CID = cAccount.CompanyID }) + "'");
+        }
+
+        public ActionResult Delete(int CAID,int CID)
+        {
+            RoleAccountModel raMoldel = new RoleAccountModel();
+            raMoldel.Del_ByCAID(CAID);
+            CompanyAccountModel CAModel = new CompanyAccountModel();
+            CAModel.Delete(CAID);
+            return JavaScript("window.location.href='" + Url.Action("Index", "CompanyAccount", new { CID = CID }) + "'");
         }
     }
 }
