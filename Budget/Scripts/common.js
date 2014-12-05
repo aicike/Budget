@@ -8,24 +8,14 @@ function JMessage(msg, isError) {
     }
 }
 
-function AppDelete(msg, url, fun) {
-    var f = "";
-    if (fun && fun != null) {
-        f = fun;
-    }
-    var u = "";
-    if (url && url != null) {
-        u = "$.post('" + url + "', null, function (data) { if(data){ $('#alert').html(data);} });"
-    }
 
-    JAlert({
-        Message: msg,
-        DialogType: "confirm",
-        BtnOk: "确定",
-        BtnOkClick: "$(this).dialog('close');" + f + u,
-        BtnCancel: "取消",
-        BtnCancelClick: "$(this).dialog('close');"
-    });
+function AppDelete(msg, url, fun) {
+    if (confirm(msg)) {
+        $.post(url, null, function (data) {
+            if (data) { $("alert").html(data); };
+        });
+        return true;
+    }
     return false;
 }
 

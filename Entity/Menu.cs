@@ -19,6 +19,11 @@ namespace Entity
         [Display(Name = "Action")]
         public string Action { get; set; }
 
+        /// <summary>
+        /// 账号类型（0：集团   1：公司）
+        /// </summary>
+        public int AccountType { get; set; }
+
         [Display(Name = "描述")]
         [Required(ErrorMessage = "请输入描述")]
         [StringLength(20, ErrorMessage = "长度小于20")]

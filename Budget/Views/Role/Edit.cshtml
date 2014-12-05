@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "新增角色";
+    ViewBag.Title = "修改角色";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section scripts{
@@ -10,7 +10,7 @@
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cogs"></i>创建角色
+                    <i class="icon-cogs"></i>修改角色
                 </div>
                 <div class="tools">
                 </div>
@@ -23,7 +23,7 @@
                             <td style="width: 120px">
                                 角色名称：
                             </td>
-                            <td>@Html.TextBoxFor(a => a.RoleName)
+                            <td>@Html.TextBoxFor(a => a.RoleName)@Html.HiddenFor(a => a.ID)
                             </td>
                             <td>@Html.ValidationMessageFor(a => a.RoleName)
                             </td>
