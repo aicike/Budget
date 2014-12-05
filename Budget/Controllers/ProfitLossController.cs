@@ -724,6 +724,17 @@ namespace Budget.Controllers
             ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
             var list = PDetailModel.GetDetailed_ByCompanyID(LoginAccount.ID, YearID);
             ViewBag.List = list;
+            //上报后不可编辑
+            ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
+            var main = PMainModel.GetMainInfo_ByCid_YID(LoginAccount.ID, YearID);
+            if (main.IsReport)
+            {
+                ViewBag.IsReport = 1; //已上报
+            }
+            if (main.IsReport)
+            {
+                ViewBag.IsReport = 0; //未上报
+            }
             return View();
         }
 
@@ -781,6 +792,17 @@ namespace Budget.Controllers
             ViewBag.YearID = YearID;
             ViewBag.ProfitLoss_Detailed = detail;
             ViewBag.Month = Month;
+            //上报后不可编辑
+            ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
+            var main = PMainModel.GetMainInfo_ByCid_YID(LoginAccount.ID, YearID);
+            if (main.IsReport)
+            {
+                ViewBag.IsReport = 1; //已上报
+            }
+            if (main.IsReport)
+            {
+                ViewBag.IsReport = 0; //未上报
+            }
             return View();
         }
 
