@@ -2,8 +2,8 @@ namespace EF.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
-    public partial class update : DbMigration
+    
+    public partial class adds : DbMigration
     {
         public override void Up()
         {
@@ -16,7 +16,7 @@ namespace EF.Migrations
                         CoefficientURL = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
-
+            
             CreateTable(
                 "dbo.Company",
                 c => new
@@ -28,7 +28,7 @@ namespace EF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Group", t => t.GroupID)
                 .Index(t => t.GroupID);
-
+            
             CreateTable(
                 "dbo.CompanyAccount",
                 c => new
@@ -44,7 +44,7 @@ namespace EF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Company", t => t.CompanyID)
                 .Index(t => t.CompanyID);
-
+            
             CreateTable(
                 "dbo.RoleAccount",
                 c => new
@@ -61,7 +61,7 @@ namespace EF.Migrations
                 .Index(t => t.RoleID)
                 .Index(t => t.GroupAccountID)
                 .Index(t => t.CompanyAccountID);
-
+            
             CreateTable(
                 "dbo.GroupAccount",
                 c => new
@@ -77,7 +77,7 @@ namespace EF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Group", t => t.GroupID)
                 .Index(t => t.GroupID);
-
+            
             CreateTable(
                 "dbo.Group",
                 c => new
@@ -86,7 +86,7 @@ namespace EF.Migrations
                         Name = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.ID);
-
+            
             CreateTable(
                 "dbo.Role",
                 c => new
@@ -96,7 +96,7 @@ namespace EF.Migrations
                         RoleName = c.String(nullable: false, maxLength: 50),
                     })
                 .PrimaryKey(t => t.ID);
-
+            
             CreateTable(
                 "dbo.RoleMenu",
                 c => new
@@ -110,7 +110,7 @@ namespace EF.Migrations
                 .ForeignKey("dbo.Role", t => t.RoleID)
                 .Index(t => t.MenuID)
                 .Index(t => t.RoleID);
-
+            
             CreateTable(
                 "dbo.Menu",
                 c => new
@@ -123,12 +123,13 @@ namespace EF.Migrations
                         Name = c.String(nullable: false, maxLength: 20),
                         ShowName = c.String(nullable: false, maxLength: 20),
                         Order = c.Int(nullable: false),
+                        IsShow = c.Boolean(),
                         ParentMenuID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Menu", t => t.ParentMenuID)
                 .Index(t => t.ParentMenuID);
-
+            
             CreateTable(
                 "dbo.MenuOption",
                 c => new
@@ -143,7 +144,7 @@ namespace EF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Menu", t => t.MenuID)
                 .Index(t => t.MenuID);
-
+            
             CreateTable(
                 "dbo.RoleOption",
                 c => new
@@ -157,7 +158,7 @@ namespace EF.Migrations
                 .ForeignKey("dbo.Role", t => t.RoleID)
                 .Index(t => t.RoleID)
                 .Index(t => t.MenuOptionID);
-
+            
             CreateTable(
                 "dbo.ProfitLoss_Coefficient",
                 c => new
@@ -183,7 +184,7 @@ namespace EF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Company", t => t.CompanyID)
                 .Index(t => t.CompanyID);
-
+            
             CreateTable(
                 "dbo.ProfitLoss_Detailed",
                 c => new
@@ -262,7 +263,7 @@ namespace EF.Migrations
                 .ForeignKey("dbo.ProfitLoss_Main", t => t.ProfitLoss_MainID)
                 .Index(t => t.CompanyID)
                 .Index(t => t.ProfitLoss_MainID);
-
+            
             CreateTable(
                 "dbo.ProfitLoss_Main",
                 c => new
@@ -277,7 +278,7 @@ namespace EF.Migrations
                 .ForeignKey("dbo.ParticularYear", t => t.ParticularYearID)
                 .Index(t => t.CompanyID)
                 .Index(t => t.ParticularYearID);
-
+            
             CreateTable(
                 "dbo.ParticularYear",
                 c => new
@@ -286,7 +287,7 @@ namespace EF.Migrations
                         Year = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
-
+            
             CreateTable(
                 "dbo.ProfitLossReality_Detail",
                 c => new
@@ -367,7 +368,7 @@ namespace EF.Migrations
                 .Index(t => t.ProfitLossReality_MainID)
                 .Index(t => t.CompanyID)
                 .Index(t => t.ParticularYearID);
-
+            
             CreateTable(
                 "dbo.ProfitLossReality_Main",
                 c => new
@@ -386,6 +387,7 @@ namespace EF.Migrations
                 .Index(t => t.CompanyID)
                 .Index(t => t.ParticularYearID);
 
+
             var migrationDir = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\");
             var ddlSqlFiles = new string[] { "Initial.sql" };
             foreach (var file in ddlSqlFiles)
@@ -398,8 +400,9 @@ namespace EF.Migrations
                         Sql(commandText);
                 }
             }
-        }
 
+        }
+        
         public override void Down()
         {
             DropForeignKey("dbo.ProfitLoss_Detailed", "ProfitLoss_MainID", "dbo.ProfitLoss_Main");

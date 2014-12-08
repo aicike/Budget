@@ -49,14 +49,6 @@
     <Compile Include="Context.cs" />
     <Compile Include="Mapping\ProfitLossReality_MainMap.cs" />
     <Compile Include="Mapping\ProfitLossReality_DetailMap.cs" />
-    <Compile Include="Migrations\201412050512490_update.cs" />
-    <Compile Include="Migrations\201412050512490_update.Designer.cs">
-      <DependentUpon>201412050512490_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412050722341_update1.cs" />
-    <Compile Include="Migrations\201412050722341_update1.Designer.cs">
-      <DependentUpon>201412050722341_update1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,14 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Initial.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412050512490_update.resx">
-      <DependentUpon>201412050512490_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201412050722341_update1.resx">
-      <DependentUpon>201412050722341_update1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
