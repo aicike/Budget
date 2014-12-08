@@ -257,7 +257,7 @@ namespace Budget.Controllers
             if (Type == 0)
             {
                 #region 预算列表
-                
+
                 ProfitLoss_DetailedModel PldModel = new ProfitLoss_DetailedModel();
                 var list = PldModel.GetDetailed_ByCompanyID(ComPanyID, YearID);
                 foreach (var item in list)
@@ -727,6 +727,10 @@ namespace Budget.Controllers
             //上报后不可编辑
             ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
             var main = PMainModel.GetMainInfo_ByCid_YID(LoginAccount.ID, YearID);
+            ParticularYearModel PyearModel = new ParticularYearModel();
+            var pyear = PyearModel.Get(YearID);
+            ViewBag.YearValue = pyear.Year;
+            ViewBag.Year = pyear.Year;
             ViewBag.IsReport = 0; //未上报
             if (main != null)
             {
@@ -735,6 +739,13 @@ namespace Budget.Controllers
                     ViewBag.IsReport = 1; //已上报
                 }
             }
+            ProfitLoss_CoefficientModel cm = new ProfitLoss_CoefficientModel();
+            var ProfitLoss_Coefficient = cm.GetCoefficient_ByCID(LoginAccount.ID);
+            if (ProfitLoss_Coefficient == null)
+            {
+                ProfitLoss_Coefficient = new ProfitLoss_Coefficient();
+            }
+            ViewBag.ProfitLoss_Coefficient = ProfitLoss_Coefficient;
             return View();
         }
 
@@ -789,6 +800,9 @@ namespace Budget.Controllers
                 detail = profitLossReality_Main.ProfitLoss_Detailed;
                 ViewBag.List = profitLossReality_Main.ProfitLossReality_Details.OrderBy(a => a.Week).ToList();
             }
+            ParticularYearModel PyearModel = new ParticularYearModel();
+            var pyear = PyearModel.Get(YearID);
+            ViewBag.YearValue = pyear.Year;
             ViewBag.YearID = YearID;
             ViewBag.ProfitLoss_Detailed = detail;
             ViewBag.Month = Month;
@@ -836,8 +850,8 @@ namespace Budget.Controllers
             foreach (var item in list)
             {
                 item.ProfitLossReality_MainID = PRmain.ID;
-                item.CompanyID =LoginAccount.ID;
-                item.ParticularYearID=YearID;
+                item.CompanyID = LoginAccount.ID;
+                item.ParticularYearID = YearID;
                 PDetailModel.Add(item);
             }
 

@@ -2,6 +2,7 @@
     ViewBag.Title = "损益预算明细";
     var list = ViewBag.List as List<Entity.ProfitLoss_Detailed>;
     bool hasData = (list == null || list.Count == 0) ? false : true;
+    var pc= ViewBag.ProfitLoss_Coefficient as Entity.ProfitLoss_Coefficient;
 }
 <style>
     .itext
@@ -46,7 +47,7 @@
         <div class="portlet box blue" style="margin-top: 10px;">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cogs"></i>损益预算</div>
+                    <i class="icon-cogs"></i>@(ViewBag.YearValue)年损益预算</div>
             </div>
             <div class="portlet-body">
                 <table class="table table-hover itable">
@@ -62,7 +63,7 @@
                                 </th>
                             }
                             <th>
-                                2015年累计
+                                @(ViewBag.YearValue)年累计
                             </th>
                         </tr>
                     </thead>
@@ -1653,21 +1654,21 @@
 </div>
 @section scripts{
     <script type="text/javascript">
-        var tr_FenQiShuLiang = 0.16;
-        var tr_XinBaoShuLiang = 0.88;
-        var tr_xubaoshuliang = 0.3;
-        var tr_guapaishuliang = 0.35;
-        var tr_ershouchexiaoshoushuliang = 0.01;
-        var tr_zhengche = 10;
-        var tr_zhuangshizhuanghuang = 0.025;
-        var tr_fenqi = 0.33;
-        var tr_xinbao = 0.068;
-        var tr_xubao = 0.058;
-        var tr_guapai = 0.085;
-        var tr_ershouche = 0.1;
-        var tr_jian_zhengche = 0.986;
-        var tr_jian_weixiupeijian = 0.8;
-        var tr_jian_zhuangshizhuanghuang = 0.6;
+        var tr_FenQiShuLiang =@pc.FenQiShuLiang;
+        var tr_XinBaoShuLiang = @pc.XinBaoShuLiang;
+        var tr_xubaoshuliang = @pc.XuBaoShuLiang;
+        var tr_guapaishuliang = @pc.GuaPaiShuLiang;
+        var tr_ershouchexiaoshoushuliang = @pc.ErShouCheXiaoShouShuLiang;
+        var tr_zhengche = @pc.ZhuYingShouRu_ZhengChe;
+        var tr_zhuangshizhuanghuang = @pc.ZhuYingShouRu_ZhuangShiZhuangHuang;
+        var tr_fenqi = @pc.ZhuYingShouRu_FenQi;
+        var tr_xinbao = @pc.ZhuYingShouRu_XinBao;
+        var tr_xubao = @pc.ZhuYingShouRu_XuBao;
+        var tr_guapai = @pc.ZhuYingShouRu_GuaPai;
+        var tr_ershouche = @pc.ZhuYingShouRu_ErShouChe;
+        var tr_jian_zhengche = @pc.ZhuYingChengBen_ZhengChe;
+        var tr_jian_weixiupeijian = @pc.ZhuYingChengBen_WeiXiuPeiJian;
+        var tr_jian_zhuangshizhuanghuang = @pc.ZhuYingChengBen_ZhuangShiZhuangHuang;
         var submitUrl = '@Url.Action("Detail", "ProfitLoss")';
         var year = '@ViewBag.YearID';
 
