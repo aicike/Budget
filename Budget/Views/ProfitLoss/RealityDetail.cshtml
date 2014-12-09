@@ -1782,6 +1782,7 @@
         var year = '@ViewBag.YearID';
         var month = '@ViewBag.Month';
         var pdid='@ProfitLoss_Detailed.ID';
+        var week='@ViewBag.Week';
 
         $(function () {
             //只能输入数字和小数点
@@ -1791,6 +1792,7 @@
                 $(this).val($(this).val().replace(/\.{2,}/g, ".")); //只保留第一个. 清除多余的.
                 $(this).val($(this).val().replace(".", "$#$").replace(/\./g, "").replace("$#$", "."));
             });
+            $("td[row!='"+week+"']").find(":text").attr("readonly", "readonly");
         });
         //获取数值
         function getValue(obj) {

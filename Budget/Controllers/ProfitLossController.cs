@@ -784,7 +784,7 @@ namespace Budget.Controllers
         }
 
         //损益真实数据填写（周）
-        public ActionResult RealityDetail(int YearID, int Month)
+        public ActionResult RealityDetail(int YearID, int Month, int Week)
         {
             ProfitLoss_Detailed detail = null;
 
@@ -816,6 +816,7 @@ namespace Budget.Controllers
                     ViewBag.IsReport = 1; //已上报
                 }
             }
+            ViewBag.Week = Week;
             return View();
         }
 
@@ -887,10 +888,13 @@ namespace Budget.Controllers
             var pyear = PyearModel.Get(YearID);
             ViewBag.Year = pyear.Year;
             ViewBag.YearID = YearID;
-
             ViewBag.CID = LoginAccount.ID;
 
-            return View();
+            ProfitLossReality_MainModel prm = new ProfitLossReality_MainModel();
+            var list = prm.GetInfo_ByCID_YID(YearID, LoginAccount.ID);
+
+
+            return View(list);
         }
 
         //上报月份预算详细
