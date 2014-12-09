@@ -38,6 +38,11 @@ namespace Entity
         public int ParticularYearID { get; set; }
         public virtual ParticularYear ParticularYear { get; set; }
 
+        /// <summary>
+        /// 状态： 0:未填写 1:保存  2:申请修改 3:同意修改  4:未同意修改
+        /// </summary>
+        public int Status { get; set; }
+
 
         /// <summary>
         /// 周

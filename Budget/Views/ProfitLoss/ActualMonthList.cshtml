@@ -10,20 +10,19 @@
         {
             if (item.IsReport)
             {
-                <span style="color: #35aa47">已上报</span>
+    <span style="color: #35aa47">已上报</span>
             }
             else
             {
-                @Ajax.ActionLink("上报", "ReportProfitLossActula", "ProfitLoss", new { YearID = ViewBag.YearID, Month = Month }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要上报吗')) {return true }" }, new { @class = "tooltips", style = "color: #4d8bf8; cursor: pointer", data_placement = "top", data_original_title = "注意：上报后不可更改。" })
+    @Ajax.ActionLink("上报", "ReportProfitLossActula", "ProfitLoss", new { YearID = ViewBag.YearID, Month = Month }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要上报吗')) {return true }" }, new { @class = "tooltips", style = "color: #4d8bf8; cursor: pointer", data_placement = "top", data_original_title = "注意：上报后不可更改。" })
             }
         }
         else
         {
-            <span style="color: #e02222">未填写预算</span>
+    <span style="color: #e02222">未填写预算</span>
         }
 }
 @section scripts{
-
 }
 <div class="row-fluid">
     <div class="span6" style="width: 100%">
@@ -41,20 +40,36 @@
                         <th>
                             月份
                         </th>
-                        <th style="width: 20%">
-                            操作
+                        <th>
+                            第1周
+                        </th>
+                        <th>
+                            第2周
+                        </th>
+                        <th>
+                            第3周
+                        </th>
+                        <th>
+                            第4周
                         </th>
                     </tr>
-
-                    
-                    @for(int i = 1; i < 13; i++)
+                    @for (int i = 1; i < 13; i++)
                     {
                         <tr>
                             <td>
-                                <a href="@Url.Action("RealityDetail", "ProfitLoss", new { YearID = ViewBag.YearID, Month = i })">@(i)月份实际数据</a>
+
                             </td>
                             <td>
-                                @GetInfo(i)
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <a href="@Url.Action("RealityDetail", "ProfitLoss", new { YearID = ViewBag.YearID, Month = i })">@(i)月份实际数据</a>
                             </td>
                         </tr>
                     }

@@ -807,12 +807,10 @@ namespace Budget.Controllers
             ViewBag.ProfitLoss_Detailed = detail;
             ViewBag.Month = Month;
             //上报后不可编辑
-            ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
-            var main = PMainModel.GetMainInfo_ByCid_YID(LoginAccount.ID, YearID);
             ViewBag.IsReport = 0; //未上报
-            if (main != null)
+            if (profitLossReality_Main != null)
             {
-                if (main.IsReport)
+                if (profitLossReality_Main.IsReport)
                 {
                     ViewBag.IsReport = 1; //已上报
                 }
