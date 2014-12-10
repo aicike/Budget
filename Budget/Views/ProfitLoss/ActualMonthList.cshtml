@@ -6,12 +6,13 @@
     {
         if (detail == null)
         { 
-    <span style="color: #e02222"><a href="@Url.Action("RealityDetail", "ProfitLoss", new { YearID = ViewBag.YearID, Month = month, Week = week })">
-        未填写预算</a></span>
+        <a href="@Url.Action("RealityDetail", "ProfitLoss", new { YearID = ViewBag.YearID, Month = month, Week = week })">
+        未填写预算</a>
         }
         else
         {
             string value = "未填写预算";
+            string color = "";
             switch (detail.Status)
             {
                 case 0:
@@ -19,6 +20,7 @@
                     break;
                 case 1:
                     value = "已填写预算";
+                    color = "style=color:#009100";
                     break;
                 case 2:
                     value = "已申请修改";
@@ -30,8 +32,7 @@
                     value = "未同意修改";
                     break;
             }
-    <span style="color: #e02222"><a href="@Url.Action("RealityDetail", "ProfitLoss", new { YearID = ViewBag.YearID, Month = month, Week = week })">
-        })">@value</a></span>
+            <a @color href="@Url.Action("RealityDetail", "ProfitLoss", new { YearID = ViewBag.YearID, Month = month, Week = week })">@value</a>
         }
 }
 @section scripts{
@@ -68,12 +69,12 @@
                     </tr>
                     @for (int i = 1; i < 13; i++)
                     {
-                        if (Model.Count != 0)
+                        if (Model.Count > i-1)
                         {
                             var item = Model[i - 1];
                             if (item != null)
                             {
-                                var details = item.ProfitLossReality_Details.ToList();
+                                var details = item.ProfitLossReality_Details.OrderBy(a => a.Week).ToList();
                         <tr>
                             <td>
                                 @(i)月份实际数据

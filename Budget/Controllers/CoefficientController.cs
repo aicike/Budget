@@ -11,7 +11,7 @@ namespace Budget.Controllers
     /// <summary>
     /// 系数管理
     /// </summary>
-    public class CoefficientController : Controller
+    public class CoefficientController : BaseController
     {
         //
         // GET: /ProfitLoss_Coefficient/

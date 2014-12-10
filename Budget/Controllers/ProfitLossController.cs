@@ -794,11 +794,30 @@ namespace Budget.Controllers
                 ProfitLoss_DetailedModel PDetailModel = new ProfitLoss_DetailedModel();
                 detail = PDetailModel.GetDetailed_ByCompanyID_YearMonth(LoginAccount.ID, YearID, Month);
                 ViewBag.List = null;
+                ViewBag.IsEdit = true;//设置当前周可编辑
             }
             else
             {
                 detail = profitLossReality_Main.ProfitLoss_Detailed;
-                ViewBag.List = profitLossReality_Main.ProfitLossReality_Details.OrderBy(a => a.Week).ToList();
+                var profitLossRealityDetailList = profitLossReality_Main.ProfitLossReality_Details.OrderBy(a => a.Week).ToList();
+                int count = profitLossRealityDetailList.Count;
+                if (profitLossRealityDetailList.Count < 4)
+                {
+                    for (int i = 0; i < 4 - count; i++)
+                    {
+                        profitLossRealityDetailList.Add(new ProfitLossReality_Detail());
+                    }
+                }
+                ViewBag.List = profitLossRealityDetailList;
+                var weekItem = profitLossRealityDetailList.Where(a => a.Week == Week).FirstOrDefault();
+                if (weekItem == null || weekItem.Status == 0 || weekItem.Status == 3)
+                {
+                    ViewBag.IsEdit = true;
+                }
+                else
+                {
+                    ViewBag.IsEdit = false;
+                }
             }
             ParticularYearModel PyearModel = new ParticularYearModel();
             var pyear = PyearModel.Get(YearID);
@@ -806,15 +825,6 @@ namespace Budget.Controllers
             ViewBag.YearID = YearID;
             ViewBag.ProfitLoss_Detailed = detail;
             ViewBag.Month = Month;
-            //上报后不可编辑
-            ViewBag.IsReport = 0; //未上报
-            if (profitLossReality_Main != null)
-            {
-                if (profitLossReality_Main.IsReport)
-                {
-                    ViewBag.IsReport = 1; //已上报
-                }
-            }
             ViewBag.Week = Week;
             return View();
         }
@@ -823,7 +833,7 @@ namespace Budget.Controllers
         //保存损益真实数据填写（周）
         [HttpPost]
         [ValidateInput(false)]
-        public string RealityDetail(string json, int YearID, int Month, int pdid)
+        public string RealityDetail(string json, int YearID, int Month, int pdid, int week)
         {
             var list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ProfitLossReality_Detail>>(json);
             ProfitLossReality_MainModel profitLossReality_MainModel = new ProfitLossReality_MainModel();
@@ -834,25 +844,36 @@ namespace Budget.Controllers
             if (profitLossReality_Main != null)
             {
                 PRmain = profitLossReality_Main;
-                //删除数据
-                PDetailModel.DelInfo_ByMainID(PRmain.ID);
+                //删除周数据
+                PDetailModel.DelInfo_ByMainID(PRmain.ID, week);
+                //添加周数据
+                var item = list.Where(a => a.Week == week).FirstOrDefault();
+                item.ProfitLossReality_MainID = PRmain.ID;
+                item.CompanyID = LoginAccount.ID;
+                item.ParticularYearID = YearID;
+                item.Status = 1;
+                PDetailModel.Add(item);
             }
             else
             {
                 PRmain.ID = pdid;
                 PRmain.CompanyID = LoginAccount.ID;
-                PRmain.IsReport = false;
                 PRmain.ParticularYearID = YearID;
                 PRmain.Month = Month;
                 profitLossReality_MainModel.Add(PRmain);
+                foreach (var item in list)
+                {
+                    item.ProfitLossReality_MainID = PRmain.ID;
+                    item.CompanyID = LoginAccount.ID;
+                    item.ParticularYearID = YearID;
+                    if (item.Week == week)
+                    {
+                        item.Status = 1;
+                    }
+                    PDetailModel.Add(item);
+                }
             }
-            foreach (var item in list)
-            {
-                item.ProfitLossReality_MainID = PRmain.ID;
-                item.CompanyID = LoginAccount.ID;
-                item.ParticularYearID = YearID;
-                PDetailModel.Add(item);
-            }
+
 
             return "";
         }

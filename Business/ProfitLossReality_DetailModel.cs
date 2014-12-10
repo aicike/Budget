@@ -13,10 +13,10 @@ namespace Business
         /// </summary>
         /// <param name="MainID"></param>
         /// <returns></returns>
-        public Result DelInfo_ByMainID(int MainID)
+        public Result DelInfo_ByMainID(int MainID, int week)
         {
             Result result = new Result();
-            string sql = "delete ProfitLossReality_Detail where ProfitLossReality_MainID = " + MainID;
+            string sql = "delete ProfitLossReality_Detail where ProfitLossReality_MainID = " + MainID + " and Week=" + week;
             base.SqlExecute(sql);
             return result;
         }
@@ -30,7 +30,7 @@ namespace Business
         /// <returns></returns>
         public List<ProfitLossReality_Detail> GetInfo_ByCID_YID(int YearID, int CID)
         {
-            var list = List().Where(a => a.ParticularYearID == YearID && a.CompanyID == CID&&a.ProfitLossReality_Main.IsReport==true).ToList();
+            var list = List().Where(a => a.ParticularYearID == YearID && a.CompanyID == CID ).ToList();
             return list;
         }
     }

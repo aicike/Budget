@@ -29,6 +29,9 @@ namespace EF
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Configurations.Add(new ProfitLossReality_MainMap());
             modelBuilder.Configurations.Add(new ProfitLossReality_DetailMap());
+            modelBuilder.Configurations.Add(new RoleAccountMap());
+            modelBuilder.Configurations.Add(new RoleMenuMap());
+            modelBuilder.Configurations.Add(new RoleOptionMap());
             
         }
     }

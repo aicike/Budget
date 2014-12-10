@@ -25,6 +25,17 @@
 
             $("#Sel_type").val(@ViewBag.Type);
 
+
+           //修改“销售数量”为“销售数据”，增加“财务数据”
+           var td_count= parseInt(@Model.Rows.Count);
+           $(".销售数量").parent().find("td").html("");
+           $(".销售数量").html("<b>销售数据</b>");
+           var html_tr="<tr><td><b>财务数据</b></td>";
+           for (var i = 0; i < td_count; i++) {
+                html_tr+="<td></td>";
+           }
+           html_tr+="</tr>";
+           $(".请输入主营业务收入").parent().before(html_tr);
         });
 
         function Select()
@@ -85,7 +96,7 @@
                         <tr>
                             @for (int j = 0; j < DtTitle.Rows.Count; j++)
                             {
-                                <td style="width: 135px;">
+                                <td style="width: 135px;" class="@DtTitle.Rows[j][i]">
                                     @DtTitle.Rows[j][i]
                                 </td>
                             }

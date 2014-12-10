@@ -20,6 +20,9 @@ INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [
 --公司
 INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (101, NULL, 'Home', 'Home', N'预算管理', N'预算管理', 1, NULL,1)
 INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (102, NULL, 'ProfitLoss', 'Index', N'损益预算', N'损益预算', 1, 101,1)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType,IsShow) VALUES (10201, NULL, 'ProfitLoss', 'Detail', N'损益预算填写', N'损益预算填写', 1, 102,1,0)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType,IsShow) VALUES (10202, NULL, 'ProfitLoss', 'ActualMonthList', N'损益数据列表', N'损益数据列表', 2, 102,1,0)
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType,IsShow) VALUES (10203, NULL, 'ProfitLoss', 'RealityDetail', N'损益数据详细', N'损益数据详细', 3, 102,1,0)
 
 INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (111, NULL, 'Home', 'Home', N'账号管理', N'账号管理', 2, NULL,1)
 INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (112, NULL, 'Home', 'Home', N'个人信息', N'个人信息', 1, 111,1)

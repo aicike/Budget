@@ -38,11 +38,12 @@ namespace Entity
         [Display(Name = "月份")]
         public int Month { get; set; }
 
-        /// <summary>
-        /// 是否上报
-        /// </summary>
-        [Display(Name = "是否上报")]
-        public bool IsReport { get; set; }
+        /////按每周保存后，即为上报
+        ///// <summary>
+        ///// 是否上报
+        ///// </summary>
+        //[Display(Name = "是否上报")]
+        //public bool IsReport { get; set; }
 
 
         /// <summary>
