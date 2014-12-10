@@ -714,7 +714,8 @@ namespace Budget.Controllers
         {
             ProfitLoss_MainModel PMainModel = new ProfitLoss_MainModel();
             PMainModel.UpdateReport(true, PMID);
-            return RedirectToAction("Index", "ProfitLoss");
+
+            return JavaScript("window.location.href='" + Url.Action("Index", "ProfitLoss") + "'");
         }
 
         //预算表
