@@ -1,0 +1,1364 @@
+﻿@{
+    ViewBag.Title = "费用预算明细";
+    var list = ViewBag.List as List<Entity.Expenses_Detail>;
+    bool hasData = (list == null || list.Count == 0) ? false : true;
+}
+<style>
+    .itext
+    {
+        width: 50px;
+        margin: 0px !important;
+        height: 10px !important;
+    }
+    .itable td
+    {
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+    }
+    
+    .page-content
+    {
+        min-width: 1330px;
+    }
+</style>
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN SAMPLE TABLE PORTLET-->
+        @if (ViewBag.IsReport == 0)
+        { 
+            <button type="button" class="btn blue isubmit">
+                保存</button>
+        }
+        <div class="portlet box blue" style="margin-top: 10px;">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-cogs"></i>@(ViewBag.YearValue)年费用预算</div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-hover itable">
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">
+                                分类
+                            </th>
+                            <th style="width: 40px;">
+                                序号
+                            </th>
+                            <th style="width: 140px;">
+                                项目
+                            </th>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <th row="@i" class="itr">
+                                    @(i)月
+                                </th>
+                            }
+                            <th>
+                                @(ViewBag.YearValue)年累计
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="tr_GongZi">
+                            <td rowspan="8">职工薪酬</td>
+                            <td >1</td>
+                            <td style="font-weight:bold">
+                                工资
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].GongZi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.GongZi)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_Jiangjin">
+                            <td >2</td>
+                            <td style="font-weight:bold">
+                                奖金
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].Jiangjin" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.Jiangjin)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_FuLiFei">
+                            <td >3</td>
+                            <td style="font-weight:bold">
+                                福利费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].FuLiFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.FuLiFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_YuanGongBaoXian">
+                            <td >4</td>
+                            <td style="font-weight:bold">
+                                员工保险
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].YuanGongBaoXian" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.YuanGongBaoXian)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ZhiGongJiaoYuJingFei">
+                            <td >5</td>
+                            <td style="font-weight:bold">
+                                职工教育经费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhiGongJiaoYuJingFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ZhiGongJiaoYuJingFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_GongHuiFeiYong">
+                            <td >6</td>
+                            <td style="font-weight:bold">
+                                工会经费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].GongHuiFeiYong" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.GongHuiFeiYong)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_CiTuiFuLi">
+                            <td >7</td>
+                            <td style="font-weight:bold">
+                                辞退福利
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].CiTuiFuLi" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.CiTuiFuLi)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_zhigongxinchou_xiaoji">
+                            <td style="font-weight:bold" colspan="2">小计</td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                </td>
+                            }
+                            <td></td>
+                        </tr>
+                        <tr id="tr_BanGongFei">
+                            <td rowspan="28">变动费用</td>
+                            <td>1</td>
+                            <td style="font-weight:bold">
+                                办公费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].BanGongFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.BanGongFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_TongXunFei">
+                            <td>2</td>
+                            <td style="font-weight:bold">
+                                通讯费
+                            </td>
+
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].TongXunFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.TongXunFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_GuangXuanFei">
+                            <td>3</td>
+                            <td style="font-weight:bold">
+                                广宣费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].GuangXuanFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.GuangXuanFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_PeiXunFei">
+                            <td>4</td>
+                            <td style="font-weight:bold">
+                                培训费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].PeiXunFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.PeiXunFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ChaiLvFei">
+                            <td>5</td>
+                            <td style="font-weight:bold">
+                                水电暖费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ChaiLvFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ChaiLvFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ChaiLvFei">
+                            <td>6</td>
+                            <td style="font-weight:bold">
+                                差旅费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ChaiLvFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ChaiLvFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_SuSongFei">
+                            <td>7</td>
+                            <td style="font-weight:bold">
+                                诉讼费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].SuSongFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.SuSongFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_CheLiangShiYongFei">
+                            <td>8</td>
+                            <td style="font-weight:bold">
+                                车辆使用费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].CheLiangShiYongFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.CheLiangShiYongFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_YunShuFei">
+                            <td>9</td>
+                            <td style="font-weight:bold">
+                                运输费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].YunShuFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.YunShuFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ShouHouShouQianFuWuFei">
+                            <td>10</td>
+                            <td style="font-weight:bold">
+                                售后售前服务费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ShouHouShouQianFuWuFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ShouHouShouQianFuWuFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ShenJiFei">
+                            <td>11</td>
+                            <td style="font-weight:bold">
+                                审计费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ShenJiFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ShenJiFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_DiZhiYiHaoPin">
+                            <td>12</td>
+                            <td style="font-weight:bold">
+                                低值易耗品
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].DiZhiYiHaoPin" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.DiZhiYiHaoPin)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_WuLiaoXiaoHaoFei">
+                            <td>13</td>
+                            <td style="font-weight:bold">
+                                物料消耗费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].WuLiaoXiaoHaoFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.WuLiaoXiaoHaoFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_YeWuZhaoDaiFei">
+                            <td>14</td>
+                            <td style="font-weight:bold">
+                                业务招待费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].YeWuZhaoDaiFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.YeWuZhaoDaiFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_LvHuaBaoJieFeiYong">
+                            <td>15</td>
+                            <td style="font-weight:bold">
+                                绿化保洁费用
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].LvHuaBaoJieFeiYong" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.LvHuaBaoJieFeiYong)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_BaoXianFei">
+                            <td>16</td>
+                            <td style="font-weight:bold">
+                                保险费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].BaoXianFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.BaoXianFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_XiuLiFei">
+                            <td>17</td>
+                            <td style="font-weight:bold">
+                                修理费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XiuLiFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.XiuLiFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ShuiJin">
+                            <td>18</td>
+                            <td style="font-weight:bold">
+                                税金
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ShuiJin" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ShuiJin)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ZiXunFei_LaoWuFei">
+                            <td>19</td>
+                            <td style="font-weight:bold">
+                                咨询费/劳务费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZiXunFei_LaoWuFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ZiXunFei_LaoWuFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_DongShiHuiFei">
+                            <td>20</td>
+                            <td style="font-weight:bold">
+                                董事会费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].DongShiHuiFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.DongShiHuiFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_GongZhengFei">
+                            <td>21</td>
+                            <td style="font-weight:bold">
+                                公证费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].GongZhengFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.GongZhengFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_PaiWuFei">
+                            <td>22</td>
+                            <td style="font-weight:bold">
+                                排污费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].PaiWuFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.PaiWuFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ChangJiaRuanJianShiYongFei">
+                            <td>23</td>
+                            <td style="font-weight:bold">
+                                厂家软件使用费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ChangJiaRuanJianShiYongFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ChangJiaRuanJianShiYongFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ZhaoBiaoShouXuFei">
+                            <td>24</td>
+                            <td style="font-weight:bold">
+                                招标手续费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZhaoBiaoShouXuFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ZhaoBiaoShouXuFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_HuiYiFei">
+                            <td>25</td>
+                            <td style="font-weight:bold">
+                                会议费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].HuiYiFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.HuiYiFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_FuWuFei">
+                            <td>26</td>
+                            <td style="font-weight:bold">
+                                服务费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].FuWuFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.FuWuFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_QiTa">
+                            <td>27</td>
+                            <td style="font-weight:bold">
+                                其他
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTa" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.QiTa)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_biandongfeiyong_xiaoji">
+                            <td style="font-weight:bold" colspan="2">小计</td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                </td>
+                            }
+                            <td></td>
+                        </tr>
+                        <tr id="tr_ZheJiuFei">
+                        <td rowspan="5">固定费用</td>
+                            <td >1</td>
+                            <td style="font-weight:bold">
+                                折旧费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZheJiuFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ZheJiuFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_WuXingZiChanTanFei">
+                            <td >2</td>
+                            <td style="font-weight:bold">
+                                无形资产推销
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].WuXingZiChanTanFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.WuXingZiChanTanFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ChangQiDaiTanFeiYongTanXiao">
+                            <td >3</td>
+                            <td style="font-weight:bold">
+                                长期待摊费用摊销
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ChangQiDaiTanFeiYongTanXiao" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ChangQiDaiTanFeiYongTanXiao)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ZuPingWuGuanFei">
+                            <td >4</td>
+                            <td style="font-weight:bold">
+                                租赁物管费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ZuPingWuGuanFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ZuPingWuGuanFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_gudingfeiyong_xiaoji">
+                            <td style="font-weight:bold" colspan="2">小计</td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                </td>
+                            }
+                            <td></td>
+                        </tr>
+                        <tr id="tr_LiXiShouRu">
+                        <td rowspan="6">财务费用</td>
+                            <td >1</td>
+                            <td style="font-weight:bold">
+                                利息收入
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].LiXiShouRu" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.LiXiShouRu)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_LiXiZhiChu">
+                            <td >2</td>
+                            <td style="font-weight:bold">
+                                利息支出
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].LiXiZhiChu" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.LiXiZhiChu)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_ShouXuFei">
+                            <td >3</td>
+                            <td style="font-weight:bold">
+                                手续费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].ShouXuFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.ShouXuFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_DanBaoFei">
+                            <td >4</td>
+                            <td style="font-weight:bold">
+                                担保费
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].DanBaoFei" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.DanBaoFei)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_QiTa_CaiWuFeiYong">
+                            <td >5</td>
+                            <td style="font-weight:bold">
+                                其他
+                            </td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                    @if (!hasData)
+                                    { 
+                                        <input type="text" class="itext" row="@i" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].QiTa_CaiWuFeiYong" />
+                                    }
+                                </td>
+                            }
+                            <td>
+                                @if (!hasData)
+                                { 
+                                    <input type="text" class="itext" row="13" />
+                                }
+                                else
+                                { 
+                                    <input type="text" class="itext" row="13" value="@list.Sum(a => a.QiTa_CaiWuFeiYong)" />
+                                }
+                            </td>
+                        </tr>
+                        <tr id="tr_caiwufeiyong_xiaoji">
+                            <td style="font-weight:bold" colspan="2">小计</td>
+                            @for (int i = 1; i < 13; i++)
+                            {
+                                <td>
+                                </td>
+                            }
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                @if (ViewBag.IsReport == 0)
+                { 
+                    <button type="button" class="btn blue isubmit">
+                        保存</button>
+                }
+            </div>
+        </div>
+        <!-- END SAMPLE TABLE PORTLET-->
+    </div>
+</div>
+@section scripts{
+    
+}

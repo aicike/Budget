@@ -71,6 +71,8 @@
     <Compile Include="CustomTable_MainModel.cs" />
     <Compile Include="CustomTable_ValuesModel.cs" />
     <Compile Include="EFModel.cs" />
+    <Compile Include="Expenses_MainModel.cs" />
+    <Compile Include="Expenses_DetailModel.cs" />
     <Compile Include="GroupAccountModel.cs" />
     <Compile Include="MenuModel.cs" />
     <Compile Include="MenuOptionModel.cs" />

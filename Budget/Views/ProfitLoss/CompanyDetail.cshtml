@@ -23,7 +23,6 @@
                 }
             });
 
-            $("#Sel_type").val(@ViewBag.Type);
 
 
            //修改“销售数量”为“销售数据”，增加“财务数据”
@@ -35,38 +34,40 @@
                 html_tr+="<td></td>";
            }
            html_tr+="</tr>";
-           $(".请输入主营业务收入").parent().before(html_tr);
-        });
+           $(".主营业务收入").parent().before(html_tr);
 
-        function Select()
-        {
-            $("#Type").val($("#Sel_type").val());
-            sub_btn.click();
-        }
+           $(".optionsRadios1").change(function(){
+                if($(".optionsRadios1:checked").val()=="0"){
+                    $("#Type").val("0");
+                }else{
+                    $("#Type").val("1");
+                }
+                $("#sub_btn").click();
+           });
+        });
 
     </script>
     <style>
         .icolor, .icolor:hover > td, .icolor:hover > th, .icolor td:hover
-    {
-        background-color: #FFFFCC !important;
-    }
-    
-    .page-content
-    {
-        min-width:1330px;    
-    }
-   
+        {
+            background-color: #FFFFCC !important;
+        }
+        
+        .page-content
+        {
+            min-width: 1330px;
+        }
     </style>
 }
 @model System.Data.DataTable
-    @using (Html.BeginForm("CompanyDetail", "ProfitLoss", FormMethod.Get, new { enctype = "multipart/form-data" }))
-    { 
-     <input  type="hidden" id="ComPanyID" name="ComPanyID" value="@ViewBag.CID"/>
-     <input  type="hidden" id="YearID" name="YearID"  value="@ViewBag.YearID"/>
-     <input  type="hidden" id="Type" name="Type"/>
-     <button type="submit" id="sub_btn" style=" display:none"></button>
-    }
- 
+@using (Html.BeginForm("CompanyDetail", "ProfitLoss", FormMethod.Get, new { enctype = "multipart/form-data" }))
+{ 
+    <input  type="hidden" id="ComPanyID" name="ComPanyID" value="@ViewBag.CID"/>
+    <input  type="hidden" id="YearID" name="YearID"  value="@ViewBag.YearID"/>
+    <input type="hidden" id="Type" name="Type" />
+    <button type="submit" id="sub_btn" style="display: none">
+    </button>
+}
 <div class="row-fluid">
     <div class="span12" style="width: 100%">
         <div class="portlet box blue">
@@ -78,18 +79,37 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <table class="table table-hover">
-                    <tr>
-                        <td style="font-size: 14px; color: #e02222">
-                            <select id="Sel_type" onchange="Select()">
-                                <option value="0">预算</option>
-                                <option value="1">实际</option>
-                            </select>
-                            <br />
-                            点击月份 可查看月份实际明细
-                        </td>
-                    </tr>
-                </table>
+                <div class="control-group">
+                    <div class="controls">
+                        @if (ViewBag.Type == 0)
+                        { 
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios1" id="optionsRadios0" class="optionsRadios1"
+                                    value="0" checked="checked" />
+                                预算
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios1" id="optionsRadios1" class="optionsRadios1"
+                                    value="1" />
+                                实际
+                            </label>
+                        }
+                        else
+                        { 
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios1" id="optionsRadios0" class="optionsRadios1"
+                                    value="0" />
+                                预算
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios1" id="optionsRadios1" class="optionsRadios1"
+                                    value="1" checked="checked" />
+                                实际
+                            </label>
+                        }
+                    </div>
+                    点击月份 可查看月份实际明细
+                </div>
                 <table class="table table-hover" id="Tab_Main">
                     @for (int i = 0; i < DtTitle.Columns.Count; i++)
                     {
@@ -112,5 +132,4 @@
             </div>
         </div>
     </div>
-
 </div>

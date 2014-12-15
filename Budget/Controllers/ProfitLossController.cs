@@ -177,7 +177,7 @@ namespace Budget.Controllers
             row["YanBaoShuLiang"] = "延保数量";
             row["GuaPaiShuLiang"] = "挂牌数量";
             row["ErShouCheXiaoShouShuLiang"] = "二手车销售数量";
-            row["ZhuYingYeWuShouRu"] = "请输入主营业务收入";
+            row["ZhuYingYeWuShouRu"] = "主营业务收入";
             row["ZhuYingShouRu_ZhengChe"] = "整车";
             row["ZhuYingShouRu_ShouHouWeiXiu"] = "售后维修";
             row["ZhuYingShouRu_WeiXiuPeiJian"] = "维修配件";
@@ -571,7 +571,7 @@ namespace Budget.Controllers
             row["YanBaoShuLiang"] = "延保数量";
             row["GuaPaiShuLiang"] = "挂牌数量";
             row["ErShouCheXiaoShouShuLiang"] = "二手车销售数量";
-            row["ZhuYingYeWuShouRu"] = "请输入主营业务收入";
+            row["ZhuYingYeWuShouRu"] = "主营业务收入";
             row["ZhuYingShouRu_ZhengChe"] = "整车";
             row["ZhuYingShouRu_ShouHouWeiXiu"] = "售后维修";
             row["ZhuYingShouRu_WeiXiuPeiJian"] = "维修配件";

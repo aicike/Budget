@@ -36,5 +36,10 @@ namespace Entity
         /// 损益预算真实数据子（周）
         /// </summary>
         public virtual ICollection<ProfitLossReality_Detail> ProfitLossReality_Details { get; set; }
+
+        /// <summary>
+        /// 费用预算集合
+        /// </summary>
+        public virtual ICollection<Expenses_Main> Expenses_Mains { get; set; }
     }
 }

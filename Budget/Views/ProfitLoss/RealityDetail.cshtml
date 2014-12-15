@@ -51,13 +51,20 @@
         @if (ViewBag.IsEdit)
         {
             <button type="button" class="btn blue isubmit">
-                保存</button>
+                保存 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
+            <button type="button" class="btn red disabled isubmit_fix">
+                申请修改 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
+        }
+        else
+        {
+            <button type="button" class="btn red isubmit">
+                申请修改 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
         }
         <a href="@ViewBag.BackUrl" class="btn blue">返回</a>
         <div class="portlet box blue" style="margin-top: 10px;">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cogs"></i>@(ViewBag.YearValue)年损益预算 - 第@(ViewBag.Week)周</div>
+                    <i class="icon-cogs"></i>@(ViewBag.YearValue)年损益预算 - @(ViewBag.Month)月份 第@(ViewBag.Week)周</div>
             </div>
             <div class="portlet-body">
                 <table class="table table-hover itable">
@@ -1715,7 +1722,14 @@
                 @if (ViewBag.IsEdit)
                 {
                     <button type="button" class="btn blue isubmit">
-                        保存</button>
+                        保存 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
+                    <button type="button" class="btn red disabled isubmit_fix">
+                        申请修改 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
+                }
+                else
+                {
+                    <button type="button" class="btn red isubmit">
+                        申请修改 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
                 }
                 <a href="@ViewBag.BackUrl" class="btn blue">返回</a>
             </div>
@@ -1850,6 +1864,9 @@
         $(".itable :text[row='1']").keyup();
 
         $(".isubmit").click(function () {
+                if (!confirm("保存后将无法修改数据（如需修改，请点击[申请修改]），是否进行保存？")) {
+                    return false;
+                }
                 var sunyi_list = [];
                     $(".itr").each(function (i, n) {
                     var m = i + 1;
