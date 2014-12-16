@@ -54,7 +54,7 @@
                 },
 
                 submitHandler: function (form) {
-                    $.post(loginUrl, { username: $(form.username).val(), password: $(form.password).val(), role: $(form.role).val() }, function (result) {
+                    $.post(loginUrl, { username: $(form.username).val(), password: $(form.password).val(), role: $(form.role).val(), remember: $(form.remember).val() }, function (result) {
                         if (result.hasError) {
                             $('.alert-error>span').html(result.error);
                             $('.alert-error', $('.login-form')).show();
@@ -70,7 +70,7 @@
             $('.login-form input').keypress(function (e) {
                 if (e.which == 13) {
                     if ($('.login-form').validate().form()) {
-                        $.post(loginUrl, { username: $("#username").val(), password: $("#password").val(), role: $("#role").val() }, function (result) {
+                        $.post(loginUrl, { username: $("#username").val(), password: $("#password").val(), role: $("#role").val(), remember: $("#remember").val() }, function (result) {
                             if (result.hasError) {
                                 $('.alert-error>span').html(result.error);
                                 $('.alert-error', $('.login-form')).show();

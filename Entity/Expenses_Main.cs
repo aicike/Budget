@@ -7,16 +7,14 @@ using System.ComponentModel.DataAnnotations;
 namespace Entity
 {
     /// <summary>
-    /// 损益预算真实数据
+    /// 费用预算主表
     /// </summary>
-    public class ProfitLossReality_Main : BaseEntity
+    public class Expenses_Main:BaseEntity
     {
         /// <summary>
-        /// 损益预算 子表ID
+        /// 自增主键
         /// </summary>
-        [Display(Name = "损益预算 子表ID")]
         public int ID { get; set; }
-        public virtual ProfitLoss_Detailed ProfitLoss_Detailed { get; set; }
 
         /// <summary>
         /// 公司ID
@@ -33,22 +31,17 @@ namespace Entity
         public virtual ParticularYear ParticularYear { get; set; }
 
         /// <summary>
-        /// 月份
+        /// 是否上报
         /// </summary>
-        [Display(Name = "月份")]
-        public int Month { get; set; }
+        [Display(Name = "是否上报")]
+        public bool IsReport { get; set; }
 
-        /////按每周保存后，即为上报
-        ///// <summary>
-        ///// 是否上报
-        ///// </summary>
-        //[Display(Name = "是否上报")]
-        //public bool IsReport { get; set; }
-
-
+        //----------------------子表------------------------------------------
         /// <summary>
-        /// 损益预算真实数据（周）
+        /// 费用预算 明细表
         /// </summary>
-        public virtual ICollection<ProfitLossReality_Detail> ProfitLossReality_Details { get; set; }
+        public virtual ICollection<Expenses_Detail> Expenses_Details { get; set; }
+
+        
     }
 }

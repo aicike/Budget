@@ -23,7 +23,7 @@ namespace Budget.Controllers
         public ActionResult Index()
         {
             CompanyModel Cmodel = new CompanyModel();
-            var list = Cmodel.List().ToList();
+            var list = Cmodel.List().OrderBy(a => a.ID).ToList();
             return View(list);
         }
 

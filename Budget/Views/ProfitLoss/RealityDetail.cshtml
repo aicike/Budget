@@ -48,15 +48,23 @@
 <div class="row-fluid">
     <div class="span12">
         <!-- BEGIN SAMPLE TABLE PORTLET-->
-        @if (ViewBag.IsReport == 0)
+        @if (ViewBag.IsEdit)
         {
             <button type="button" class="btn blue isubmit">
-                保存</button>
+                保存 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
+            <button type="button" class="btn red disabled isubmit_fix">
+                申请修改 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
         }
+        else
+        {
+            <button type="button" class="btn red isubmit">
+                申请修改 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
+        }
+        <a href="@ViewBag.BackUrl" class="btn blue">返回</a>
         <div class="portlet box blue" style="margin-top: 10px;">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="icon-cogs"></i>@(ViewBag.YearValue)年损益预算</div>
+                    <i class="icon-cogs"></i>@(ViewBag.YearValue)年损益预算 - @(ViewBag.Month)月份 第@(ViewBag.Week)周</div>
             </div>
             <div class="portlet-body">
                 <table class="table table-hover itable">
@@ -81,28 +89,28 @@
                     </thead>
                     <tbody>
                         <tr id="tr_xiaoshoushuliang">
-                            <td>
-                                销售数量
+                            <td style="font-weight: bold">
+                                销售数据
                             </td>
                             @for (int i = 1; i < 5; i++)
                             {
                                 <td>
                                     @if (!hasData)
                                     { 
-                                        <input type="text" class="itext" row="@i" />
+                                        <input type="text" class="itext" row="@i" style="display:none" />
                                     }
                                     else
                                     {
-                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XiaoShouShuLiang" />
+                                        <input type="text" class="itext" row="@i" value="@list[i - 1].XiaoShouShuLiang" style="display:none" />
                                     }
                                 </td>
                             }
                             <td>
-                                <label class="yelabel">
+                                <label class="yelabel" style="display: none">
                                 </label>
                             </td>
                             <td>
-                                <label class="yslabel">@ProfitLoss_Detailed.XiaoShouShuLiang</label>
+                                <label class="yslabel" style="display: none">@ProfitLoss_Detailed.XiaoShouShuLiang</label>
                             </td>
                         </tr>
                         <tr id="tr_xinchexiaoshoushuliang">
@@ -311,6 +319,20 @@
                             </td>
                             <td>
                                 <label class="yslabel">@ProfitLoss_Detailed.ErShouCheXiaoShouShuLiang</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold">
+                                财务数据
+                            </td>
+                            @for (int i = 1; i < 5; i++)
+                            {
+                                <td>
+                                </td>
+                            }
+                            <td>
+                            </td>
+                            <td>
                             </td>
                         </tr>
                         <tr id="tr_zhuyingyewushouru" class="readonly icolor">
@@ -1697,11 +1719,19 @@
                         </tr>
                     </tbody>
                 </table>
-                @if (ViewBag.IsReport == 0)
+                @if (ViewBag.IsEdit)
                 {
                     <button type="button" class="btn blue isubmit">
-                        保存</button>
+                        保存 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
+                    <button type="button" class="btn red disabled isubmit_fix">
+                        申请修改 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
                 }
+                else
+                {
+                    <button type="button" class="btn red isubmit">
+                        申请修改 -- @(ViewBag.Month)月份第@(ViewBag.Week)周 --</button>
+                }
+                <a href="@ViewBag.BackUrl" class="btn blue">返回</a>
             </div>
         </div>
         <!-- END SAMPLE TABLE PORTLET-->
@@ -1792,7 +1822,14 @@
                 $(this).val($(this).val().replace(/\.{2,}/g, ".")); //只保留第一个. 清除多余的.
                 $(this).val($(this).val().replace(".", "$#$").replace(/\./g, "").replace("$#$", "."));
             });
-            $("td[row!='"+week+"']").find(":text").attr("readonly", "readonly");
+            @if (ViewBag.IsEdit)
+            {
+                @:$(":text[row!='"+week+"']").attr("readonly", "readonly");
+            }
+            else
+            {
+            @:$(":text").attr("readonly", "readonly");
+             }
         });
         //获取数值
         function getValue(obj) {
@@ -1827,8 +1864,11 @@
         $(".itable :text[row='1']").keyup();
 
         $(".isubmit").click(function () {
+                if (!confirm("保存后将无法修改数据（如需修改，请点击[申请修改]），是否进行保存？")) {
+                    return false;
+                }
                 var sunyi_list = [];
-                $(".itr").each(function (i, n) {
+                    $(".itr").each(function (i, n) {
                     var m = i + 1;
                     var item = new sunyi();
                     item.XiaoShouShuLiang = getValue(("#tr_xiaoshoushuliang td :text[row='" + m + "']"));
@@ -1898,7 +1938,7 @@
                     sunyi_list.push(item);
                 });
                 var value = JSON.stringify(sunyi_list);
-                $.post(submitUrl, { json: value, YearID: year,Month:month ,pdid:pdid}, function (result) {
+                $.post(submitUrl, { json: value, YearID: year,Month:month ,pdid:pdid,week:week}, function (result) {
                     window.location.href="@Url.Action("ActualMonthList", "ProfitLoss", new { YearID = ViewBag.YearID })";
                 });
         });
