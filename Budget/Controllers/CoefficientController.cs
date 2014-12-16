@@ -17,7 +17,7 @@ namespace Budget.Controllers
         // GET: /ProfitLoss_Coefficient/
 
         /// <summary>
-        /// 系数管理列表页
+        /// 集团系数管理列表页
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
@@ -37,7 +37,7 @@ namespace Budget.Controllers
             var list = CModel.List().ToList();
             return View(list);
         }
-
+        #region 集团管理
         /// <summary>
         /// 损益预算 系数编辑界面
         /// </summary>
@@ -50,8 +50,16 @@ namespace Budget.Controllers
             var item = CModel.Get(CID);
             ViewBag.CName = item.Name;
             ViewBag.CID = CID;
+            ViewBag.AccountType = LoginAccount.AccountType;
             ProfitLoss_CoefficientModel pcModel = new ProfitLoss_CoefficientModel();
             var Citem = pcModel.GetCoefficient_ByCID(CID);
+
+            if (LoginAccount.AccountType == 1)
+            {
+                //公司点开预算系数管理时，显示公司菜单
+                ViewBag.MenuID = 201;
+            }
+
             return View(Citem);
         }
 
@@ -69,10 +77,35 @@ namespace Budget.Controllers
             {
                 pcModel.Edit(profitLoss_coefficient);
             }
-            else {
+            else
+            {
                 pcModel.Add(profitLoss_coefficient);
             }
-            return JavaScript("window.location.href='" + Url.Action("ProfitLoss_Coefficient", "Coefficient") + "'");
+            if (LoginAccount.AccountType == 0)
+            {
+                return JavaScript("window.location.href='" + Url.Action("ProfitLoss_Coefficient", "Coefficient") + "'");
+            }
+            else
+            {
+                return JavaScript("window.location.href='" + Url.Action("CompanyCoefficient", "Coefficient") + "'");
+            }
         }
+        #endregion
+
+        #region 公司管理
+
+        /// <summary>
+        /// 公司系数管理页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult CompanyCoefficient()
+        {
+            //获取公司信息
+            return RedirectToAction("ProfitLoss_Edit", "Coefficient", new { CID = LoginAccount.ID });
+        }
+
+
+        #endregion
+
     }
 }

@@ -28,6 +28,8 @@ INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [
 INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (112, NULL, 'Home', 'Home', N'个人信息', N'个人信息', 1, 111,1)
 INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (113, NULL, 'Home', 'Home', N'修改密码', N'修改密码', 2, 111,1)
 
+INSERT [dbo].[Menu] ([ID], [Area], [Controller], [Action], [Name], [ShowName], [Order], [ParentMenuID],AccountType) VALUES (201, NULL, 'Coefficient', 'CompanyCoefficient', N'预算系数管理', N'预算系数管理', 3, NULL,1)
+
 SET IDENTITY_INSERT [dbo].[Menu] OFF
 
 /****** Object:  Table [dbo].[MenuOption]    Script Date: 12/05/2014 12:46:05 ******/

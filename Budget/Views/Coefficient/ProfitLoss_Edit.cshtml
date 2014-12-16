@@ -1,11 +1,13 @@
 ﻿@{
-    ViewBag.Title = ViewBag.CName +"-损益预算系数管理";
+    ViewBag.Title = ViewBag.CName + "-损益预算系数管理";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int accountType = ViewBag.AccountType;
+    
 }
 @section scripts{
-<script>
+    <script>
    
-</script>
+    </script>
     <style>
         .table-hover td
         {
@@ -13,7 +15,6 @@
             vertical-align: baseline;
         }
     </style>
-
 }
 @model Entity.ProfitLoss_Coefficient
 <div class="row-fluid">
@@ -29,10 +30,13 @@
             <div class="portlet-body">
                 @using (Ajax.BeginForm("ProfitLoss_Edit", "Coefficient", new AjaxOptions() { UpdateTargetId = "alert" }))
                 {
-                    <button class="btn blue"  type="submit">
+                    <button class="btn blue" type="submit">
                         保存</button>
-                    <a href="@Url.Action("ProfitLoss_Coefficient", "Coefficient")" class="btn blue" style="">
-                        返回</a><br />
+                    if (accountType == 0)
+                    { 
+                        <a href="@Url.Action("ProfitLoss_Coefficient", "Coefficient")" class="btn blue"
+                    style=""> 返回</a>
+                    }<br />
                     <br />
                    
                     <table class="table table-hover" style="">
@@ -42,7 +46,6 @@
                             </td>
                             <td>@Html.TextBoxFor(a => a.FenQiShuLiang)
                                 <input type="hidden" value="@ViewBag.CID" name="CompanyID"/>
-
                                 @Html.HiddenFor(a => a.ID)
                             </td>
                             <td>@Html.ValidationMessageFor(a => a.FenQiShuLiang)
@@ -122,7 +125,7 @@
                         </tr>
                         <tr>
                             <td style="width: 120px">
-                                 主营业务收入-续保系数：
+                                主营业务收入-续保系数：
                             </td>
                             <td>@Html.TextBoxFor(a => a.ZhuYingShouRu_XuBao)
                             </td>
@@ -174,17 +177,17 @@
                             <td>@Html.ValidationMessageFor(a => a.ZhuYingChengBen_ZhuangShiZhuangHuang)
                             </td>
                         </tr>
-                      
                     </table>
-                    <button class="btn blue"  type="submit">
+                    <button class="btn blue" type="submit">
                         保存</button>
-                    <a href="@Url.Action("ProfitLoss_Coefficient", "Coefficient")" class="btn blue" style="">
-                        返回</a><br />
+                    if (accountType == 0)
+                    { 
+                        <a href="@Url.Action("ProfitLoss_Coefficient", "Coefficient")" class="btn blue"
+                    style=""> 返回</a>
+                    }<br />
                    
                 }
             </div>
         </div>
     </div>
 </div>
-
-
