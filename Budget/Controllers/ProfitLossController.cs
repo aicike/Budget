@@ -740,13 +740,6 @@ namespace Budget.Controllers
                     ViewBag.IsReport = 1; //已上报
                 }
             }
-            ProfitLoss_CoefficientModel cm = new ProfitLoss_CoefficientModel();
-            var ProfitLoss_Coefficient = cm.GetCoefficient_ByCID(LoginAccount.ID);
-            if (ProfitLoss_Coefficient == null)
-            {
-                ProfitLoss_Coefficient = new ProfitLoss_Coefficient();
-            }
-            ViewBag.ProfitLoss_Coefficient = ProfitLoss_Coefficient;
             return View();
         }
 

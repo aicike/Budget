@@ -2,6 +2,7 @@
     ViewBag.Title = "损益预算明细";
     var list = ViewBag.List as List<Entity.ProfitLoss_Detailed>;
     bool hasData = (list == null || list.Count == 0) ? false : true;
+    var pc= ViewBag.ProfitLoss_Coefficient as Entity.ProfitLoss_Coefficient;
 }
 <style>
     .itext
@@ -68,7 +69,7 @@
                     </thead>
                     <tbody>
                         <tr id="tr_xiaoshoushuliang">
-                            <td style="font-weight: bold">
+                            <td style="font-weight:bold">
                                 销售数据
                             </td>
                             @for (int i = 1; i < 13; i++)
@@ -87,13 +88,14 @@
                             <td>
                                 @if (!hasData)
                                 { 
-                                    <input type="text" class="itext" row="13" style="display: none" />
+                                    <input type="text" class="itext" row="13" style="display:none" />
                                 }
                                 else
                                 { 
                                     <input type="text" class="itext" row="13" value="@list.Sum(a => a.XiaoShouShuLiang)" style="display:none" />
                                 }
                             </td>
+
                         </tr>
                         <tr id="tr_xinchexiaoshoushuliang">
                             <td>
@@ -312,7 +314,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="font-weight: bold">
+                            <td style="font-weight:bold">
                                 财务数据
                             </td>
                             @for (int i = 1; i < 13; i++)
@@ -321,6 +323,7 @@
                                 </td>
                             }
                             <td>
+                               
                             </td>
                         </tr>
                         <tr id="tr_zhuyingyewushouru" class="readonly icolor">
@@ -1665,6 +1668,21 @@
 </div>
 @section scripts{
     <script type="text/javascript">
+        var tr_FenQiShuLiang =@pc.FenQiShuLiang;
+        var tr_XinBaoShuLiang = @pc.XinBaoShuLiang;
+        var tr_xubaoshuliang = @pc.XuBaoShuLiang;
+        var tr_guapaishuliang = @pc.GuaPaiShuLiang;
+        var tr_ershouchexiaoshoushuliang = @pc.ErShouCheXiaoShouShuLiang;
+        var tr_zhengche = @pc.ZhuYingShouRu_ZhengChe;
+        var tr_zhuangshizhuanghuang = @pc.ZhuYingShouRu_ZhuangShiZhuangHuang;
+        var tr_fenqi = @pc.ZhuYingShouRu_FenQi;
+        var tr_xinbao = @pc.ZhuYingShouRu_XinBao;
+        var tr_xubao = @pc.ZhuYingShouRu_XuBao;
+        var tr_guapai = @pc.ZhuYingShouRu_GuaPai;
+        var tr_ershouche = @pc.ZhuYingShouRu_ErShouChe;
+        var tr_jian_zhengche = @pc.ZhuYingChengBen_ZhengChe;
+        var tr_jian_weixiupeijian = @pc.ZhuYingChengBen_WeiXiuPeiJian;
+        var tr_jian_zhuangshizhuanghuang = @pc.ZhuYingChengBen_ZhuangShiZhuangHuang;
         var submitUrl = '@Url.Action("Detail", "ProfitLoss")';
         var year = '@ViewBag.YearID';
 
@@ -1747,6 +1765,7 @@
             });
 
             //设置只读
+            $(".readonly>td :text").attr("readonly", "readonly");
             $(".itable td :text[row='13']").attr("readonly", "readonly");
 
 
@@ -1759,26 +1778,243 @@
                     if (isNaN($(obj).val())) {
                         $(obj).val("0");
                     }
-                    value = parseFloat($(obj).val()) ;
+                    value = parseFloat($(obj).val());
                 }
                 return value;
             }
 
-            //年累计
-            $(".itable td :text[row!='13']").bind("change",function(){
-                var currentValue= getValue(this);
-                $(this).val(currentValue);               
+            //新车销售数量
+            $("#tr_xinchexiaoshoushuliang td :text").keyup(function () {
+                var value = getValue(this);
+                $("#tr_fenqishuliang :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_FenQiShuLiang).change();
+                $("#tr_xinbaoshuliang :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_XinBaoShuLiang).change();
+                $("#tr_xubaoshuliang :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_xubaoshuliang).change();
+                $("#tr_guapaishuliang :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_guapaishuliang).change();
+                $("#tr_ershouchexiaoshoushuliang :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_ershouchexiaoshoushuliang).change();
+                $("#tr_zhengche :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_zhengche).change();
             });
 
+            //整车
+            $("#tr_zhengche td :text").change(function () {
+                var value = getValue(this);
+                $("#tr_zhuangshizhuanghuang :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_zhuangshizhuanghuang).change();
+                $("#tr_jian_zhengche :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_jian_zhengche).change();
+
+                var v_jian_zhengche = getValue(("#tr_jian_zhengche :text[row='" + $(this).attr("row") + "']"));
+                $("#tr_mao_zhengche :text[row='" + $(this).attr("row") + "']").val(((value - v_jian_zhengche) == 0) ? "" : (value - v_jian_zhengche)).change();
+            });
+
+            //分期数量
+            $("#tr_fenqishuliang td :text").change(function () {
+                var value = getValue(this);
+                $("#tr_fenqi :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_fenqi).change();
+            });
+
+            //新保数量
+            $("#tr_xinbaoshuliang td :text").change(function () {
+                var value = getValue(this);
+                $("#tr_xinbao :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_xinbao).change();
+            });
+
+            //续保数量
+            $("#tr_xubaoshuliang td :text").change(function () {
+                var value = getValue(this);
+                $("#tr_xubao :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_xubao).change();
+            });
+
+            //挂牌数量
+            $("#tr_guapaishuliang td :text").change(function () {
+                var value = getValue(this);
+                $("#tr_guapai :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_guapai).change();
+            });
+
+            //二手车
+            $("#tr_ershouchexiaoshoushuliang td :text").change(function () {
+                var value = getValue(this);
+                $("#tr_ershouche :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value * tr_ershouche).change();
+            });
+
+            //整车,售后维修,装饰装潢,佣金（求主营业务收入）
+            $("#tr_zhengche td :text,#tr_shouhouweixiu td :text,#tr_zhuangshizhuanghuang td :text,#tr_yongjin td :text").change(function () {
+                var v_zhengche = getValue(("#tr_zhengche :text[row='" + $(this).attr("row") + "']"));
+                var v_shouhouweixiu = getValue(("#tr_shouhouweixiu :text[row='" + $(this).attr("row") + "']"));
+                var v_zhuangshizhuanghuang = getValue(("#tr_zhuangshizhuanghuang :text[row='" + $(this).attr("row") + "']"));
+                var v_yongjin = getValue(("#tr_yongjin :text[row='" + $(this).attr("row") + "']"));
+                var value = v_zhengche + v_shouhouweixiu + v_zhuangshizhuanghuang + v_yongjin;
+                $("#tr_zhuyingyewushouru :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+                $("#tr_jian_zhuangshizhuanghuang :text[row='" + $(this).attr("row") + "']").val((v_zhuangshizhuanghuang == 0) ? "" : v_zhuangshizhuanghuang * tr_jian_zhuangshizhuanghuang).change();
+                var v_mao_zhuangshizhuanghuang = v_zhuangshizhuanghuang - getValue(("#tr_jian_zhuangshizhuanghuang :text[row='" + $(this).attr("row") + "']"));
+                $("#tr_mao_zhuangshizhuanghuang :text[row='" + $(this).attr("row") + "']").val((v_mao_zhuangshizhuanghuang == "0") ? "" : v_mao_zhuangshizhuanghuang).change();
+            });
+
+            //新保，续保（求保险）
+            $("#tr_xinbao td :text,#tr_xubao td :text").change(function () {
+                var v_xinbao = getValue(("#tr_xinbao :text[row='" + $(this).attr("row") + "']"));
+                var v_xubao = getValue(("#tr_xubao :text[row='" + $(this).attr("row") + "']"));
+                var value = v_xinbao + v_xubao;
+                $("#tr_baoxian :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //分期，保险,延保，挂牌，二手车，其他(求佣金)
+            $("#tr_fenqi td :text,#tr_baoxian td :text,#tr_yanbao td :text,#tr_guapai td :text,#tr_ershouche td :text,#tr_qita td :text").bind("change keyup", function () {
+                var v_fenqi = getValue(("#tr_fenqi :text[row='" + $(this).attr("row") + "']"));
+                var v_baoxian = getValue(("#tr_baoxian :text[row='" + $(this).attr("row") + "']"));
+                var v_yanbao = getValue(("#tr_yanbao :text[row='" + $(this).attr("row") + "']"));
+                var v_guapai = getValue(("#tr_guapai :text[row='" + $(this).attr("row") + "']"));
+                var v_ershouche = getValue(("#tr_ershouche :text[row='" + $(this).attr("row") + "']"));
+                var v_qita = getValue(("#tr_qita :text[row='" + $(this).attr("row") + "']"));
+                var value = v_fenqi + v_baoxian + v_yanbao + v_guapai + v_ershouche + v_qita;
+                $("#tr_yongjin :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //维修配件,工时(求售后维修)
+            $("#tr_weixiupeijian td :text,#tr_gongshi td :text").keyup(function () {
+                var v_weixiupeijian = getValue(("#tr_weixiupeijian :text[row='" + $(this).attr("row") + "']"));
+                var v_gongshi = getValue(("#tr_gongshi :text[row='" + $(this).attr("row") + "']"));
+                var value = v_weixiupeijian + v_gongshi;
+                $("#tr_shouhouweixiu :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value).change();
+                $("#tr_jian_weixiupeijian :text[row='" + $(this).attr("row") + "']").val((v_weixiupeijian == 0) ? "" : v_weixiupeijian * tr_jian_weixiupeijian).change();
+            });
+
+            //减维修配件，减工时(求减售后维修)
+            $("#tr_jian_weixiupeijian td :text,#tr_jian_gongshi td :text").bind("change keyup", function () {
+                var v_jian_weixiupeijian = getValue(("#tr_jian_weixiupeijian :text[row='" + $(this).attr("row") + "']"));
+                var v_jian_gongshi = getValue(("#tr_jian_gongshi :text[row='" + $(this).attr("row") + "']"));
+                var value = v_jian_weixiupeijian + v_jian_gongshi;
+                $("#tr_jian_shouhouweixiu :text[row='" + $(this).attr("row") + "']").val((value == 0) ? "" : value).change();
+            });
+
+            //减分期，减保险,减延保，减挂牌，减二手车，减其他(求减佣金)
+            $("#tr_jian_fenqi td :text,#tr_jian_baoxian td :text,#tr_jian_yanbao td :text,#tr_jian_guapai td :text,#tr_jian_ershouche td :text,#tr_jian_qita td :text").bind("change keyup", function () {
+                var v_fenqi = getValue(("#tr_jian_fenqi :text[row='" + $(this).attr("row") + "']"));
+                var v_baoxian = getValue(("#tr_jian_baoxian :text[row='" + $(this).attr("row") + "']"));
+                var v_yanbao = getValue(("#tr_jian_yanbao :text[row='" + $(this).attr("row") + "']"));
+                var v_guapai = getValue(("#tr_jian_guapai :text[row='" + $(this).attr("row") + "']"));
+                var v_ershouche = getValue(("#tr_jian_ershouche :text[row='" + $(this).attr("row") + "']"));
+                var v_qita = getValue(("#tr_jian_qita :text[row='" + $(this).attr("row") + "']"));
+                var value = v_fenqi + v_baoxian + v_yanbao + v_guapai + v_ershouche + v_qita;
+                $("#tr_jian_yongjin :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+
+            //减新保，减续保（求减保险）
+            $("#tr_jian_xinbao td :text,#tr_jian_xubao td :text").keyup(function () {
+                var v_xinbao = getValue(("#tr_jian_xinbao :text[row='" + $(this).attr("row") + "']"));
+                var v_xubao = getValue(("#tr_jian_xubao :text[row='" + $(this).attr("row") + "']"));
+                var value = v_xinbao + v_xubao;
+                $("#tr_jian_baoxian :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //减整车,减售后维修,减装饰装潢,减佣金（求减主营业务成本）
+            $("#tr_jian_zhengche td :text,#tr_jian_shouhouweixiu td :text,#tr_jian_zhuangshizhuanghuang td :text,#tr_jian_yongjin td :text").change(function () {
+                var v_zhengche = getValue(("#tr_jian_zhengche :text[row='" + $(this).attr("row") + "']"));
+                var v_shouhouweixiu = getValue(("#tr_jian_shouhouweixiu :text[row='" + $(this).attr("row") + "']"));
+                var v_zhuangshizhuanghuang = getValue(("#tr_jian_zhuangshizhuanghuang :text[row='" + $(this).attr("row") + "']"));
+                var v_yongjin = getValue(("#tr_jian_yongjin :text[row='" + $(this).attr("row") + "']"));
+                var value = v_zhengche + v_shouhouweixiu + v_zhuangshizhuanghuang + v_yongjin;
+                $("#tr_jian_zhuyingyewuchengben :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+
+            //售后维修,减售后维修（求毛售后维修）
+            $("#tr_shouhouweixiu td :text,#tr_jian_shouhouweixiu td :text").change(function () {
+                var v_shouhouweixiu = getValue(("#tr_shouhouweixiu :text[row='" + $(this).attr("row") + "']"));
+                var v_jian_shouhouweixiu = getValue(("#tr_jian_shouhouweixiu :text[row='" + $(this).attr("row") + "']"));
+                var value = v_shouhouweixiu - v_jian_shouhouweixiu;
+                $("#tr_mao_shouhouweixiu :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //佣金,减佣金（求毛佣金）
+            $("#tr_yongjin td :text,#tr_jian_yongjin td :text").change(function () {
+                var v_yongjin = getValue(("#tr_yongjin :text[row='" + $(this).attr("row") + "']"));
+                var v_jian_yongjin = getValue(("#tr_jian_yongjin :text[row='" + $(this).attr("row") + "']"));
+                var value = v_yongjin - v_jian_yongjin;
+                $("#tr_mao_yongjin :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //毛整车,毛维修,毛装饰装潢,毛佣金（求毛利）
+            $("#tr_mao_zhengche td :text,#tr_mao_shouhouweixiu td :text,#tr_mao_zhuangshizhuanghuang td :text,#tr_mao_yongjin td :text").change(function () {
+                var v_zhengche = getValue(("#tr_mao_zhengche :text[row='" + $(this).attr("row") + "']"));
+                var v_shouhouweixiu = getValue(("#tr_mao_shouhouweixiu :text[row='" + $(this).attr("row") + "']"));
+                var v_zhuangshizhuanghuang = getValue(("#tr_mao_zhuangshizhuanghuang :text[row='" + $(this).attr("row") + "']"));
+                var v_yongjin = getValue(("#tr_mao_yongjin :text[row='" + $(this).attr("row") + "']"));
+                var value = v_zhengche + v_shouhouweixiu + v_zhuangshizhuanghuang + v_yongjin;
+                $("#tr_maoli :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //主营业务税及附加，毛利（求主营业务附加税后毛利）
+            $("#tr_zhuyingyewushuijinjifujia td :text,#tr_maoli td :text").bind("change keyup", function () {
+                var v_zhuyingyewushuijinjifujia = getValue(("#tr_zhuyingyewushuijinjifujia :text[row='" + $(this).attr("row") + "']"));
+                var v_maoli = getValue(("#tr_maoli :text[row='" + $(this).attr("row") + "']"));
+                var value = v_maoli - v_zhuyingyewushuijinjifujia;
+                $("#tr_zhuyingyewufujiashuihoumaoli :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //其他业务收入，其他业务成本，其他业务税金及附加（求其他业务利润）
+            $("#tr_qitayewushouru td :text,#tr_qitayewuchengben td :text,#tr_qitayewushuijinjifujia td :text").keyup(function () {
+                var v_qitayewushouru = getValue(("#tr_qitayewushouru :text[row='" + $(this).attr("row") + "']"));
+                var v_qitayewuchengben = getValue(("#tr_qitayewuchengben :text[row='" + $(this).attr("row") + "']"));
+                var v_qitayewushuijinjifujia = getValue(("#tr_qitayewushuijinjifujia :text[row='" + $(this).attr("row") + "']"));
+                var value = v_qitayewushouru - v_qitayewuchengben - v_qitayewushuijinjifujia;
+                $("#tr_qitayewulirun :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //主营业务附加税后毛利，其他业务利润，销售及管理费用（求息税前利润）
+            $("#tr_zhuyingyewufujiashuihoumaoli td :text,#tr_qitayewulirun td :text,#tr_xiaoshoujiguanlifeiyong td :text").bind("change keyup", function () {
+                var v_zhuyingyewufujiashuihoumaoli = getValue(("#tr_zhuyingyewufujiashuihoumaoli :text[row='" + $(this).attr("row") + "']"));
+                var v_qitayewulirun = getValue(("#tr_qitayewulirun :text[row='" + $(this).attr("row") + "']"));
+                var v_xiaoshoujiguanlifeiyong = getValue(("#tr_xiaoshoujiguanlifeiyong :text[row='" + $(this).attr("row") + "']"));
+                var value = v_zhuyingyewufujiashuihoumaoli + v_qitayewulirun - v_xiaoshoujiguanlifeiyong;
+                $("#tr_xishuiqianlirun :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //息税前利润，财务费用（求营业利润）
+            $("#tr_xishuiqianlirun td :text,#tr_caiwufeiyong td :text").bind("change keyup", function () {
+                var v_xishuiqianlirun = getValue(("#tr_xishuiqianlirun :text[row='" + $(this).attr("row") + "']"));
+                var v_caiwufeiyong = getValue(("#tr_caiwufeiyong :text[row='" + $(this).attr("row") + "']"));
+                var value = v_xishuiqianlirun - v_caiwufeiyong;
+                $("#tr_yingyelirun :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //营业利润，资产减值损失，公允价值变动收益，投资收益，营业外收支净额（求利润总额）
+            $("#tr_yingyelirun td :text,#tr_zichanjianzhisunshi td :text,#tr_gongyunjiazhibiandongshouyi td :text,#tr_touzishouyi td :text,#tr_yingyewaishouzhijinge td :text").bind("change keyup", function () {
+                var v_yingyelirun = getValue(("#tr_yingyelirun :text[row='" + $(this).attr("row") + "']"));
+                var v_zichanjianzhisunshi = getValue(("#tr_zichanjianzhisunshi :text[row='" + $(this).attr("row") + "']"));
+                var v_gongyunjiazhibiandongshouyi = getValue(("#tr_gongyunjiazhibiandongshouyi :text[row='" + $(this).attr("row") + "']"));
+                var v_touzishouyi = getValue(("#tr_touzishouyi :text[row='" + $(this).attr("row") + "']"));
+                var v_yingyewaishouzhijinge = getValue(("#tr_yingyewaishouzhijinge :text[row='" + $(this).attr("row") + "']"));
+                var value = v_yingyelirun - v_zichanjianzhisunshi + v_gongyunjiazhibiandongshouyi + v_touzishouyi + v_yingyewaishouzhijinge;
+                $("#tr_lirunzonge :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //利润总额，所得税（求税后利润）
+            $("#tr_lirunzonge td :text,#tr_suodeshui td :text").bind("change keyup", function () {
+                var v_lirunzonge = getValue(("#tr_lirunzonge :text[row='" + $(this).attr("row") + "']"));
+                var v_suodeshui = getValue(("#tr_suodeshui :text[row='" + $(this).attr("row") + "']"));
+                var value = v_lirunzonge - v_suodeshui;
+                $("#tr_shuihoulirun :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //税后利润，少数股东损益（求净利润）
+            $("#tr_shuihoulirun td :text,#tr_shaoshugudongsunyi td :text").bind("change keyup", function () {
+                var v_shuihoulirun = getValue(("#tr_shuihoulirun :text[row='" + $(this).attr("row") + "']"));
+                var v_shaoshugudongsunyi = getValue(("#tr_shaoshugudongsunyi :text[row='" + $(this).attr("row") + "']"));
+                var value = v_shuihoulirun - v_shaoshugudongsunyi;
+                $("#tr_jinglirun :text[row='" + $(this).attr("row") + "']").val((value == "0") ? "" : value).change();
+            });
+
+            //年累计
             $(".itable td :text[row!='13']").bind("change keyup", function () {
                 var value = 0;
                 var parent_tr = $(this).parent().parent();
                 parent_tr.find("td :text[row!='13']").each(function (i, n) {
                     value += getValue(n);
                 });
-                parent_tr.find("td :text[row='13']").val(value.toFixed(2));
-            }).attr("maxlength","9");
+                parent_tr.find("td :text[row='13']").val(value);
+            });
 
+            //触发年累计计算
+            //$(".itable td :text[row='1']").change();
 
             //提交
 

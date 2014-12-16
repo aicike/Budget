@@ -1852,13 +1852,13 @@
             var week = week1 + week2 + week3 + week4;
             var ysLabel = $(this).parents("tr").find(".yslabel");
             var yeLabel = $(this).parents("tr").find(".yelabel");
-            var balance = parseFloat((week - ysLabel.text()).toFixed(13));
+            var balance = parseFloat((week - ysLabel.text()).toFixed(2));
             if(balance<0){
                 yeLabel.text(balance).addClass("icolor_red").removeClass("icolor_green");
             }else{
                 yeLabel.text(balance).addClass("icolor_green").removeClass("icolor_red");
             }
-        });
+        }).attr("maxlength","9");
 
         //触发本月发生余额计算
         $(".itable :text[row='1']").keyup();
