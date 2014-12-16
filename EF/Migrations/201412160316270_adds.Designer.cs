@@ -7,13 +7,13 @@ namespace EF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class update : IMigrationMetadata
+    public sealed partial class adds : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(update));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(adds));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412120814491_update"; }
+            get { return "201412160316270_adds"; }
         }
         
         string IMigrationMetadata.Source

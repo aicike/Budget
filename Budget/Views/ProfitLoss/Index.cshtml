@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section scripts{
-$(function(){ UIGeneral.init(); });
 }
 @model System.Data.DataTable
 <div class="row-fluid">
@@ -39,7 +38,8 @@ $(function(){ UIGeneral.init(); });
                                 }
                                 else if (Model.Rows[i]["Type"].ToString() == "1")
                                 {
-                                    @Ajax.ActionLink("上报", "ReportProfitLoss", "ProfitLoss", new { PMID = Model.Rows[i]["PMID"] }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "if (confirm('你确定要上报吗')) {return true }" }, new { @class="tooltips",style="color: #4d8bf8; cursor: pointer",data_placement="top",data_original_title="注意：上报后不可更改。"})
+                                    @Ajax.ActionLink("上报", "ReportProfitLoss", "ProfitLoss", new { PMID = Model.Rows[i]["PMID"] }, new AjaxOptions() { UpdateTargetId = "alert", OnBegin = "return AppDelete('你确定要上报吗?上报后不可修改！','" + Url.Action("ReportProfitLoss", "ProfitLoss", new { PMID = Model.Rows[i]["PMID"] }) + "',null)" }, new { @class = "tooltips", style = "color: #4d8bf8; cursor: pointer", data_placement = "top", data_original_title = "注意：上报后不可更改。" })
+                                    
                                 }
                                 else
                                 {

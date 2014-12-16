@@ -3,10 +3,13 @@ namespace EF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class update : DbMigration
+    public partial class adds : DbMigration
     {
         public override void Up()
         {
+            DropForeignKey("dbo.RoleAccount", "RoleID", "dbo.Role");
+            DropForeignKey("dbo.RoleMenu", "RoleID", "dbo.Role");
+            DropForeignKey("dbo.RoleOption", "RoleID", "dbo.Role");
             CreateTable(
                 "dbo.Expenses_Detail",
                 c => new
@@ -81,10 +84,18 @@ namespace EF.Migrations
                 .Index(t => t.CompanyID)
                 .Index(t => t.ParticularYearID);
             
+            AddForeignKey("dbo.RoleAccount", "RoleID", "dbo.Role", "ID", cascadeDelete: true);
+            AddForeignKey("dbo.RoleMenu", "RoleID", "dbo.Role", "ID", cascadeDelete: true);
+            AddForeignKey("dbo.RoleOption", "RoleID", "dbo.Role", "ID", cascadeDelete: true);
+            DropColumn("dbo.ProfitLossReality_Main", "IsReport");
         }
         
         public override void Down()
         {
+            AddColumn("dbo.ProfitLossReality_Main", "IsReport", c => c.Boolean(nullable: false));
+            DropForeignKey("dbo.RoleOption", "RoleID", "dbo.Role");
+            DropForeignKey("dbo.RoleMenu", "RoleID", "dbo.Role");
+            DropForeignKey("dbo.RoleAccount", "RoleID", "dbo.Role");
             DropForeignKey("dbo.Expenses_Main", "ParticularYearID", "dbo.ParticularYear");
             DropForeignKey("dbo.Expenses_Detail", "Expenses_Main_ID", "dbo.Expenses_Main");
             DropForeignKey("dbo.Expenses_Main", "CompanyID", "dbo.Company");
@@ -95,6 +106,9 @@ namespace EF.Migrations
             DropIndex("dbo.Expenses_Detail", new[] { "CompanyID" });
             DropTable("dbo.Expenses_Main");
             DropTable("dbo.Expenses_Detail");
+            AddForeignKey("dbo.RoleOption", "RoleID", "dbo.Role", "ID");
+            AddForeignKey("dbo.RoleMenu", "RoleID", "dbo.Role", "ID");
+            AddForeignKey("dbo.RoleAccount", "RoleID", "dbo.Role", "ID");
         }
     }
 }
