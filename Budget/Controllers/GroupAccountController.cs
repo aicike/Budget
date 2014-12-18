@@ -57,15 +57,18 @@ namespace Budget.Controllers
             var result = gaModel.Add(gAccount);
             if (result.HasError == false)
             {
-                //添加角色
-                RoleAccountModel raMoldel = new RoleAccountModel();
-                var strRoles = Roles.TrimEnd(',').Split(',');
-                foreach (string k in strRoles)
+                if (Roles != "")
                 {
-                    RoleAccount roleAccount = new RoleAccount();
-                    roleAccount.RoleID = int.Parse(k);
-                    roleAccount.GroupAccountID = gAccount.ID;
-                    raMoldel.Add(roleAccount);
+                    //添加角色
+                    RoleAccountModel raMoldel = new RoleAccountModel();
+                    var strRoles = Roles.TrimEnd(',').Split(',');
+                    foreach (string k in strRoles)
+                    {
+                        RoleAccount roleAccount = new RoleAccount();
+                        roleAccount.RoleID = int.Parse(k);
+                        roleAccount.GroupAccountID = gAccount.ID;
+                        raMoldel.Add(roleAccount);
+                    }
                 }
 
                 EmailInfo emailInfo = new EmailInfo();
@@ -115,12 +118,15 @@ namespace Budget.Controllers
                 RoleAccountModel raMoldel = new RoleAccountModel();
                 raMoldel.Del_ByGAID(gAccount.ID);
                 var strRoles = Roles.TrimEnd(',').Split(',');
-                foreach (string k in strRoles)
+                if (Roles != "")
                 {
-                    RoleAccount roleAccount = new RoleAccount();
-                    roleAccount.RoleID = int.Parse(k);
-                    roleAccount.GroupAccountID = gAccount.ID;
-                    raMoldel.Add(roleAccount);
+                    foreach (string k in strRoles)
+                    {
+                        RoleAccount roleAccount = new RoleAccount();
+                        roleAccount.RoleID = int.Parse(k);
+                        roleAccount.GroupAccountID = gAccount.ID;
+                        raMoldel.Add(roleAccount);
+                    }
                 }
             }
             return JavaScript("window.location.href='" + Url.Action("Index", "GroupAccount") + "'");
