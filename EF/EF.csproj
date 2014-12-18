@@ -52,10 +52,6 @@
     <Compile Include="Mapping\RoleMenuMap.cs" />
     <Compile Include="Mapping\RoleOptionMap.cs" />
     <Compile Include="Mapping\RoleAccountMap.cs" />
-    <Compile Include="Migrations\201412160316270_adds.cs" />
-    <Compile Include="Migrations\201412160316270_adds.Designer.cs">
-      <DependentUpon>201412160316270_adds.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,11 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Initial.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412160316270_adds.resx">
-      <DependentUpon>201412160316270_adds.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

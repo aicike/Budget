@@ -126,6 +126,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CompanyAccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Controllers\GroupAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ProfitLossController.cs" />
     <Compile Include="Controllers\CoefficientController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -212,6 +214,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Image\404.jpg" />
     <Content Include="Image\Bg_1.png" />
+    <Content Include="Image\default_Avatar.png" />
     <Content Include="Image\item_line.png" />
     <Content Include="Image\logo.png" />
     <Content Include="Image\Logo_144.png" />
@@ -1002,6 +1005,9 @@
     <Content Include="metronic.bootstrap\ui_tree.html" />
     <Content Include="metronic.bootstrap\ui_typography.html" />
     <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\jcrop\Jcrop.gif" />
+    <Content Include="Scripts\jcrop\jquery.Jcrop.css" />
+    <Content Include="Scripts\jcrop\jquery.Jcrop.js" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -1356,8 +1362,16 @@
     <Content Include="Scripts\ueditor\ueditor.config_about.js" />
     <Content Include="Scripts\ueditor\ueditor.parse.js" />
     <Content Include="Scripts\ueditor\ueditor.parse.min.js" />
+    <Content Include="Scripts\uploadify\crossdomain.xml" />
+    <Content Include="Scripts\uploadify\jquery.uploadify.js" />
+    <Content Include="Scripts\uploadify\jquery.uploadify.min.js" />
+    <Content Include="Scripts\uploadify\uploadify-cancel.png" />
+    <Content Include="Scripts\uploadify\uploadify.css" />
+    <Content Include="Scripts\uploadify\uploadify.swf" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1383,6 +1397,7 @@
     <Content Include="Views\Exit\Exit.cshtml" />
     <Content Include="Views\Shared\_Layout_noLogin.cshtml" />
     <Content Include="Views\Expenses\Detail.cshtml" />
+    <Content Include="Views\Profile\CompanyProFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1477,7 +1492,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4280</DevelopmentServerPort>
+          <DevelopmentServerPort>3540</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
