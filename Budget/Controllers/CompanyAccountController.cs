@@ -84,17 +84,19 @@ namespace Budget.Controllers
             
             if (result.HasError == false)
             {
-                //添加角色
-                RoleAccountModel raMoldel = new RoleAccountModel();
-                var strRoles = Roles.TrimEnd(',').Split(',');
-                foreach (string k in strRoles)
+                if (Roles != "")
                 {
-                    RoleAccount roleAccount = new RoleAccount();
-                    roleAccount.RoleID = int.Parse(k);
-                    roleAccount.CompanyAccountID = cAccount.ID;
-                    raMoldel.Add(roleAccount);
+                    //添加角色
+                    RoleAccountModel raMoldel = new RoleAccountModel();
+                    var strRoles = Roles.TrimEnd(',').Split(',');
+                    foreach (string k in strRoles)
+                    {
+                        RoleAccount roleAccount = new RoleAccount();
+                        roleAccount.RoleID = int.Parse(k);
+                        roleAccount.CompanyAccountID = cAccount.ID;
+                        raMoldel.Add(roleAccount);
+                    }
                 }
-
                 EmailInfo emailInfo = new EmailInfo();
                 emailInfo.To = cAccount.Email;
                 emailInfo.Subject = "华夏集团预算系统账号";
@@ -143,16 +145,19 @@ namespace Budget.Controllers
             var result = CAModel.Edit(cAccount);
             if (result.HasError == false)
             {
-                //修改角色
-                RoleAccountModel raMoldel = new RoleAccountModel();
-                raMoldel.Del_ByCAID(cAccount.ID);
-                var strRoles = Roles.TrimEnd(',').Split(',');
-                foreach (string k in strRoles)
+                if (Roles != "")
                 {
-                    RoleAccount roleAccount = new RoleAccount();
-                    roleAccount.RoleID = int.Parse(k);
-                    roleAccount.CompanyAccountID = cAccount.ID;
-                    raMoldel.Add(roleAccount);
+                    //修改角色
+                    RoleAccountModel raMoldel = new RoleAccountModel();
+                    raMoldel.Del_ByCAID(cAccount.ID);
+                    var strRoles = Roles.TrimEnd(',').Split(',');
+                    foreach (string k in strRoles)
+                    {
+                        RoleAccount roleAccount = new RoleAccount();
+                        roleAccount.RoleID = int.Parse(k);
+                        roleAccount.CompanyAccountID = cAccount.ID;
+                        raMoldel.Add(roleAccount);
+                    }
                 }
             }
             return JavaScript("window.location.href='" + Url.Action("Index", "CompanyAccount", new { CID = cAccount.CompanyID }) + "'");
